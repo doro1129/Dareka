@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 C:\Users\오준현\Desktop\Dareka_Somebody\Dareka\Dareka_Somebody
+=======
+C:\Users\sarah\Documents\GitHub\Dareka\Dareka_Somebody
+>>>>>>> main
