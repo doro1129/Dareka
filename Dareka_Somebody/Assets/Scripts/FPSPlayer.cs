@@ -11,43 +11,27 @@ public class FPSPlayer : MonoBehaviour
     /// orientation will store the direction where the player facing
     /// </summary>
     public Transform orientation;
-
+    public GameManager manager;
     private Rigidbody rigidbody1;
-
-    // Player's numerical values of attack and stamina
-    [Header("Player")]
-
-    /// <summary>
-    /// Player's striking power, cooldown time and speed of attack when attacking
-    /// </summary>
-    public float Striking_Power = 50;   
-    public float Attack_Time = 1f;      
-    public float Attack_Speed = 1f;
-    
-    /// <summary>
-    /// Player's stamina as known as 'HP'
-    /// </summary>
-    public float Stamina = 100;
 
     // Player's moddable numerical values of movement like waliking speed, jump force
     [Header("Movement")]
-
     /// <summary>
     /// Player's speed when player walk and run
     /// </summary>
-    public float MoveSpeed = 25;
-    public float RunSpeed = 50;
+    public float MoveSpeed = 10;
+    public float RunSpeed = 20;
 
     /// <summary>
     /// Resistance of ground when moving
     /// The higher the value, the stronger the resistance of the ground on which the player walks.
     /// </summary>
-    public float GroundDrag = 7;
+    public float GroundDrag = 10f;
 
     /// <summary>
     /// Player's jumping power
     /// </summary>
-    public float JumpForce = 30;
+    public float JumpForce = 20;
 
     /// <summary>
     /// Cooldown time of jumping
@@ -58,10 +42,8 @@ public class FPSPlayer : MonoBehaviour
     /// <summary>
     /// AirMultiplier is the value that decreases the speed when player is floating
     /// </summary>
-    public float AirMultiplier =0.4f;
-
+    public float AirMultiplier =1.0f;
     private bool ReadyToJump = true;
-    
 
     [Header("Keybinds")]
     private KeyCode JumpKey = KeyCode.Space;
@@ -71,19 +53,19 @@ public class FPSPlayer : MonoBehaviour
     /// <summary>
     /// To check the layer which is named 'what is ground'
     /// </summary>
-    public LayerMask Tile;
+    public LayerMask ground;
 
     /// <summary>
     /// It will 'True' when player is on ground or false when floating
     /// </summary>
     public bool grounded;
-    public float RaycastDistance = 10;
+    public float RaycastDistance = 1.1f;
+    public Vector3 flatVelocity;
+
 
     private Vector3 moveDirection;
     private float horizontalInput;
     private float verticalInput;
-    
-
 
     private void Start()
     {
@@ -92,14 +74,16 @@ public class FPSPlayer : MonoBehaviour
     }
 
     private void Update()
-    {   
+    {
         // Check if it is attaching at the ground by using raycast as type of boolean
-        grounded = Physics.Raycast(transform.position, Vector3.down, RaycastDistance, Tile);
-
+        // If objects are scanned, Player will not be able to move.
+        
+        grounded = Physics.Raycast(transform.position, Vector3.down, RaycastDistance, ground);
+        
         MyInput();
         SpeedControl();
 
-        // handle drag
+        // Handle drag
         if (grounded)
         {
             rigidbody1.drag = GroundDrag;
@@ -110,8 +94,9 @@ public class FPSPlayer : MonoBehaviour
             rigidbody1.drag = 1;
             Physics.gravity = new Vector3(0, -60f, 0);
         }
+
     }
-    
+
     private void FixedUpdate()
     {
         MovePlayer();
@@ -125,8 +110,8 @@ public class FPSPlayer : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-
-        if(Input.GetKey(JumpKey) && ReadyToJump && grounded)
+        
+        if (Input.GetKey(JumpKey) && ReadyToJump && grounded)
         {
             ReadyToJump = false;
             Jump();
@@ -143,12 +128,19 @@ public class FPSPlayer : MonoBehaviour
     private void MovePlayer()
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-
+        
         if (grounded)
         {
-            var currentSpeed = Input.GetKey(KeyCode.LeftShift) ? RunSpeed : MoveSpeed;
-
-            rigidbody1.AddForce(moveDirection.normalized * currentSpeed * 10f, ForceMode.Force);
+            if (manager.isScan == false)
+            {
+                var currentSpeed = Input.GetKey(KeyCode.LeftShift) ? RunSpeed : MoveSpeed;
+                rigidbody1.AddForce(moveDirection.normalized * currentSpeed * 10f, ForceMode.Force);
+            }
+            else if (manager.isScan == true)
+            {
+                var currentSpeed = MoveSpeed;
+                rigidbody1.AddForce(moveDirection.normalized * currentSpeed * 0f, ForceMode.Force);
+            }
         }
 
         //in air
@@ -161,10 +153,10 @@ public class FPSPlayer : MonoBehaviour
     /// <summary>
     /// Manually limit the speed of the player
     /// </summary>
-    private void SpeedControl()
+    public void SpeedControl()
     {
-        Vector3 flatVelocity = new Vector3(rigidbody1.velocity.x, 0f, rigidbody1.velocity.z);
-
+        flatVelocity = new Vector3(rigidbody1.velocity.x, 0f, rigidbody1.velocity.z);
+        
         //limit velocity if needed
         if (flatVelocity.magnitude > MoveSpeed)
         {

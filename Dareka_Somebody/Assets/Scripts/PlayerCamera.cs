@@ -13,19 +13,24 @@ public class PlayerCamera : MonoBehaviour
     /// Sensor X will sense the horizontal rotation of player and camera
     /// Sensor Y will sense the vertical rotation of camera
     /// </summary>
-    public float sensitivityX = 500;
-    public float sensitivityY = 500;
-
+    public float sensitivityX = 800;
+    public float sensitivityY = 800;
+    
     /// <summary>
     /// orientation will store the direction where the player facing
     /// </summary>
     public Transform orientation;
+
+    // manager is defined To invoke the function 'isScan'
+    public GameManager manager;
 
     /// <summary>
     /// X and Y rotation of player's camera
     /// </summary>
     private float xRotation;
     private float yRotation;
+    private float mouseX;
+    private float mouseY;
 
     private void Start()
     {
@@ -35,16 +40,25 @@ public class PlayerCamera : MonoBehaviour
 
     private void Update()
     {
-        // get mouse input
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensitivityX;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensitivityY;
+        // If objects are scanned, Player will not be rotate the camera.
+        if (manager.isScan == true)
+        {
+            mouseX = 0;
+            mouseY = 0;
+        }
+        else
+        {
+            // get mouse input
+            mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensitivityX;
+            mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensitivityY;
 
-        yRotation += mouseX;
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f,90f);
+            yRotation += mouseX;
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        //rotate camera and orientation
-        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+            //rotate camera and orientation
+            transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+            orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        }
     }
 }
