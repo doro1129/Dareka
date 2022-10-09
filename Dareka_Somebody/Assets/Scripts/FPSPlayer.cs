@@ -67,10 +67,15 @@ public class FPSPlayer : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
 
+    Animator animator;
+
     private void Start()
     {
         rigidbody1 = GetComponent<Rigidbody>();
         rigidbody1.freezeRotation = true;   // not to fall down
+
+        animator = GetComponent<Animator>();
+        animator.SetTrigger("Idle");
     }
 
     private void Update()
@@ -135,6 +140,28 @@ public class FPSPlayer : MonoBehaviour
             {
                 var currentSpeed = Input.GetKey(KeyCode.LeftShift) ? RunSpeed : MoveSpeed;
                 rigidbody1.AddForce(moveDirection.normalized * currentSpeed * 10f, ForceMode.Force);
+                Vector3 stopSpeed = new Vector3(0f, 0f, 0f);
+                if (ReadyToJump)
+                {
+                    if (currentSpeed == RunSpeed)
+                    {
+                        animator.ResetTrigger("Idle");
+                        animator.ResetTrigger("Walk");
+                        animator.SetTrigger("Run");
+                    }
+                    else if (moveDirection.normalized != stopSpeed)
+                    {
+                        animator.ResetTrigger("Idle");
+                        animator.ResetTrigger("Run");
+                        animator.SetTrigger("Walk");
+                    }
+                    else
+                    {
+                        animator.ResetTrigger("Walk");
+                        animator.ResetTrigger("Run");
+                        animator.SetTrigger("Idle");
+                    }
+                }
             }
             else if (manager.isScan == true)
             {
@@ -172,6 +199,10 @@ public class FPSPlayer : MonoBehaviour
     {
         rigidbody1.velocity = new Vector3(rigidbody1.velocity.x, 0, rigidbody1.velocity.z);
         rigidbody1.AddForce(transform.up * JumpForce, ForceMode.Impulse);
+        animator.ResetTrigger("Idle");
+        animator.ResetTrigger("Walk");
+        animator.ResetTrigger("Run");
+        animator.SetTrigger("Jump");
     }
 
     /// <summary>
@@ -180,5 +211,7 @@ public class FPSPlayer : MonoBehaviour
     private void ResetJump()
     {
         ReadyToJump = true;
+        animator.ResetTrigger("Jump");
+        animator.SetTrigger("Idle");
     }
 }

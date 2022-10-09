@@ -1592,6 +1592,7 @@ MonoBehaviour:
   sensitivityX: 700
   sensitivityY: 700
   orientation: {fileID: 3523139869390467190}
+  player: {fileID: 3523139868825788076}
   manager: {fileID: 3523139868916924771}
 --- !u!1 &3523139869390467177
 GameObject:

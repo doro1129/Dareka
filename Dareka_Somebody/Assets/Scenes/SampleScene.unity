@@ -1334,6 +1334,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3523139868738893923, guid: 3737bf2853deb4c259dae4d04dbbac82, type: 3}
+      propertyPath: m_Center.y
+      value: 0.89
+      objectReference: {fileID: 0}
     - target: {fileID: 3523139868825788076, guid: 3737bf2853deb4c259dae4d04dbbac82, type: 3}
       propertyPath: m_Name
       value: BasicMotionsDummyModel
@@ -1414,5 +1418,9 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 918278226}
+    - target: {fileID: 3523139869340196389, guid: 3737bf2853deb4c259dae4d04dbbac82, type: 3}
+      propertyPath: JumpCooldown
+      value: 0.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3737bf2853deb4c259dae4d04dbbac82, type: 3}
