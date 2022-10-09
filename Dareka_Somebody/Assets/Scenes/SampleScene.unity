@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 350149248}
   - component: {fileID: 350149247}
   - component: {fileID: 350149246}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Cube2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -489,7 +489,7 @@ GameObject:
   - component: {fileID: 488932805}
   - component: {fileID: 488932807}
   m_Layer: 5
-  m_Name: Press F
+  m_Name: Press Space
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -548,7 +548,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press [F]
+  m_Text: Press [Space]
 --- !u!222 &488932806
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -678,7 +678,7 @@ GameObject:
   - component: {fileID: 770474970}
   - component: {fileID: 770474969}
   - component: {fileID: 770474968}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -757,7 +757,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770474967}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.95, y: 1.36, z: -0.14}
+  m_LocalPosition: {x: 6.63, y: 1.36, z: -4.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -871,7 +871,7 @@ GameObject:
   - component: {fileID: 1535365639}
   - component: {fileID: 1535365638}
   - component: {fileID: 1535365637}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -949,13 +949,18 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1535365636}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9, y: 2, z: -2.9999998}
+  m_LocalPosition: {x: 9.25, y: 1.22, z: -4.94}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1593154505 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3523139868826207052, guid: 3737bf2853deb4c259dae4d04dbbac82, type: 3}
+  m_PrefabInstance: {fileID: 3523139867393604166}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1599584498 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3800764132345832870, guid: f6208658c4d45bf5c944dd7806489932, type: 3}
@@ -987,7 +992,7 @@ GameObject:
   - component: {fileID: 1668479208}
   - component: {fileID: 1668479207}
   - component: {fileID: 1668479206}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1082,7 +1087,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3743287390741466256, guid: f6208658c4d45bf5c944dd7806489932, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3800764132345832870, guid: f6208658c4d45bf5c944dd7806489932, type: 3}
       propertyPath: m_Name
@@ -1090,7 +1095,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3800764132345832870, guid: f6208658c4d45bf5c944dd7806489932, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3800764132345832870, guid: f6208658c4d45bf5c944dd7806489932, type: 3}
       propertyPath: m_TagString
@@ -1098,11 +1103,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5510416338837317869, guid: f6208658c4d45bf5c944dd7806489932, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5738274286267407512, guid: f6208658c4d45bf5c944dd7806489932, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7992442834815449993, guid: f6208658c4d45bf5c944dd7806489932, type: 3}
       propertyPath: m_RootOrder
@@ -1386,6 +1391,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3523139868826207310, guid: 3737bf2853deb4c259dae4d04dbbac82, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.309
+      objectReference: {fileID: 0}
     - target: {fileID: 3523139868835310804, guid: 3737bf2853deb4c259dae4d04dbbac82, type: 3}
       propertyPath: m_Controller
       value: 
@@ -1402,6 +1411,10 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 918278226}
+    - target: {fileID: 3523139869319603146, guid: 3737bf2853deb4c259dae4d04dbbac82, type: 3}
+      propertyPath: orientation
+      value: 
+      objectReference: {fileID: 1593154505}
     - target: {fileID: 3523139869340196388, guid: 3737bf2853deb4c259dae4d04dbbac82, type: 3}
       propertyPath: PressF
       value: 
@@ -1414,21 +1427,21 @@ PrefabInstance:
       propertyPath: TalkWindow
       value: 
       objectReference: {fileID: 187486508}
-    - target: {fileID: 3523139869340196388, guid: 3737bf2853deb4c259dae4d04dbbac82, type: 3}
-      propertyPath: whatisObject.m_Bits
-      value: 192
-      objectReference: {fileID: 0}
     - target: {fileID: 3523139869340196389, guid: 3737bf2853deb4c259dae4d04dbbac82, type: 3}
       propertyPath: manager
       value: 
       objectReference: {fileID: 918278226}
     - target: {fileID: 3523139869340196389, guid: 3737bf2853deb4c259dae4d04dbbac82, type: 3}
+      propertyPath: JumpForce
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3523139869340196389, guid: 3737bf2853deb4c259dae4d04dbbac82, type: 3}
       propertyPath: JumpCooldown
       value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 3523139869340196389, guid: 3737bf2853deb4c259dae4d04dbbac82, type: 3}
-      propertyPath: ground.m_Bits
-      value: 8
+      propertyPath: RaycastDistance
+      value: 0.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3737bf2853deb4c259dae4d04dbbac82, type: 3}

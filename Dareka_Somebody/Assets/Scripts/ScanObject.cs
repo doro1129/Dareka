@@ -45,7 +45,7 @@ public class ScanObject : MonoBehaviour
             scanObject = hit.collider.gameObject;
             PressF.SetActive(true);
 
-            if (Input.GetKeyDown(KeyCode.F) && scanObject != null)
+            if (Input.GetKeyDown(KeyCode.Space) && scanObject != null)
             {
                 manager.Scan(scanObject);
             }
