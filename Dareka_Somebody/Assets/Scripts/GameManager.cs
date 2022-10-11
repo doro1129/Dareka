@@ -10,14 +10,14 @@ public class GameManager : MonoBehaviour
 {
     // It will update Text
     public Text TalkText;
-    public GameObject scanObject; // 스캔된 물체
-    public GameObject TalkWindow; // 대화창
+    public GameObject scanObject; // ?????? ????
+    public GameObject TalkWindow; // ??????
     
     //The name of Object
     public string ObjectName;
 
     // Check if ray has reached to object which has Layer named "whatisObject"
-    public bool isScan=true;
+    public bool isScan=false;
     
 
     public void Scan(GameObject scanOBJ)
