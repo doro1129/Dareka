@@ -59,7 +59,6 @@ public class FPSPlayer : MonoBehaviour
         rigidbody1.freezeRotation = true;   // not to fall down
 
         animator = GetComponent<Animator>();
-        animator.SetTrigger("Idle");
     }
 
     private void Update()
@@ -86,7 +85,6 @@ public class FPSPlayer : MonoBehaviour
     private void FixedUpdate()
     {
         MovePlayer();
-        print(moveDirection);
     }
 
     /// <summary>
@@ -113,26 +111,16 @@ public class FPSPlayer : MonoBehaviour
             {
                 var currentSpeed = Input.GetKey(KeyCode.LeftShift) ? RunSpeed : MoveSpeed;
                 rigidbody1.AddForce(moveDirection.normalized * currentSpeed * 10f, ForceMode.Force);
-                Vector3 stopSpeed = new Vector3(0f, 0f, 0f);
-                
-                    if (currentSpeed == RunSpeed) //달릴 때
-                    {
-                        animator.ResetTrigger("Idle");
-                        animator.ResetTrigger("Walk");
-                        animator.SetTrigger("Run");
-                    }
-                    else if (moveDirection != stopSpeed) // 달리기 속도와 다를 때
-                    {
-                        animator.ResetTrigger("Idle");
-                        animator.ResetTrigger("Run");
-                        animator.SetTrigger("Walk");
-                    }
-                    else // 가만히 있을 때
-                    {
-                        animator.ResetTrigger("Walk");
-                        animator.ResetTrigger("Run");
-                        animator.SetTrigger("Idle");
-                    
+
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    animator.SetFloat("Horizontal", horizontalInput);
+                    animator.SetFloat("Vertical", verticalInput);
+                }
+                else
+                {
+                    animator.SetFloat("Horizontal", horizontalInput/10);
+                    animator.SetFloat("Vertical", verticalInput/10);
                 }
             }
             else if (manager.isScan == true)
