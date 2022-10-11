@@ -20,6 +20,7 @@ public class PlayerCamera : MonoBehaviour
     /// orientation will store the direction where the player facing
     /// </summary>
     public Transform orientation;
+    public GameObject player;
 
     // manager is defined To invoke the function 'isScan'
     public GameManager manager;
@@ -59,6 +60,8 @@ public class PlayerCamera : MonoBehaviour
             //rotate camera and orientation
             transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
             orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+
+            player.transform.rotation = Quaternion.Euler(0, yRotation, 0);
         }
     }
 }
