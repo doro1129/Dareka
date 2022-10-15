@@ -5,17 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneControl : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
     //remember the scene number for save load
     /*
     public int SceneCounter;
@@ -28,15 +18,15 @@ public class SceneControl : MonoBehaviour
     public void OnclickNewGame()
     {
         Debug.Log("New Game");
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("StageScene");
     }
 
-    /*public void OnclickLoadGame()
+    public void OnclickSelectStage()
     {
-        Debug.Log("불러오기");
-        SceneManager.LoadScene(SceneCounter);
-    }*/
-    
+        //Debug.Log("Loading Scene No." + Scene number);
+        SceneManager.LoadScene("Samplescene");
+        //SceneManager.LoadScene(scene name will be changed into scene number)
+    }    
 
     public void OnclickQuitGame()
     {
