@@ -55,6 +55,8 @@ public class FPSPlayer : MonoBehaviour
     private float verticalInput;
 
     Animator animator;
+    AudioSource audioSrc;
+    bool isMoving = false;
 
     private void Start()
     {
@@ -62,6 +64,7 @@ public class FPSPlayer : MonoBehaviour
         rigidbody1.freezeRotation = true;   // not to fall down
 
         animator = GetComponent<Animator>();
+        audioSrc = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -82,7 +85,6 @@ public class FPSPlayer : MonoBehaviour
         {
             rigidbody1.drag = 1;
         }
-
     }
 
     private void FixedUpdate()
@@ -122,9 +124,11 @@ public class FPSPlayer : MonoBehaviour
                 }
                 else
                 {
-                    animator.SetFloat("Horizontal", horizontalInput/10);
-                    animator.SetFloat("Vertical", verticalInput/10);
+                    animator.SetFloat("Horizontal", horizontalInput * 0.1f);
+                    animator.SetFloat("Vertical", verticalInput * 0.1f);
                 }
+
+                PlayWalkSound();
             }
             else if (manager.isScan == true)
             {
@@ -138,6 +142,31 @@ public class FPSPlayer : MonoBehaviour
         {
             rigidbody1.AddForce(moveDirection.normalized * MoveSpeed * 10f * AirMultiplier, ForceMode.Force);
         }
+    }
+
+    private void PlayWalkSound()
+    {
+        if (horizontalInput != 0f | verticalInput != 0f)
+        {
+            isMoving = true;
+        }
+        else
+        {
+            isMoving = false;
+        }
+
+        if (isMoving)
+        {
+            if (!audioSrc.isPlaying)
+            {
+                audioSrc.Play();
+            }
+        }
+        else
+        {
+            audioSrc.Stop();
+        }
+
     }
 
     /// <summary>
