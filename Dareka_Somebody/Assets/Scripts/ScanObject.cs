@@ -12,7 +12,6 @@ public class ScanObject : MonoBehaviour
     /// PressSpace is the text that is written "Press [F]"
     /// TalkWindow is the window which will be activated when PressSpace activate
     /// </summary>
-    
     public GameManager manager;
     public GameObject PressSpace; //가까이 가면 press [F] 화면에 출력
     public GameObject TalkWindow; // 대화창
@@ -24,7 +23,12 @@ public class ScanObject : MonoBehaviour
     private GameObject scanObject;
     //private GameObject temp_Object;
     private bool isTouched;
-    
+
+    private void Awake()
+    {
+        manager = FindObjectOfType<GameManager>();
+    }
+
     private void Start()
     {
         PlayerCam = Camera.main;

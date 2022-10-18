@@ -22,9 +22,6 @@ public class PlayerCamera : MonoBehaviour
     public Transform orientation;
     public GameObject player;
 
-    // manager is defined To invoke the function 'isScan'
-    public GameManager manager;
-
     /// <summary>
     /// X and Y rotation of player's camera
     /// </summary>
@@ -32,6 +29,9 @@ public class PlayerCamera : MonoBehaviour
     private float yRotation;
     private float mouseX;
     private float mouseY;
+
+    // manager is defined To invoke the function 'isScan'
+    public GameManager manager;
 
     private void Start()
     {
