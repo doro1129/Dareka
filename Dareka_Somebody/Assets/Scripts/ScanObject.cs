@@ -9,12 +9,11 @@ public class ScanObject : MonoBehaviour
 {
     /// <summary>
     /// manager is GameObject named GameManager, it will scan objects
-    /// PressF is the text that is written "Press [F]"
-    /// TalkWindow is the window which will be activated when PressF activate
+    /// PressSpace is the text that is written "Press [F]"
+    /// TalkWindow is the window which will be activated when PressSpace activate
     /// </summary>
-    
     public GameManager manager;
-    public GameObject PressF; //가까이 가면 press [F] 화면에 출력
+    public GameObject PressSpace; //가까이 가면 press [F] 화면에 출력
     public GameObject TalkWindow; // 대화창
     public float RaycastDistance = 2f;
     public LayerMask whatisObject;
@@ -24,7 +23,12 @@ public class ScanObject : MonoBehaviour
     private GameObject scanObject;
     //private GameObject temp_Object;
     private bool isTouched;
-    
+
+    private void Awake()
+    {
+        manager = FindObjectOfType<GameManager>();
+    }
+
     private void Start()
     {
         PlayerCam = Camera.main;
@@ -43,17 +47,18 @@ public class ScanObject : MonoBehaviour
         if (isTouched && _Player.flatVelocity.magnitude <0.1)
         {
             scanObject = hit.collider.gameObject;
-            PressF.SetActive(true);
+            PressSpace.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.Space) && scanObject != null)
             {
                 manager.Scan(scanObject);
+                PressSpace.SetActive(false);
             }
         }
         else if (!isTouched )
         {
             //scanObject = temp_Object;
-            PressF.SetActive(false);
+            PressSpace.SetActive(false);
             TalkWindow.SetActive(false);
         }
     }
