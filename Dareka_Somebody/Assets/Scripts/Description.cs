@@ -17,7 +17,7 @@ public class Description : MonoBehaviour
         {
             //http://iroha-japan.net/iroha/B04_play/05_hane.html
             return "하네(羽根)를 주고받는 하네츠키(羽根つき)라 불리는 놀이에서 사용되는 라켓 모양의 판자." +
-                " 오시에(押?)라 불리는 전통적인 수예로 장식하기도 한다.";
+                " 오시에(押絵)라 불리는 전통적인 수예로 장식하기도 한다.";
         }
         else if(obj_name == "가가미모치")
         {
