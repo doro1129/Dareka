@@ -24,7 +24,7 @@ public class SceneControl : MonoBehaviour
     public void OnclickSelectStage()
     {
         //Debug.Log("Loading Scene No." + Scene number);
-        SceneManager.LoadScene("Samplescene");
+        SceneManager.LoadScene("House");
         //SceneManager.LoadScene(scene name will be changed into scene number)
     }    
 
