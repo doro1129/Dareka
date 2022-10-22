@@ -34,7 +34,7 @@ public class FPSPlayer : MonoBehaviour
     /// <summary>
     /// AirMultiplier is the value that decreases the speed when player is floating
     /// </summary>
-    public float AirMultiplier =1.0f;
+    public float AirMultiplier = 1.0f;
 
     //To check if player is on the ground
     [Header("Ground Check")]
@@ -175,7 +175,7 @@ public class FPSPlayer : MonoBehaviour
     public void SpeedControl()
     {
         flatVelocity = new Vector3(rigidbody1.velocity.x, 0f, rigidbody1.velocity.z);
-        
+
         //limit velocity if needed
         if (flatVelocity.magnitude > MoveSpeed)
         {
