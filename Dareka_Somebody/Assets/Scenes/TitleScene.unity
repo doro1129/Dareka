@@ -446,8 +446,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 770084039}
-        m_TargetAssemblyTypeName: TitleDirector, Assembly-CSharp
-        m_MethodName: OnclickNewGame
+        m_TargetAssemblyTypeName: SceneControl, Assembly-CSharp
+        m_MethodName: OnclickStageScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
