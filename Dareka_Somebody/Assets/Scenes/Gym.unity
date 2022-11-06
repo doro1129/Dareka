@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2695713523839198360, guid: 84e85e6f290c7b54bbc37e2fe08aeb41, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.6659155
+      value: 546.5
       objectReference: {fileID: 0}
     - target: {fileID: 2695713523839198360, guid: 84e85e6f290c7b54bbc37e2fe08aeb41, type: 3}
       propertyPath: m_LocalPosition.y
@@ -144,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2695713523839198360, guid: 84e85e6f290c7b54bbc37e2fe08aeb41, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17.903074
+      value: 517.4
       objectReference: {fileID: 0}
     - target: {fileID: 2695713523839198360, guid: 84e85e6f290c7b54bbc37e2fe08aeb41, type: 3}
       propertyPath: m_LocalRotation.w
@@ -177,6 +177,10 @@ PrefabInstance:
     - target: {fileID: 3324441053491543586, guid: 84e85e6f290c7b54bbc37e2fe08aeb41, type: 3}
       propertyPath: m_Name
       value: Gym
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245412210602852954, guid: 84e85e6f290c7b54bbc37e2fe08aeb41, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6982230624272801882, guid: 84e85e6f290c7b54bbc37e2fe08aeb41, type: 3}
       propertyPath: m_Materials.Array.size
