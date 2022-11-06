@@ -9164,11 +9164,11 @@ AudioSource:
   m_GameObject: {fileID: 1653388100}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8002148505324989255, guid: 2b23dc0046a9b45498e15a31353d8731, type: 2}
   m_audioClip: {fileID: 8300000, guid: f884a6d9248ba40739d083d89ab03840, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.1
+  m_Pitch: 1.5
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -11181,6 +11181,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8966225675037577438, guid: 16c0af14e9423423c82eae8ac14940ad, type: 3}
+      propertyPath: mixer
+      value: 
+      objectReference: {fileID: 24100000, guid: 2b23dc0046a9b45498e15a31353d8731, type: 2}
     - target: {fileID: 8966225675037577438, guid: 16c0af14e9423423c82eae8ac14940ad, type: 3}
       propertyPath: bgSound
       value: 

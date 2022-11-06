@@ -56,7 +56,6 @@ public class FPSPlayer : MonoBehaviour
 
     Animator animator;
     AudioSource audioSrc;
-    bool isMoving = false;
 
     private void Start()
     {
@@ -84,6 +83,15 @@ public class FPSPlayer : MonoBehaviour
         else
         {
             rigidbody1.drag = 1;
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            audioSrc.pitch = 2f;
+        }
+        else
+        {
+            audioSrc.pitch = 1.5f;
         }
     }
 
@@ -128,7 +136,7 @@ public class FPSPlayer : MonoBehaviour
                     animator.SetFloat("Vertical", verticalInput * 0.1f);
                 }
 
-                PlayWalkSound();
+                PlayFootstepSound();
             }
             else if (manager.isScan == true)
             {
@@ -144,18 +152,9 @@ public class FPSPlayer : MonoBehaviour
         }
     }
 
-    private void PlayWalkSound()
+    private void PlayFootstepSound()
     {
         if (horizontalInput != 0f | verticalInput != 0f)
-        {
-            isMoving = true;
-        }
-        else
-        {
-            isMoving = false;
-        }
-
-        if (isMoving)
         {
             if (!audioSrc.isPlaying)
             {
@@ -166,7 +165,6 @@ public class FPSPlayer : MonoBehaviour
         {
             audioSrc.Stop();
         }
-
     }
 
     /// <summary>

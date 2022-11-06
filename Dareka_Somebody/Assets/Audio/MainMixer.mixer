@@ -54,6 +54,7 @@ AudioMixerController:
     - 48df119ac8a4f4610b6c981e8daa7e3f
     - 31e723c0fdc27442aa0af74072440e6e
     - b1d9cee79b5f84d8fbdc54303a743b87
+    - 407cb2fdaa9324ef5aa7c2d416ab7119
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -69,6 +70,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: 9160881168576112948}
   - {fileID: -7392784899126665681}
+  - {fileID: 8002148505324989255}
   m_Volume: b6e84a18e3731477b88cad2622a6acce
   m_Pitch: d311c08ef53344f78b5cfc383faa97d2
   m_Send: 00000000000000000000000000000000
@@ -101,7 +103,8 @@ AudioMixerSnapshotController:
   m_Name: Snapshot
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: d816d174372aa4037bd7738c82a31c10
-  m_FloatValues: {}
+  m_FloatValues:
+    5431829293812440c9fe3d7401d930e9: 20
   m_TransitionOverrides: {}
 --- !u!244 &3051398351044726097
 AudioMixerEffectController:
@@ -117,6 +120,39 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!244 &5578766195218249652
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 50a15271b8990409484d6b0bccfe3f5a
+  m_EffectName: Attenuation
+  m_MixLevel: bd33c00fe702842b880683df4d36670b
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!243 &8002148505324989255
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Footstep
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 407cb2fdaa9324ef5aa7c2d416ab7119
+  m_Children: []
+  m_Volume: 5431829293812440c9fe3d7401d930e9
+  m_Pitch: d0b7d44371047435590fe9c7071ab871
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 5578766195218249652}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &9160881168576112948
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
