@@ -25,19 +25,19 @@ public class SceneControl : MonoBehaviour
     public void OnclickSelectStage_Setsubun()
     {
         Debug.Log("Loading Setsubun Scene");
-        //SceneManager.LoadScene();
+        SceneManager.LoadScene(2);
     }
 
     public void OnclickSelectStage_Oshōgatsu()
     {
         Debug.Log("Loading Oshogatsu Scene");
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 
     public void OnclickSelectStage_SeijinnoHi()
     {
         Debug.Log("Loading SeijinnoHi Scene");
-        //SceneManager.LoadScene();
+        SceneManager.LoadScene(5);
     }
 
     public void OnclickQuitGame()
