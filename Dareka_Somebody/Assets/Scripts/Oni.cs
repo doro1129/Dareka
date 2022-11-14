@@ -17,12 +17,14 @@ public class Oni : MonoBehaviour
         {
             hpBar.value = 0f;
 
-            HpBar hpBarUI = canvas.GetComponent<HpBar>();
+            OniSpawner hpBarUI = canvas.GetComponent<OniSpawner>();
             hpBarUI.DestroyHpBar(gameObject);
             Destroy(gameObject);
         }
-
-        HandleHp();
+        else
+        {
+            HandleHp();
+        }
     }
 
     private void HandleHp()
