@@ -35,7 +35,7 @@ public class FPSPlayer : MonoBehaviour
     /// <summary>
     /// AirMultiplier is the value that decreases the speed when player is floating
     /// </summary>
-    public float AirMultiplier =1.0f;
+    public float AirMultiplier = 1.0f;
 
     //To check if player is on the ground
     [Header("Ground Check")]
@@ -56,6 +56,7 @@ public class FPSPlayer : MonoBehaviour
     private float verticalInput;
 
     Animator animator;
+    AudioSource audioSrc;
 
     private void Start()
     {
@@ -63,9 +64,11 @@ public class FPSPlayer : MonoBehaviour
         rigidbody1.freezeRotation = true;   // not to fall down
 
         animator = GetComponent<Animator>();
+        audioSrc = GetComponent<AudioSource>();
 
         PlayerCamera playerCameraLogic = playerCamera.GetComponent<PlayerCamera>();
         playerCameraLogic.manager = manager;
+
     }
 
     private void Update()
@@ -87,6 +90,14 @@ public class FPSPlayer : MonoBehaviour
             rigidbody1.drag = 1;
         }
 
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            audioSrc.pitch = 2f;
+        }
+        else
+        {
+            audioSrc.pitch = 1.5f;
+        }
     }
 
     private void FixedUpdate()
@@ -126,9 +137,11 @@ public class FPSPlayer : MonoBehaviour
                 }
                 else
                 {
-                    animator.SetFloat("Horizontal", horizontalInput/10);
-                    animator.SetFloat("Vertical", verticalInput/10);
+                    animator.SetFloat("Horizontal", horizontalInput * 0.1f);
+                    animator.SetFloat("Vertical", verticalInput * 0.1f);
                 }
+
+                PlayFootstepSound();
             }
             else if (manager.isScan == true)
             {
@@ -144,13 +157,28 @@ public class FPSPlayer : MonoBehaviour
         }
     }
 
+    private void PlayFootstepSound()
+    {
+        if (horizontalInput != 0f | verticalInput != 0f)
+        {
+            if (!audioSrc.isPlaying)
+            {
+                audioSrc.Play();
+            }
+        }
+        else
+        {
+            audioSrc.Stop();
+        }
+    }
+
     /// <summary>
     /// Manually limit the speed of the player
     /// </summary>
     public void SpeedControl()
     {
         flatVelocity = new Vector3(rigidbody1.velocity.x, 0f, rigidbody1.velocity.z);
-        
+
         //limit velocity if needed
         if (flatVelocity.magnitude > MoveSpeed)
         {
