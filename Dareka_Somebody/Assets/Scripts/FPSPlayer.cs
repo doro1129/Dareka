@@ -15,6 +15,7 @@ public class FPSPlayer : MonoBehaviour
     /// </summary>
     public Transform orientation;
     public GameManager manager;
+    public GameObject playerCamera;
     private Rigidbody rigidbody1;
 
     // Player's moddable numerical values of movement like waliking speed, jump force
@@ -62,6 +63,9 @@ public class FPSPlayer : MonoBehaviour
         rigidbody1.freezeRotation = true;   // not to fall down
 
         animator = GetComponent<Animator>();
+
+        PlayerCamera playerCameraLogic = playerCamera.GetComponent<PlayerCamera>();
+        playerCameraLogic.manager = manager;
     }
 
     private void Update()
