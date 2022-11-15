@@ -15,18 +15,30 @@ public class SceneControl : MonoBehaviour
     SceneCounter = PlayerPrefs.GetInt("CurrentScene");
     */
 
-    public void OnclickNewGame()
+    public void OnclickStageScene()
     {
-        Debug.Log("New Game");
-        SceneManager.LoadScene("StageScene");
+        Debug.Log("Loading Stage Scene");
+        SceneManager.LoadScene(1);
+    }
+    //pause - menu
+
+    public void OnclickSelectStage_Setsubun()
+    {
+        Debug.Log("Loading Setsubun Scene");
+        SceneManager.LoadScene(2);
     }
 
-    public void OnclickSelectStage()
+    public void OnclickSelectStage_Oshōgatsu()
     {
-        //Debug.Log("Loading Scene No." + Scene number);
-        SceneManager.LoadScene("House");
-        //SceneManager.LoadScene(scene name will be changed into scene number)
-    }    
+        Debug.Log("Loading Oshogatsu Scene");
+        SceneManager.LoadScene(3);
+    }
+
+    public void OnclickSelectStage_SeijinnoHi()
+    {
+        Debug.Log("Loading SeijinnoHi Scene");
+        SceneManager.LoadScene(5);
+    }
 
     public void OnclickQuitGame()
     {
