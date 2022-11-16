@@ -38,7 +38,6 @@ public class ThrowBeans : MonoBehaviour
             Destroy(spawnPellet, lifeTime);
             spawnPellet.transform.rotation = Quaternion.RotateTowards(spawnPellet.transform.rotation, pellets[i], spreadAngle);
             spawnPellet.GetComponent<Rigidbody>().AddForce(spawnPellet.transform.right * pelletFireVelocity);
-            //spawnPellet.GetComponent<Rigidbody>().AddForce(spawnPellet.transform.up * 3);
         }
     }    
 }

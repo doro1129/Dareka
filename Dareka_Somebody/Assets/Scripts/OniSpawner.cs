@@ -7,6 +7,7 @@ public class OniSpawner : MonoBehaviour
 {
     public GameObject hpPrefab = null;
     public GameObject oniPrefab;
+    public GameObject player;
     public List<GameObject> enemies = new List<GameObject>();
 
     public int curIndex = 0;
@@ -19,9 +20,6 @@ public class OniSpawner : MonoBehaviour
 
     Transform enemyTransform;
     GameObject hpBar;
-
-    //List<Transform> enemyList = new List<Transform>();
-    //List<GameObject> hpBarList = new List<GameObject>();
 
     Camera cam = null;
 
@@ -38,7 +36,7 @@ public class OniSpawner : MonoBehaviour
     {
         if (hpBar != null)
         {
-            hpBar.transform.position = cam.WorldToScreenPoint(enemyTransform.position + new Vector3(0, 1.3f, 0));
+            hpBar.transform.position = cam.WorldToScreenPoint(enemyTransform.position + new Vector3(0, 3.5f, 0));
             scale = 2 / Vector3.Distance(cam.transform.position, enemies[curIndex].transform.position);
             hpBar.transform.localScale = new Vector3(scale, scale, scale);
         }
@@ -74,5 +72,6 @@ public class OniSpawner : MonoBehaviour
 
         oni.hpBar = slider;
         oni.canvas = gameObject;
+        oni.target = player;
     }
 }

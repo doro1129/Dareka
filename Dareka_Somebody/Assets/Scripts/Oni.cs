@@ -11,6 +11,16 @@ public class Oni : MonoBehaviour
     private float maxHp = 100f;
     public float hp = 100f;
 
+    public float speed;
+
+    public GameObject target;
+    Rigidbody rigid;
+
+    private void Start()
+    {
+        rigid = GetComponent<Rigidbody>();
+    }
+
     private void Update()
     {
         if (hp <= 0)
@@ -23,12 +33,32 @@ public class Oni : MonoBehaviour
         }
         else
         {
-            HandleHp();
+            Move();
+            if (hpBar != null)
+            {
+                HandleHp();
+            }
         }
     }
 
     private void HandleHp()
     {
         hpBar.value = Mathf.Lerp(hpBar.value, hp / maxHp, Time.deltaTime * 10);
+    }
+
+    private void Move()
+    {
+        //move toward target
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        FPSPlayer player = collision.collider.gameObject.GetComponent<FPSPlayer>();
+
+        if (player != null)
+        {
+            Debug.Log("Game Over");
+            //GameOver;
+        }
     }
 }
