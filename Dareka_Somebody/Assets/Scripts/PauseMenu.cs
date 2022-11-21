@@ -4,38 +4,39 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-        public static bool GameIsPaused = false;
-        public GameObject pauseMenuCanvas;
+        [SerializeField] private GameObject pauseMenuCanvas;
+
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (GameIsPaused)
+                if (!GameManager.isPaused)
                 {
-                    Resume();
+                CallMenu();
+                Debug.Log("Paused");
+
                 }
                 else
                 {
-                    Pause();
-                    Debug.Log("Paused");
-                Cursor.lockState = CursorLockMode.None;
+                CloseMenu();
+                Debug.Log("Resume");
 
                 }
             }
         }
 
-        public void Resume()
+        private void CallMenu()
         {
-        pauseMenuCanvas.SetActive(false);
-            //Time.timeScale = 1f;
-            GameIsPaused = false;
-        }
+            GameManager.isPaused = true;
+            pauseMenuCanvas.SetActive(true);
+            Time.timeScale = 0f;
+    }
 
-        public void Pause()
+        private void CloseMenu()
         {
-        pauseMenuCanvas.SetActive(true);
-            //Time.timeScale = 0f;
-            GameIsPaused = true;
-        }
-    
+        GameManager.isPaused = false;
+        pauseMenuCanvas.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
 }

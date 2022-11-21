@@ -20,7 +20,8 @@ public class GameManager : MonoBehaviour
 
     // Check if ray has reached to object which has Layer named "whatisObject"
     public bool isScan=false;
-    
+
+    public static bool isPaused = false;
     
 
     public void Scan(GameObject scanOBJ)
@@ -43,5 +44,13 @@ public class GameManager : MonoBehaviour
             TalkText.text = description.describe(ObjectName);
         }
         TalkWindow.SetActive(isScan);
+    }
+
+    void Update()
+    {
+        if (isPaused)
+        { Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
 }

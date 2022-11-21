@@ -20,7 +20,7 @@ public class SceneControl : MonoBehaviour
         Debug.Log("Loading Stage Scene");
         SceneManager.LoadScene(1);
     }
-    //pause - menu
+ 
 
     public void OnclickSelectStage_Setsubun()
     {
