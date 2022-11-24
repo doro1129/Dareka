@@ -344,7 +344,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1220097415}
         m_TargetAssemblyTypeName: SceneControl, Assembly-CSharp
-        m_MethodName: OnclickSelectStage_Setsubun
+        m_MethodName: OnclickSelectStage_Mamemaki
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1319,7 +1319,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1220097415}
         m_TargetAssemblyTypeName: SceneControl, Assembly-CSharp
-        m_MethodName: "OnclickSelectStage_Osh\u014Dgatsu"
+        m_MethodName: OnclickSelectStage_Souji
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
