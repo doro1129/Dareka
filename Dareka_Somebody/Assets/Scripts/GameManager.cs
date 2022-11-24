@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     {
         if (isPaused)
         { Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+          Cursor.visible = true;
         }
     }
 }

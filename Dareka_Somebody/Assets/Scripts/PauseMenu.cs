@@ -20,7 +20,8 @@ public class PauseMenu : MonoBehaviour
                 {
                 CloseMenu();
                 Debug.Log("Resume");
-
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
                 }
             }
         }
