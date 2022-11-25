@@ -90,14 +90,14 @@ public class FPSPlayer : MonoBehaviour
             rigidbody1.drag = 1;
         }
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        /*if (Input.GetKey(KeyCode.LeftShift))
         {
             audioSrc.pitch = 2f;
         }
         else
         {
             audioSrc.pitch = 1.5f;
-        }
+        }*/
     }
 
     private void FixedUpdate()
@@ -141,7 +141,7 @@ public class FPSPlayer : MonoBehaviour
                     animator.SetFloat("Vertical", verticalInput * 0.1f);
                 }
 
-                PlayFootstepSound();
+                //PlayFootstepSound();
             }
             else if (manager.isScan == true)
             {
@@ -157,7 +157,7 @@ public class FPSPlayer : MonoBehaviour
         }
     }
 
-    private void PlayFootstepSound()
+   /* private void PlayFootstepSound()
     {
         if (horizontalInput != 0f | verticalInput != 0f)
         {
@@ -170,7 +170,7 @@ public class FPSPlayer : MonoBehaviour
         {
             audioSrc.Stop();
         }
-    }
+    }*/
 
     /// <summary>
     /// Manually limit the speed of the player

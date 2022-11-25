@@ -14,15 +14,14 @@ public class GameManager : MonoBehaviour
     public Text TalkText; // Show object's description on dialog window
     public GameObject scanObject; // Scannded Object
     public GameObject TalkWindow; // Dialog window
+    //public Dust dust;
     
     //The name of Object
     public string ObjectName;
 
-    // Check if ray has reached to object which has Layer named "whatisObject"
+    // Check if ray has reached to object which has Layer named "Dust"
     public bool isScan=false;
     
-    
-
     public void Scan(GameObject scanOBJ)
     {
         if (isScan)
@@ -43,5 +42,13 @@ public class GameManager : MonoBehaviour
             TalkText.text = description.describe(ObjectName);
         }
         TalkWindow.SetActive(isScan);
+    }
+
+    public void Clean(GameObject cleanOBJ)
+    {
+        scanObject = cleanOBJ;
+        //Debug.Log(dust.dust_HP);
+        //dust.Dec_dustHP();
+        //dust.Remove_dust();
     }
 }
