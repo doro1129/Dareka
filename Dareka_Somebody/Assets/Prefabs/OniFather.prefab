@@ -3483,7 +3483,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6415438147729177460}
   - component: {fileID: 1146196710106521870}
-  - component: {fileID: 6447990252219989740}
   - component: {fileID: 4283818856123584627}
   - component: {fileID: 1858857717103256801}
   m_Layer: 0
@@ -3527,7 +3526,7 @@ Animator:
   m_GameObject: {fileID: 5927836268444737998}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 6cf83bfaf44f954468c586e3cc3ca67a, type: 3}
-  m_Controller: {fileID: 9100000, guid: 75d3a58b3d7879f41926561701407a48, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4f5da1a52bbb64e2eb3442d017a8777f, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -3537,22 +3536,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!54 &6447990252219989740
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5927836268444737998}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!136 &4283818856123584627
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3582,7 +3565,7 @@ MonoBehaviour:
   hpBar: {fileID: 0}
   canvas: {fileID: 0}
   hp: 100
-  speed: 0
+  speed: 1
   target: {fileID: 0}
 --- !u!1 &5930953833144161918
 GameObject:

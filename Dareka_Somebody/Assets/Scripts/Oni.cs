@@ -14,12 +14,6 @@ public class Oni : MonoBehaviour
     public float speed;
 
     public GameObject target;
-    Rigidbody rigid;
-
-    private void Start()
-    {
-        rigid = GetComponent<Rigidbody>();
-    }
 
     private void Update()
     {
@@ -33,7 +27,6 @@ public class Oni : MonoBehaviour
         }
         else
         {
-            Move();
             if (hpBar != null)
             {
                 HandleHp();
@@ -44,11 +37,6 @@ public class Oni : MonoBehaviour
     private void HandleHp()
     {
         hpBar.value = Mathf.Lerp(hpBar.value, hp / maxHp, Time.deltaTime * 10);
-    }
-
-    private void Move()
-    {
-        //move toward target
     }
 
     private void OnCollisionEnter(Collision collision)
