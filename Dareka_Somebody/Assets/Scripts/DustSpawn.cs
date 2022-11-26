@@ -1,33 +1,32 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class DustSpawn : MonoBehaviour
 {
-    public Dust dust;
-    public Transform[] dust_SpawnPoint = new Transform[6];
+    public GameObject dust_Prefab;
+    public Transform[] dust_SpawnPoint = new Transform[9];
 
+    static private System.Random random = new System.Random(Guid.NewGuid().GetHashCode());
+    private GameObject dustclone;
     private int[] dust_Position = new int[6]; // Position array of dust
-
-    static private System.Random random = new System.Random();
     private int dustpoint; // spawn point of dust prefab, it will be determined at random
-    public GameObject dustclone;
-
+    
     public void Start()
     {
         Spawn();
-        dustclone.GetComponent<Dust>().Init();
     }
 
     public void Spawn()
     {
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 5; i++)
         {
             dustpoint = random.Next(0, 9);
             bool duplicate = false;
-            if (i > 0 && i < 6)
+            if (i > 0 && i < 5)
             {
                 for (int j = 0; j <= i; j++)
                 {
@@ -46,10 +45,10 @@ public class DustSpawn : MonoBehaviour
                 dust_Position[i] = dustpoint;
             }
         }
-        for(int i =0; i<dust_SpawnPoint.Length - 4; i++)
+        for(int i =0; i<dust_SpawnPoint.Length-4; i++)
         {
-            Vector3 RandomSpawnPosition = dust_SpawnPoint[dust_Position[i]].position; //dustpoint는 0부터 9까지만 주면 됨
-            dustclone = Instantiate(dust.dust_Prefab[i], RandomSpawnPosition, Quaternion.identity) as GameObject;
+            Vector3 RandomSpawnPosition = dust_SpawnPoint[dust_Position[i]].position;
+            dustclone = Instantiate(dust_Prefab, RandomSpawnPosition, Quaternion.identity) as GameObject;
         }
     }
 }
