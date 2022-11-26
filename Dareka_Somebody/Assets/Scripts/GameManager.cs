@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,10 +13,11 @@ public class GameManager : MonoBehaviour
     public Description description;
     public Text NameText; // Show object's name on dialog window
     public Text TalkText; // Show object's description on dialog window
-    
     public GameObject TalkWindow; // Dialog window
-    //public Dust dust;
-    
+
+    public Text Dustscore1; // Dust : 
+    public Text Dustscore2; // / 10
+
     //The name of Object
     public string ObjectName;
 
@@ -23,6 +25,23 @@ public class GameManager : MonoBehaviour
     public bool isScan=false;
 
     private GameObject scanObject; // Scannded Object
+    private int dust_score = 0;
+
+    private void Start()
+    {
+        SetDustScore();
+    }
+
+    public void GetDustScore()
+    {
+        dust_score += 1;
+        SetDustScore();
+    }
+
+    private void SetDustScore()
+    {
+        Dustscore1.text = "남은 먼지 : " + dust_score.ToString();
+    }
 
     public void Scan(GameObject scanOBJ)
     {
@@ -44,5 +63,10 @@ public class GameManager : MonoBehaviour
             TalkText.text = description.describe(ObjectName);
         }
         TalkWindow.SetActive(isScan);
+    }
+
+    public void Clean()
+    {
+
     }
 }

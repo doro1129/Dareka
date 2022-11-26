@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Scan Objects that have layer named "Dust"
@@ -15,13 +16,18 @@ public class ScanObject : MonoBehaviour
     public GameObject PressSpace; // press [Space]
     public GameObject PressF; // press [F]
     public GameObject TalkWindow;
-    public float RaycastDistance = 2f;
+    public GameObject dust_HP;
+    public Text dust_count1;
+    public Text dust_count2;
+    
     public LayerMask isObject;
     public LayerMask Dust;
     public AudioClip clip;
     public GameManager manager;
     public FPSPlayer _Player;
+    public float RaycastDistance = 2f;
 
+    private Dust dust;
     private Camera PlayerCam;
     private GameObject scanObject;
     private GameObject scanDust;
@@ -51,7 +57,7 @@ public class ScanObject : MonoBehaviour
         {
             scanObject = hit.collider.gameObject;
             PressSpace.SetActive(true);
-
+            
             if (Input.GetKeyDown(KeyCode.Space) && scanObject != null)
             {
                 manager.Scan(scanObject);
@@ -72,13 +78,17 @@ public class ScanObject : MonoBehaviour
         {
             scanDust = hit.collider.gameObject;
             PressF.SetActive(true);
+            dust_HP.SetActive(true);
+            
             if (Input.GetKeyDown(KeyCode.F) && scanDust != null)
             {
-                Dust dust = scanDust.GetComponent<Dust>();
+                dust = scanDust.GetComponent<Dust>();
                 dust.dust_HP--;
+                dust_count2.text = dust.dust_HP.ToString() + " 번";
                 if (dust.dust_HP == 0)
                 {
                     Destroy(scanDust);
+                    manager.GetDustScore();
                 }
                 //SoundManager.instance.SFXPlay("Investigate", clip); // TODO: Need to chage "Investigate" to "Cleaning" sound like broom.
             }
@@ -86,6 +96,7 @@ public class ScanObject : MonoBehaviour
         else if (!DustisTouched)
         {
             PressF.SetActive(false);
+            dust_HP.SetActive(false);
         }
     }
 }
