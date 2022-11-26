@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7132745972571687100}
   - component: {fileID: 6041896155503717416}
   - component: {fileID: 4369036392430044502}
+  - component: {fileID: 6629908842501982958}
   m_Layer: 7
   m_Name: Dust Object
   m_TagString: Untagged
@@ -98,6 +99,29 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: 14a5f37e0f34e7245aaf550ce2f2e1fa, type: 3}
+--- !u!114 &6629908842501982958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3791356378523099853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ef24cfcb557dc742ac67237130f9e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dust_Prefab:
+  - {fileID: 5264797478613719572}
+  - {fileID: 5264797478613719572}
+  - {fileID: 5264797478613719572}
+  - {fileID: 5264797478613719572}
+  - {fileID: 5264797478613719572}
+  - {fileID: 5264797478613719572}
+  - {fileID: 5264797478613719572}
+  - {fileID: 5264797478613719572}
+  - {fileID: 5264797478613719572}
+  dust_HP: 0
 --- !u!1 &5264797478613719572
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +131,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4781558113525612718}
-  - component: {fileID: -1591699447291501871}
   m_Layer: 7
   m_Name: dust
   m_TagString: Untagged
@@ -131,26 +154,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-1591699447291501871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5264797478613719572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ef24cfcb557dc742ac67237130f9e02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dust_Prefab:
-  - {fileID: 5264797478613719572}
-  - {fileID: 5264797478613719572}
-  - {fileID: 5264797478613719572}
-  - {fileID: 5264797478613719572}
-  - {fileID: 5264797478613719572}
-  - {fileID: 5264797478613719572}
-  - {fileID: 5264797478613719572}
-  - {fileID: 5264797478613719572}
-  - {fileID: 5264797478613719572}
-  dust_HP: 0
