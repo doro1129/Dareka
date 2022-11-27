@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
     public float LimitTime;
     public Text game_Timer;
-    //public GameObject GameOver;
+    public GameObject GameOver;
 
     private void Update()
     {
@@ -17,9 +18,16 @@ public class Timer : MonoBehaviour
 
         if (LimitTime <= 0)
         {
-            Debug.Log("Time Over");
-            //GameOver.SetActive(true);
+            GameOver.SetActive(true);
             game_Timer.text = "Game Over";
+            if (LimitTime <= -3)
+            {
+                SceneManager.LoadScene(1);
+            }
+        }
+        else
+        {
+            GameOver.SetActive(false);
         }
     }
 }
