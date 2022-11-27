@@ -7,8 +7,6 @@ using UnityEngine;
 public class Dust : MonoBehaviour
 {
     static private System.Random random = new System.Random();
-
-    public GameObject[] dust_Prefab;
     public int dust_HP;
 
     private void Start()
@@ -16,6 +14,7 @@ public class Dust : MonoBehaviour
         Init();
     }
 
+    // Initialize HP of dust objects
     public void Init()
     {
         dust_HP = random.Next(5, 10);

@@ -7,7 +7,9 @@ using UnityEngine.UIElements;
 
 public class DustSpawn : MonoBehaviour
 {
+    // dust_Prefab is the prefab of dust
     public GameObject dust_Prefab;
+    // dust_SpawnPoint is the array of dust's Transform
     public Transform[] dust_SpawnPoint = new Transform[9];
 
     static private System.Random random = new System.Random(Guid.NewGuid().GetHashCode());
@@ -15,11 +17,12 @@ public class DustSpawn : MonoBehaviour
     private int[] dust_Position = new int[6]; // Position array of dust
     private int dustpoint; // spawn point of dust prefab, it will be determined at random
     
-    public void Start()
+    private void Start()
     {
         Spawn();
     }
 
+    // Spawn 5 of dusts randomly without duplication
     public void Spawn()
     {
         for (int i = 0; i < 5; i++)

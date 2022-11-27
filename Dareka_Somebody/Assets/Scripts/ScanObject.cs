@@ -8,23 +8,24 @@ using UnityEngine.UI;
 /// </summary>
 public class ScanObject : MonoBehaviour
 {
-    /// <summary>
-    /// manager is GameObject named GameManager, it will scan objects
-    /// PressF is the text that is written "Press [F]"
-    /// TalkWindow is the window which will be activated when PressF activate
-    /// </summary>
+    // Gameobjects in canvas
+    // Press- objects are text when player's ray has touched objects or dusts
+    // TalkWindow is the window which will be activated when PressSpace activate
+    // dust_counts are in the dust_HP and they are the text that show how many times player has to press [f]
     public GameObject PressSpace; // press [Space]
     public GameObject PressF; // press [F]
     public GameObject TalkWindow;
-    public GameObject dust_HP;
+    public GameObject dust_HP; // parent of dust_count1 and dust_count2
     public Text dust_count1;
     public Text dust_count2;
-    
+
+    // manager is GameObject named GameManager, it will scan objects
+    // FPSPlayer is player, it will check the speed or velocity of player
+    public GameManager manager;
+    public FPSPlayer _Player;
     public LayerMask isObject;
     public LayerMask Dust;
     public AudioClip clip;
-    public GameManager manager;
-    public FPSPlayer _Player;
     public float RaycastDistance = 2f;
 
     private Dust dust;
@@ -33,6 +34,7 @@ public class ScanObject : MonoBehaviour
     private GameObject scanDust;
     private bool ObjectisTouched;
     private bool DustisTouched;
+    
 
     private void Awake()
     {
@@ -51,8 +53,8 @@ public class ScanObject : MonoBehaviour
         Vector3 rayDirection = PlayerCam.transform.forward;
         RaycastHit hit;
 
-        ObjectisTouched = Physics.Raycast(rayOrigin, rayDirection, out hit, RaycastDistance, isObject);
         // If ray has touched objects, It will execute the function "scan()" in "GameManager.cs"
+        ObjectisTouched = Physics.Raycast(rayOrigin, rayDirection, out hit, RaycastDistance, isObject);
         if (ObjectisTouched && _Player.flatVelocity.magnitude < 0.1)
         {
             scanObject = hit.collider.gameObject;
@@ -61,7 +63,6 @@ public class ScanObject : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && scanObject != null)
             {
                 manager.Scan(scanObject);
-                //TalkWindow.SetActive(true);
                 //SoundManager.instance.SFXPlay("Investigate", clip);
             }
         }
@@ -71,20 +72,18 @@ public class ScanObject : MonoBehaviour
             TalkWindow.SetActive(false);
         }
 
-
+        // If ray has touched dust and Presses F, It will handle the HP of dusts and outputs UI on display
         DustisTouched = Physics.Raycast(rayOrigin, rayDirection, out hit, RaycastDistance, Dust);
-        // If ray has touched dust, It will execute the function "Clean()" in "GameManager.cs"
         if (DustisTouched)
         {
             scanDust = hit.collider.gameObject;
             PressF.SetActive(true);
             dust_HP.SetActive(true);
-            
+            dust = scanDust.GetComponent<Dust>();
+            dust_count2.text = dust.dust_HP.ToString() + " 번";
             if (Input.GetKeyDown(KeyCode.F) && scanDust != null)
             {
-                dust = scanDust.GetComponent<Dust>();
                 dust.dust_HP--;
-                dust_count2.text = dust.dust_HP.ToString() + " 번";
                 if (dust.dust_HP == 0)
                 {
                     Destroy(scanDust);
