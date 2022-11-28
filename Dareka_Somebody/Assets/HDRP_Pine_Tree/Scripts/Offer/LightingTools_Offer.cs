@@ -1,110 +1,117 @@
-﻿// Terms of the use :
+// Terms of the use :
 // * You can only use this script to offer platers for other or your games
 // * You cannot offer anythings else like sexual contents or other things (just content for children)
 
 using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System;
 using System.Linq;
 [ExecuteInEditMode]
-public class LightingTools_Offer : MonoBehaviour {
+public class LightingTools_Offer : MonoBehaviour
+{
 
-	WWW www;
-	[Space(3)]
-	// Button sprites
-	[HideInInspector] public Texture[] targetTextures;
+    //WWW www;
+    UnityWebRequest www;
 
-	// Games icon urls
-	[HideInInspector]public string[] ImagesURL;
-	// Internal
-	Texture2D[] textures;
+    [Space(3)]
+    // Button sprites
+    [HideInInspector] public Texture[] targetTextures;
 
-	[HideInInspector]
-	public string[] LinksURL;
+    // Games icon urls
+    [HideInInspector] public string[] ImagesURL;
+    // Internal
+    Texture2D[] textures;
 
-	// Game links file with https, splited with lines     
-	[HideInInspector] public string gameLinks;
+    [HideInInspector]
+    public string[] LinksURL;
 
-	// Activated when player is online    (Ad border    )
-	[HideInInspector] public bool isLoading;
+    // Game links file with https, splited with lines     
+    [HideInInspector] public string gameLinks;
 
-	void Start()
-	{
-		
-		textures = new Texture2D[targetTextures.Length];
+    // Activated when player is online    (Ad border    )
+    [HideInInspector] public bool isLoading;
 
-		LinksURL = new string[targetTextures.Length];
+    void Start()
+    {
 
-		for(int a = 0;a<textures.Length;a++)
-			textures[a] =  new Texture2D(4, 4, TextureFormat.DXT1, false);
+        textures = new Texture2D[targetTextures.Length];
 
-		Reload ();
+        LinksURL = new string[targetTextures.Length];
 
-	}
+        for (int a = 0; a < textures.Length; a++)
+            textures[a] = new Texture2D(4, 4, TextureFormat.DXT1, false);
 
-	public void Reload()
-	{
-		StopCoroutine (ReadLinks());
-		StopCoroutine (ReadImages ());
-		isLoading = true;
+        Reload();
 
-		StartCoroutine (ReadLinks ());
-	}
-	public void LoadAd(int id)
-	{
-		if(LinksURL [id].Contains("https"))
-			Application.OpenURL (LinksURL [id]);
-		else
-			Application.OpenURL(LinksURL [id]);
-		
-	}
+    }
 
-	int loaded;
-	IEnumerator ReadImages()
-	{
-		for(int b = 0;b<ImagesURL.Length;b++)
-		{
-			if (b >= loaded) {
-				www = new WWW (ImagesURL [b]);
+    public void Reload()
+    {
+        StopCoroutine(ReadLinks());
+        StopCoroutine(ReadImages());
+        isLoading = true;
 
-				yield return www;
-				www.LoadImageIntoTexture (textures [b]);
-				targetTextures[b] = textures[b];
-				www.Dispose ();
-				www = null;
-				loaded++;
-			}
+        StartCoroutine(ReadLinks());
+    }
+    public void LoadAd(int id)
+    {
+        if (LinksURL[id].Contains("https"))
+            Application.OpenURL(LinksURL[id]);
+        else
+            Application.OpenURL(LinksURL[id]);
 
-		}
-		isLoading = false;
-	}
-	IEnumerator ReadLinks()
-	{
-		// Read Link URLs
-		www = new WWW (gameLinks);
+    }
 
-		yield return www;
+    int loaded;
+    IEnumerator ReadImages()
+    {
+        for (int b = 0; b < ImagesURL.Length; b++)
+        {
+            if (b >= loaded)
+            {
+                //www = new WWW (ImagesURL [b]);
+                //www = UnityWebRequest.Get(ImagesURL[b]);
+                www = UnityWebRequestTexture.GetTexture(ImagesURL[b]);
+                //yield return www;
+                yield return www.SendWebRequest();
+                //www.LoadImageIntoTexture (textures [b]);
+                targetTextures[b] = textures[b];
+                www.Dispose();
+                www = null;
+                loaded++;
+            }
 
-		string	longStringFromFile = www.text;
-		List<string> lines = new List<string>(
-			longStringFromFile
-			.Split(new string[] { "\r","\n" },
-				StringSplitOptions.RemoveEmptyEntries) );
-		// remove comment lines...
-		lines = lines
-			.Where(line => !(line.StartsWith("//")
-				|| line.StartsWith("#")))
-			.ToList();
+        }
+        isLoading = false;
+    }
+    IEnumerator ReadLinks()
+    {
+        // Read Link URLs
+        //www = new WWW (gameLinks);
+        www = UnityWebRequest.Get(gameLinks);
 
-		for(int c = 0;c<lines.Count;c++)
-			LinksURL [c] = lines [c];
+        yield return www.SendWebRequest(); ;
 
-		www.Dispose ();
-		www = null;
+        string longStringFromFile = www.downloadHandler.text;
+        List<string> lines = new List<string>(
+            longStringFromFile
+            .Split(new string[] { "\r", "\n" },
+                StringSplitOptions.RemoveEmptyEntries));
+        // remove comment lines...
+        lines = lines
+            .Where(line => !(line.StartsWith("//")
+                || line.StartsWith("#")))
+            .ToList();
 
-		StartCoroutine(ReadImages ());
-	}
+        for (int c = 0; c < lines.Count; c++)
+            LinksURL[c] = lines[c];
+
+        www.Dispose();
+        www = null;
+
+        StartCoroutine(ReadImages());
+    }
 }
-	   
