@@ -25,6 +25,7 @@ public class SceneControl : MonoBehaviour
         Debug.Log("Loading Mamemaki Minigame");
         //SceneManager.LoadScene(3);
     }
+    
     /*
     public void OnclickGameItemScene()
     {

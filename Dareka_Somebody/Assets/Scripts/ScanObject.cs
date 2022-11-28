@@ -13,8 +13,8 @@ public class ScanObject : MonoBehaviour
     /// TalkWindow is the window which will be activated when PressSpace activate
     /// </summary>
     public GameManager manager;
-    public GameObject PressSpace; //가까이 가면 press [F] 화면에 출력
-    public GameObject TalkWindow; // 대화창
+    public GameObject PressSpace; //?????? ???? press [F] ?????? ????
+    public GameObject TalkWindow; // ??????
     public float RaycastDistance = 2f;
     public LayerMask whatisObject;
     public FPSPlayer _Player;
@@ -23,6 +23,8 @@ public class ScanObject : MonoBehaviour
     private GameObject scanObject;
     //private GameObject temp_Object;
     private bool isTouched;
+
+    public AudioClip clip;
 
     private void Awake()
     {
@@ -53,6 +55,7 @@ public class ScanObject : MonoBehaviour
             {
                 manager.Scan(scanObject);
                 PressSpace.SetActive(false);
+                SoundManager.instance.SFXPlay("Investigate", clip);
             }
         }
         else if (!isTouched )
