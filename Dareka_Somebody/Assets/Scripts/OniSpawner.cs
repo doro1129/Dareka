@@ -11,9 +11,6 @@ public class OniSpawner : MonoBehaviour
     public List<GameObject> enemies = new List<GameObject>();
 
     public int curIndex = 0;
-    public int score = 0;
-    public int oniScore = 30;
-    public Text scoreText;
 
     float scale;
     Oni oni;
@@ -44,9 +41,6 @@ public class OniSpawner : MonoBehaviour
 
     public void DestroyHpBar(GameObject oniObject)
     {
-        score += oniScore;
-        scoreText.text = string.Format("Score: {0:n0}", score);
-
         enemyTransform = null;
         GameObject tempBar = hpBar;
         hpBar = null;
@@ -73,5 +67,17 @@ public class OniSpawner : MonoBehaviour
         oni.hpBar = slider;
         oni.canvas = gameObject;
         oni.target = player;
+    }
+
+    public bool IsMamemakiOver()
+    {
+        if (curIndex == enemies.Count)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

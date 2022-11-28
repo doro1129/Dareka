@@ -33,7 +33,6 @@ Transform:
   m_Children:
   - {fileID: 177946691606916219}
   - {fileID: 222924793059469014}
-  - {fileID: 1017279623383828851}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -66,12 +65,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orientation: {fileID: 177946691606916219}
-  manager: {fileID: 4549048877014005127}
+  manager: {fileID: 0}
   MoveSpeed: 6
   RunSpeed: 12
   GroundDrag: 10
-  JumpForce: 20
-  JumpCooldown: 0.5
   AirMultiplier: 1
   ground:
     serializedVersion: 2
@@ -91,8 +88,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9783343d2c79d8f4c852965792cfa5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 4549048877014005127}
-  PressF: {fileID: 0}
+  manager: {fileID: 0}
+  PressSpace: {fileID: 0}
   TalkWindow: {fileID: 0}
   RaycastDistance: 2
   whatisObject:
@@ -343,53 +340,5 @@ MonoBehaviour:
   sensitivityX: 700
   sensitivityY: 700
   orientation: {fileID: 177946691606916219}
-  manager: {fileID: 4549048877014005127}
---- !u!1 &4225046347122048814
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1017279623383828851}
-  - component: {fileID: 4549048877014005127}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1017279623383828851
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4225046347122048814}
-  m_LocalRotation: {x: -0, y: 0.6533722, z: -0, w: 0.75703686}
-  m_LocalPosition: {x: 10.223317, y: -6.48755, z: 0.50806236}
-  m_LocalScale: {x: 0.9999999, y: 1, z: 0.9999999}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 177946691499614812}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4549048877014005127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4225046347122048814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 353daebe9dcfac04b869ce2faaf7cbda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TalkText: {fileID: 0}
-  scanObject: {fileID: 0}
-  TalkWindow: {fileID: 0}
-  ObjectName: 
-  isScan: 0
+  player: {fileID: 0}
+  manager: {fileID: 0}
