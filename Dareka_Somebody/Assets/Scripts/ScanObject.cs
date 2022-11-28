@@ -16,12 +16,12 @@ public class ScanObject : MonoBehaviour
     public GameObject PressF; // press [F]
     public GameObject TalkWindow;
     public GameObject dust_HP; // parent of dust_count1 and dust_count2
-    public Text dust_count1;
-    public Text dust_count2;
+    public Text dust_count;
 
     // manager is GameObject named GameManager, it will scan objects
     // FPSPlayer is player, it will check the speed or velocity of player
     public GameManager manager;
+    public CleaningManager c_manager;
     public FPSPlayer _Player;
     public LayerMask isObject;
     public LayerMask Dust;
@@ -80,14 +80,14 @@ public class ScanObject : MonoBehaviour
             PressF.SetActive(true);
             dust_HP.SetActive(true);
             dust = scanDust.GetComponent<Dust>();
-            dust_count2.text = dust.dust_HP.ToString() + " 번";
+            dust_count.text = "앞으로   " + dust.dust_HP.ToString() + "  번";
             if (Input.GetKeyDown(KeyCode.F) && scanDust != null)
             {
                 dust.dust_HP--;
                 if (dust.dust_HP == 0)
                 {
                     Destroy(scanDust);
-                    manager.GetDustScore();
+                    c_manager.GetDustScore();
                 }
                 //SoundManager.instance.SFXPlay("Investigate", clip); // TODO: Need to chage "Investigate" to "Cleaning" sound like broom.
             }
