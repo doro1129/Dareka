@@ -1291,7 +1291,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press [Space]
+  m_Text: "[Space]\uB97C \uB20C\uB7EC \uC870\uC0AC\uD569\uB2C8\uB2E4."
 --- !u!114 &5660136035159830833
 MonoBehaviour:
   m_ObjectHideFlags: 0
