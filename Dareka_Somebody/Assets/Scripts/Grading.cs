@@ -24,6 +24,7 @@ public class Grading : MonoBehaviour
             }
         }
         Debug.Log(score);
+        score = 0;
     }
 
     private void SetAnswer()
