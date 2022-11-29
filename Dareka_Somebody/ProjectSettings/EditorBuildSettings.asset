@@ -15,8 +15,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Setsubun/Setsubun.unity
     guid: b6706fbca06782b4aa7cd9e6bcc58311
   - enabled: 1
-    path: Assets/Scenes/Oshogatsu/Oshgatsu.unity
-    guid: b93c035fe3132a143b7e00fbc005b750
+    path: Assets/Scenes/Oshogatsu/Cleaning.unity
+    guid: 94fe7c9418d23364e9487e50a8be8e15
   - enabled: 1
     path: Assets/Scenes/Shrine.unity
     guid: a64569c074a5c0d4ca157eacc3bc0e4d
