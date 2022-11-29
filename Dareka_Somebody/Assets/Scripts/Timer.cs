@@ -12,25 +12,29 @@ public class Timer : MonoBehaviour
     public GameOver gameover;
     //public GameObject GameOver_UI;
 
+
     private void Update()
     {
-        LimitTime -= Time.deltaTime;
-        game_Timer.text = "남은 시간 : " + Mathf.Round(LimitTime);
+        if (!CleaningManager.isClear)
+        {
+            LimitTime -= Time.deltaTime;
+            game_Timer.text = "남은 시간 : " + Mathf.Round(LimitTime);
 
-        if (LimitTime <= 0.5f)
-        {
-            GameOverText.SetActive(true);
-            game_Timer.text = "Game Over";
-            if (LimitTime <= -2)
+            if (LimitTime <= 0.5f)
             {
-                gameover.CallGameOverMenu();
-                Debug.Log("Game Over");
+                GameOverText.SetActive(true);
+                game_Timer.text = "Game Over";
+                if (LimitTime <= -2)
+                {
+                    gameover.CallGameOverMenu();
+                    Debug.Log("Game Over");
+                }
             }
-        }
-        else
-        {
-            GameOverText.SetActive(false);
-            gameover.CloseGameOverMenu();
+            else
+            {
+                GameOverText.SetActive(false);
+                gameover.CloseGameOverMenu();
+            }
         }
     }
 }

@@ -16,6 +16,7 @@ public class CleaningManager : MonoBehaviour
     public Timer timer;
 
     private int dust_score = 0;
+    public  static bool isClear = false;
 
     private void Start()
     {
@@ -39,8 +40,10 @@ public class CleaningManager : MonoBehaviour
     {
         if(dust_score >= 10)
         {
+            isClear = true;
             GameClear.SetActive(true);
             Invoke("Clear", 3.0f);
+            //Time.timeScale = 0f;
         }
         else
         {
@@ -50,7 +53,6 @@ public class CleaningManager : MonoBehaviour
 
     public void Clear() // Game Clear
     { 
-        
         if(dust_score == 10 && timer.LimitTime >= 0)
         {
             // TODO: Add UI or something. This needs more debate
