@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44110468, g: 0.4823776, b: 0.5295462, a: 1}
+  m_IndirectSpecularColor: {r: 0.4411043, g: 0.48237705, b: 0.52954555, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &199787069 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4819989451549005700, guid: 600812cf73659404b8981dfe988d94f8, type: 3}
-  m_PrefabInstance: {fileID: 5990017094380584648}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 353daebe9dcfac04b869ce2faaf7cbda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &263906558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1050,7 +1039,7 @@ PrefabInstance:
     - target: {fileID: 5990017096060422704, guid: 600812cf73659404b8981dfe988d94f8, type: 3}
       propertyPath: manager
       value: 
-      objectReference: {fileID: 199787069}
+      objectReference: {fileID: 0}
     - target: {fileID: 5990017096060422704, guid: 600812cf73659404b8981dfe988d94f8, type: 3}
       propertyPath: PressSpace
       value: 
@@ -1066,6 +1055,6 @@ PrefabInstance:
     - target: {fileID: 5990017096060422719, guid: 600812cf73659404b8981dfe988d94f8, type: 3}
       propertyPath: manager
       value: 
-      objectReference: {fileID: 199787069}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 600812cf73659404b8981dfe988d94f8, type: 3}

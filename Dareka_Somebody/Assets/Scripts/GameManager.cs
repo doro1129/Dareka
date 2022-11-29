@@ -21,8 +21,8 @@ public class GameManager : MonoBehaviour
     // Check if ray has reached to object which has Layer named "whatisObject"
     public bool isScan=false;
 
+    //Pause Menu
     public static bool isPaused = false;
-    
 
     public void Scan(GameObject scanOBJ)
     {
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         }
         TalkWindow.SetActive(isScan);
     }
-
+    //Pause Menu
     void Update()
     {
         if (isPaused)
