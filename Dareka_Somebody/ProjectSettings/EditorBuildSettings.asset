@@ -17,10 +17,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Oshogatsu/Oshgatsu.unity
     guid: b93c035fe3132a143b7e00fbc005b750
-  - enabled: 1
-    path: Assets/Scenes/Shrine.unity
-    guid: a64569c074a5c0d4ca157eacc3bc0e4d
-  - enabled: 1
-    path: Assets/Scenes/Gym.unity
-    guid: 5a1d094e21847f74eb73b1ae1a15baf0
   m_configObjects: {}
