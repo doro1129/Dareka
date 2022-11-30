@@ -3,7 +3,12 @@ guid: ecb1acde7cbca432ba68f824333d959d
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Oni_Mask_4
+    second: {fileID: 2100000, guid: ab386880934164cba9c1b7d16b5e1382, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
