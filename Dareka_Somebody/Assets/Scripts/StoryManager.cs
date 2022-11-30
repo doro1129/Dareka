@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class StoryManager : MonoBehaviour
 {
-    public GameObject Dialogue_Window;
+    //public GameObject Dialogue_Window;
     public Text StartingDialogue_Text;
     //public Text[] Dialog_Speaker;
 
@@ -16,7 +16,7 @@ public class StoryManager : MonoBehaviour
 
     private void Start()
     {
-        Set_Dialog();
+        Set_Dialogue();
         StartingDialogue_Text.text = StartingDialogue_String[dialogue_count];
         dialogue_count++;
     }
@@ -48,7 +48,7 @@ public class StoryManager : MonoBehaviour
         }
     }
 
-    public void Set_Dialog()
+    public void Set_Dialogue()
     {
         StartingDialogue_String = new string[5]
         {
