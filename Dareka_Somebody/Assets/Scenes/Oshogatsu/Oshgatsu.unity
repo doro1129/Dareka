@@ -686,6 +686,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1498980853304532444, guid: 67417a857faae304b874d46a4dcc5db6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498980853304532444, guid: 67417a857faae304b874d46a4dcc5db6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1982441520316161055, guid: 67417a857faae304b874d46a4dcc5db6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1982441520316161055, guid: 67417a857faae304b874d46a4dcc5db6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2015061456299101153, guid: 67417a857faae304b874d46a4dcc5db6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3496279961105669990, guid: 67417a857faae304b874d46a4dcc5db6, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687142712652654691, guid: 67417a857faae304b874d46a4dcc5db6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 92
+      objectReference: {fileID: 0}
     - target: {fileID: 5660136034858345946, guid: 67417a857faae304b874d46a4dcc5db6, type: 3}
       propertyPath: m_Name
       value: Talk Window
@@ -774,6 +802,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5660136034883953258, guid: 67417a857faae304b874d46a4dcc5db6, type: 3}
+      propertyPath: m_IgnoreReversedGraphics
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5660136034883953261, guid: 67417a857faae304b874d46a4dcc5db6, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -781,6 +813,22 @@ PrefabInstance:
     - target: {fileID: 5660136035522115986, guid: 67417a857faae304b874d46a4dcc5db6, type: 3}
       propertyPath: m_Name
       value: Talk
+      objectReference: {fileID: 0}
+    - target: {fileID: 6908163711258529647, guid: 67417a857faae304b874d46a4dcc5db6, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9033828207789998142, guid: 67417a857faae304b874d46a4dcc5db6, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9065875050701938138, guid: 67417a857faae304b874d46a4dcc5db6, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9091894608606266996, guid: 67417a857faae304b874d46a4dcc5db6, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67417a857faae304b874d46a4dcc5db6, type: 3}
