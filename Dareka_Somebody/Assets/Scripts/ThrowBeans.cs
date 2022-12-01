@@ -10,6 +10,8 @@ public class ThrowBeans : MonoBehaviour
     public float pelletFireVelocity = 1;
     public GameObject pellet;
     public Transform BarrelExit;
+    public GameObject armRoot;
+
     List<Quaternion> pellets;
 
     private void Awake()
@@ -25,8 +27,15 @@ public class ThrowBeans : MonoBehaviour
     {
         if(Input.GetButtonDown("Fire1"))
         {
-            Fire();
+            PreFire();
         }
+    }
+
+    void PreFire()
+    {
+        armRoot.transform.Rotate(new Vector3(0f, 0f, -30f), Space.Self);
+        
+        Invoke("Fire", 0.1f);
     }
 
     void Fire()
@@ -38,6 +47,9 @@ public class ThrowBeans : MonoBehaviour
             Destroy(spawnPellet, lifeTime);
             spawnPellet.transform.rotation = Quaternion.RotateTowards(spawnPellet.transform.rotation, pellets[i], spreadAngle);
             spawnPellet.GetComponent<Rigidbody>().AddForce(spawnPellet.transform.right * pelletFireVelocity);
+            spawnPellet.GetComponent<Rigidbody>().AddForce(spawnPellet.transform.up * 10);
         }
+
+        armRoot.transform.Rotate(new Vector3(0f, 0f, 30f), Space.Self);
     }    
 }
