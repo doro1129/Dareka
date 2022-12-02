@@ -18,7 +18,7 @@ public class VocabularyList : MonoBehaviour
     {
         for (int i = 0; i < collectionManager.collectionNum; i++)
         {
-            if (collectionManager.collections[i] == true)
+            if (GameManager.instance.collections[i] == true)
             {
                 hideImages[i].SetActive(false);
             }

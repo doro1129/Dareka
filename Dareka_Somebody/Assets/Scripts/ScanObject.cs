@@ -53,7 +53,7 @@ public class ScanObject : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space) && scanObject != null)
             {
-                manager.Scan(scanObject);
+                //manager.Scan(scanObject);
                 PressSpace.SetActive(false);
                 SoundManager.instance.SFXPlay("Investigate", clip);
             }

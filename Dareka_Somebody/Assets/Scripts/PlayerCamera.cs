@@ -41,6 +41,7 @@ public class PlayerCamera : MonoBehaviour
 
     private void Update()
     {
+        /*
         // If objects are scanned, Player will not be rotate the camera.
         if (manager.isScan == true)
         {
@@ -63,5 +64,6 @@ public class PlayerCamera : MonoBehaviour
 
             player.transform.rotation = Quaternion.Euler(0, yRotation, 0);
         }
+        */
     }
 }

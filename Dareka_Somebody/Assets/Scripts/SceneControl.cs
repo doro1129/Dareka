@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneControl : MonoBehaviour
 {
-   
+    public GameObject collection;
+
     //remember the scene number for save load
     /*
     public int SceneCounter;
