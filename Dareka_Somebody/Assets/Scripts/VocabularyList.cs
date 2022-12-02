@@ -7,20 +7,18 @@ public class VocabularyList : MonoBehaviour
 {
     public GameObject collection;
     public GameObject[] hideImages;
-    CollectionManager collectionManager;
-
-    void Start()
-    {
-        collectionManager = collection.GetComponent<CollectionManager>();
-    }
 
     public void UpdateCollection()
     {
-        for (int i = 0; i < collectionManager.collectionNum; i++)
+        for (int i = 0; i < GameManager.instance.collections.Count; i++)
         {
             if (GameManager.instance.collections[i] == true)
             {
                 hideImages[i].SetActive(false);
+            }
+            else
+            {
+                hideImages[i].SetActive(true);
             }
         }
     }

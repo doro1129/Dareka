@@ -31,9 +31,9 @@ public class CollectionManager : MonoBehaviour
     {
         diff = (collectionNum - commonNum) / 2;
         path = Path.Combine(Application.dataPath, "database.json");
-        JsonLoad();
 
         vocabularyList = vocabulary.GetComponent<VocabularyList>();
+        JsonLoad();
     }
 
     public void JsonLoad()
@@ -92,6 +92,8 @@ public class CollectionManager : MonoBehaviour
                     GameManager.instance.collectionsProps.Add(saveData.collectionsProps[i]);
                     GameManager.instance.collectionsDescriptions.Add(saveData.collectionsDescriptions[i]);
                 }
+
+                vocabularyList.UpdateCollection();
             }
         }
     }
