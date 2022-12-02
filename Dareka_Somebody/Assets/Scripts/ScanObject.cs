@@ -25,7 +25,7 @@ public class ScanObject : MonoBehaviour
     public FPSPlayer _Player;
     public LayerMask isObject;
     public LayerMask Dust;
-    public AudioClip clip;
+    //public AudioClip clip;
     public float RaycastDistance = 2f;
 
     private Dust dust;
@@ -34,7 +34,8 @@ public class ScanObject : MonoBehaviour
     private GameObject scanDust;
     private bool ObjectisTouched;
     private bool DustisTouched;
-    
+
+    //AudioSource audioSRC;
 
     private void Awake()
     {
@@ -44,6 +45,7 @@ public class ScanObject : MonoBehaviour
     private void Start()
     {
         PlayerCam = Camera.main;
+        //audioSRC = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -54,7 +56,7 @@ public class ScanObject : MonoBehaviour
         RaycastHit hit;
 
         // If ray has touched objects, It will execute the function "scan()" in "GameManager.cs"
-        ObjectisTouched = Physics.Raycast(rayOrigin, rayDirection, out hit, RaycastDistance, isObject);
+        ObjectisTouched = Physics.Raycast(rayOrigin, rayDirection, out hit, RaycastDistance * 1.5f, isObject);
         if (ObjectisTouched && _Player.flatVelocity.magnitude < 0.1)
         {
             scanObject = hit.collider.gameObject;
@@ -73,7 +75,7 @@ public class ScanObject : MonoBehaviour
         }
 
         // If ray has touched dust and Presses F, It will handle the HP of dusts and outputs UI on display
-        DustisTouched = Physics.Raycast(rayOrigin, rayDirection, out hit, RaycastDistance, Dust);
+        DustisTouched = Physics.Raycast(rayOrigin, rayDirection, out hit, RaycastDistance * 1.5f, Dust);
         if (DustisTouched)
         {
             scanDust = hit.collider.gameObject;
@@ -83,6 +85,7 @@ public class ScanObject : MonoBehaviour
             dust_count.text = "앞으로   " + dust.dust_HP.ToString() + "  번";
             if (Input.GetKeyDown(KeyCode.F) && scanDust != null)
             {
+                //Blooming();
                 dust.dust_HP--;
                 if (dust.dust_HP == 0)
                 {
@@ -98,4 +101,16 @@ public class ScanObject : MonoBehaviour
             dust_HP.SetActive(false);
         }
     }
+    /*private void Blooming()
+    {
+
+        if (!audioSRC.isPlaying)
+        {
+            audioSRC.Play();
+        }
+        else
+        {
+            audioSRC.Stop();
+        }
+    }*/
 }
