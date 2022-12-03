@@ -9882,8 +9882,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1617100779}
   m_LocalRotation: {x: -0, y: 0.75703686, z: -0, w: -0.6533722}
-  m_LocalPosition: {x: -7.9419813, y: -5.85106, z: 14.41796}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.2000002, y: 1.2, z: 1.2000002}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 30788689}
@@ -11851,10 +11851,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player(temp)
       objectReference: {fileID: 0}
+    - target: {fileID: 177946691499614809, guid: 833a81148b1158648a920a11ffd28849, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 177946691499614810, guid: 833a81148b1158648a920a11ffd28849, type: 3}
       propertyPath: manager
       value: 
       objectReference: {fileID: 1617100780}
+    - target: {fileID: 177946691499614810, guid: 833a81148b1158648a920a11ffd28849, type: 3}
+      propertyPath: ground.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 177946691499614811, guid: 833a81148b1158648a920a11ffd28849, type: 3}
       propertyPath: m_Mass
       value: 1
@@ -11921,7 +11929,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 177946691606916221, guid: 833a81148b1158648a920a11ffd28849, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 222924793576582208, guid: 833a81148b1158648a920a11ffd28849, type: 3}
       propertyPath: player
@@ -11947,6 +11955,10 @@ PrefabInstance:
       propertyPath: TalkWindow
       value: 
       objectReference: {fileID: 2124750121}
+    - target: {fileID: 3475684373720276509, guid: 833a81148b1158648a920a11ffd28849, type: 3}
+      propertyPath: whatisObject.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 4225046347122048814, guid: 833a81148b1158648a920a11ffd28849, type: 3}
       propertyPath: m_IsActive
       value: 1

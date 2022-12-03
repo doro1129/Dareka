@@ -10,13 +10,13 @@ public class OniSpawner : MonoBehaviour
     public GameObject player;
     public List<GameObject> enemies = new List<GameObject>();
 
-    public int curIndex = 0;
-
     float scale;
+    int curIndex;
     Oni oni;
 
     Transform enemyTransform;
     GameObject hpBar;
+    GameObject Oni;
 
     Camera cam = null;
 
@@ -33,8 +33,8 @@ public class OniSpawner : MonoBehaviour
     {
         if (hpBar != null)
         {
-            hpBar.transform.position = cam.WorldToScreenPoint(enemyTransform.position + new Vector3(0, 3.5f, 0));
-            scale = 2 / Vector3.Distance(cam.transform.position, enemies[curIndex].transform.position);
+            hpBar.transform.position = cam.WorldToScreenPoint(Oni.transform.position + new Vector3(0, 3.5f, 0));
+            scale = 2 / Vector3.Distance(cam.transform.position, Oni.transform.position);
             hpBar.transform.localScale = new Vector3(scale, scale, scale);
         }
     }
@@ -46,9 +46,8 @@ public class OniSpawner : MonoBehaviour
         hpBar = null;
         Destroy(tempBar);
 
-        curIndex += 1;
-
-        if (curIndex < enemies.Count)
+        enemies.RemoveAt(curIndex);
+        if (!IsMamemakiOver())
         {
             SpawnOni();
         }
@@ -56,10 +55,13 @@ public class OniSpawner : MonoBehaviour
 
     private void SpawnOni()
     {
-        GameObject Oni = Instantiate(oniPrefab, enemies[curIndex].transform.position, Quaternion.identity);
+        int index = Random.Range(0, enemies.Count - 1);
+        Oni = Instantiate(oniPrefab, enemies[index].transform.position, Quaternion.identity);
         oni = Oni.GetComponent<Oni>();
+        enemyTransform = enemies[index].transform;
 
-        enemyTransform = enemies[curIndex].transform;
+        curIndex = index;
+
         hpBar = Instantiate(hpPrefab, enemyTransform.position, Quaternion.identity, transform);
         Slider slider = hpBar.GetComponent<Slider>();
         slider.value = 1f;
@@ -71,7 +73,7 @@ public class OniSpawner : MonoBehaviour
 
     public bool IsMamemakiOver()
     {
-        if (curIndex == enemies.Count)
+        if (enemies.Count == 0)
         {
             return true;
         }
