@@ -42,6 +42,8 @@ public class SoundManager : MonoBehaviour
     public void BGSoundVolume(float val)
     {
         mixer.SetFloat("BGSoundVolume", Mathf.Log10(val) * 20);
+        //bgSound.volume = val;
+
     }
 
     public void SFXPlay(string sfxName, AudioClip clip)
