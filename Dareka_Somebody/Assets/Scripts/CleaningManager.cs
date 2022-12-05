@@ -11,12 +11,12 @@ using UnityEngine.UI;
 public class CleaningManager : MonoBehaviour
 {
     public Text Dustscore; // Dust : 
-    public GameObject GameClear;
-    //public Text Dustscore2; // / 10
     public Timer timer;
+    public GameObject GameClearText;
+    public GameClear gameclear;
+    public static bool isClear = false;
 
     private int dust_score = 0;
-    public  static bool isClear = false;
 
     private void Start()
     {
@@ -41,24 +41,30 @@ public class CleaningManager : MonoBehaviour
         if(dust_score >= 10)
         {
             isClear = true;
-            GameClear.SetActive(true);
-            Invoke("Clear", 3.0f);
+            GameClearText.SetActive(true);
+            Invoke("Clear", 2.0f);
             //Time.timeScale = 0f;
         }
         else
         {
-            GameClear.SetActive(false);
+            GameClearText.SetActive(false);
+            gameclear.CloseGameClearMenu();
         }
     }
 
     public void Clear() // Game Clear
     { 
-        if(dust_score == 10 && timer.LimitTime >= 0)
+        if(/*dust_score == 10 && */timer.LimitTime >= 0)
         {
             // TODO: Add UI or something. This needs more debate
-            SceneManager.LoadScene(1);
+            //SceneManager.LoadScene(1);
+            gameclear.CallGameClearMenu();
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
+/*        else
+        {
+            gameclear.CloseGameClearMenu();
+        }*/
     }
 }
