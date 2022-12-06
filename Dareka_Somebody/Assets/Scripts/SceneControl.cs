@@ -5,30 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class SceneControl : MonoBehaviour
 {
-    //remember the scene number for save load
-    /*
-    public int SceneCounter;
-    public int CurrentScene;
-
-    PlayerPrefs.SetInt("CurrentScene", "SceneIndex");
-    SceneCounter = PlayerPrefs.GetInt("CurrentScene");
-    */
-
     public Canvas guess_canvas;
     public Canvas vocabulary_canvas;
     public CanvasGroup guess;
     public CanvasGroup vocabulary;
 
+    public void OnclickSelectStage_FirstStory()
+    {
+        Debug.Log("Loading FirstStory");
+        SceneManager.LoadScene(1);
+    }
+
     public void OnclickStageScene()
     {
         Debug.Log("Loading Stage Scene");
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
         GameManager.isPaused = false;
         Time.timeScale = 1f;
     }
 
     //StartScene
-
     public void OnclickSelectStage_Souji()
     {
         Debug.Log("Loading Cleaning Minigame");
@@ -38,36 +34,8 @@ public class SceneControl : MonoBehaviour
     public void OnclickSelectStage_Mamemaki()
     {
         Debug.Log("Loading Mamemaki Minigame");
-        //SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4);
     }
-    public void OnclickSelectStage_FirstStory()
-    {
-        Debug.Log("Loading Mamemaki Minigame");
-        SceneManager.LoadScene(6);
-    }
-
-    /*
-
-    public void OnclickGameItemScene()
-    {
-        Debug.Log("Loading Game Item Scene");
-        //SceneManager.LoadScene();
-    }
-
-    public void OnclickGuessingScene()
-    {
-        Debug.Log("Loading Guessing Scene");
-        //SceneManager.LoadScene();
-    }
-
-    /*
-
-    public void OnclickEndingScene()
-    {
-        Debug.Log("Loading Ending Scene");
-        //SceneManager.LoadScene();
-    }
-    */
 
     public void OnclickQuitGame()
     {
@@ -75,15 +43,6 @@ public class SceneControl : MonoBehaviour
         Application.Quit();
     }
 
-   /* void Awake()
-    {
-        guess.alpha = 0;
-        guess_canvas.enabled = false;
-
-        vocabulary.alpha = 0;
-        vocabulary_canvas.enabled = false;
-    }
-   */
     public void OnclickGuessActive()
     {
         Debug.Log("Loading Guess UI");

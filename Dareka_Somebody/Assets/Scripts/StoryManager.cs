@@ -13,6 +13,7 @@ public class StoryManager : MonoBehaviour
 
     private string[] StartingDialogue_String;
     private int dialogue_count = 0;
+    //SceneControl sceneControl;
 
     private void Start()
     {
@@ -29,7 +30,8 @@ public class StoryManager : MonoBehaviour
         }
         if (dialogue_count == 6)
         {
-            SceneManager.LoadScene(1);
+            //sceneControl.OnclickStageScene();
+            SceneManager.LoadScene(2);
             dialogue_count = 0;
         }
     }
