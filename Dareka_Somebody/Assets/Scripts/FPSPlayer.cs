@@ -102,7 +102,7 @@ public class FPSPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //MovePlayer();
+        MovePlayer();
     }
 
     /// <summary>
