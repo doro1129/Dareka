@@ -16,6 +16,7 @@ public class FPSPlayer : MonoBehaviour
     /// </summary>
     public Transform orientation;
     public GameManager manager;
+    public GameObject playerCamera;
     private Rigidbody rigidbody1;
 
     // Player's moddable numerical values of movement like waliking speed, jump force
@@ -35,7 +36,7 @@ public class FPSPlayer : MonoBehaviour
     /// <summary>
     /// AirMultiplier is the value that decreases the speed when player is floating
     /// </summary>
-    public float AirMultiplier =1.0f;
+    public float AirMultiplier = 1.0f;
 
     //To check if player is on the ground
     [Header("Ground Check")]
@@ -48,7 +49,7 @@ public class FPSPlayer : MonoBehaviour
     /// It will 'True' when player is on ground or false when floating
     /// </summary>
     public bool grounded;
-    public float RaycastDistance = 0.9f;
+    public float RaycastDistance = 1.4f;
     public Vector3 flatVelocity;
 
     private Vector3 moveDirection;
@@ -56,6 +57,7 @@ public class FPSPlayer : MonoBehaviour
     private float verticalInput;
 
     Animator animator;
+    AudioSource audioSrc;
 
     public Slider playerHPBar;
     public float hp = 30f;
@@ -67,14 +69,21 @@ public class FPSPlayer : MonoBehaviour
         rigidbody1.freezeRotation = true;   // not to fall down
 
         animator = GetComponent<Animator>();
+
         maxHp = hp;
+
+        audioSrc = GetComponent<AudioSource>();
+
+        PlayerCamera playerCameraLogic = playerCamera.GetComponent<PlayerCamera>();
+        playerCameraLogic.manager = manager;
+
     }
 
     private void Update()
     {
         // Check if it is attaching at the ground by using raycast as type of boolean
         // If objects are scanned, Player will not be able to move.
-        grounded = Physics.Raycast(transform.position + new Vector3(0, 0.8f, 0), Vector3.down, RaycastDistance, ground);
+        grounded = Physics.Raycast(transform.position + new Vector3(0, 1.3f, 0), Vector3.down, RaycastDistance, ground);
         //Debug.DrawRay(transform.position+new Vector3(0,1f,0), Vector3.down, Color.red,RaycastDistance+0.2f);
         MyInput();
         SpeedControl();
@@ -101,12 +110,22 @@ public class FPSPlayer : MonoBehaviour
             {
                 HandleHPBar();
             }
+
         }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            audioSrc.pitch = 2f;
+        }
+        else
+        {
+            audioSrc.pitch = 1.5f
+        	}
     }
 
     private void FixedUpdate()
     {
-        MovePlayer();
+        //MovePlayer();
     }
 
     /// <summary>
@@ -123,10 +142,10 @@ public class FPSPlayer : MonoBehaviour
     /// Calculate the movement direction
     /// When on the ground or in the air, it gives the proper force for the situation.
     /// </summary>
+    ///
     private void MovePlayer()
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-        //d
         if (grounded)
         {
             if (manager.isScan == false)
@@ -141,9 +160,11 @@ public class FPSPlayer : MonoBehaviour
                 }
                 else
                 {
-                    animator.SetFloat("Horizontal", horizontalInput/10);
-                    animator.SetFloat("Vertical", verticalInput/10);
+                    animator.SetFloat("Horizontal", horizontalInput * 0.1f);
+                    animator.SetFloat("Vertical", verticalInput * 0.1f);
                 }
+
+                PlayFootstepSound();
             }
             else if (manager.isScan == true)
             {
@@ -159,13 +180,28 @@ public class FPSPlayer : MonoBehaviour
         }
     }
 
+    private void PlayFootstepSound()
+    {
+        if (horizontalInput != 0f | verticalInput != 0f)
+        {
+            if (!audioSrc.isPlaying)
+            {
+                audioSrc.Play();
+            }
+        }
+        else
+        {
+            audioSrc.Stop();
+        }
+    }
+
     /// <summary>
     /// Manually limit the speed of the player
     /// </summary>
     public void SpeedControl()
     {
         flatVelocity = new Vector3(rigidbody1.velocity.x, 0f, rigidbody1.velocity.z);
-        
+
         //limit velocity if needed
         if (flatVelocity.magnitude > MoveSpeed)
         {
@@ -179,3 +215,4 @@ public class FPSPlayer : MonoBehaviour
         playerHPBar.value = Mathf.Lerp(playerHPBar.value, hp / maxHp, Time.deltaTime * 10);
     }
 }
+

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: a49daf0cc06790c42b7a277f708c24c1
+<<<<<<<< HEAD:Dareka_Somebody/Assets/Nimikko_ModernJapaneseFurniture.meta
+guid: 43319e3a389654532bd1a6582445beb3
+========
+guid: 5e281e9a1f247904c92b05a77d6684fc
+>>>>>>>> b2b903d1 (Add walk sound example):Dareka_Somebody/Assets/SpitzSoft/Male Asian Pack/Mid Heavy.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

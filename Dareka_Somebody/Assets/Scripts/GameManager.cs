@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-//using Unity.VisualScripting;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,42 +16,40 @@ public class GameManager : MonoBehaviour
     public Text TalkText; // Show object's description on dialog window
     public GameObject TalkWindow; // Dialog window
 
-    //public Text Dustscore1; // Dust : 
-    //public Text Dustscore2; // / 10
-
-    //The name of Object
-    public string ObjectName;
-
     // Check if ray has reached to object which has Layer named "Dust"
-    public bool isScan = false;
     public Timer timer;
     public GameObject canvas;
 
+    public static GameManager instance;
+
+    public List<bool> collections = new List<bool>();
+    public List<int> oshogatsuCollections = new List<int>();
+    public List<int> setsubunCollections = new List<int>();
+
+    public List<string> collectionsProps = new List<string>();
+    public List<string> collectionsDescriptions = new List<string>();
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    //Pause Menu
+    public string ObjectName; //The name of Object
+    public bool isScan = false; // Check if ray has reached to object which has Layer named "Dust"
+
+    //Pause Menu
+    public static bool isPaused = false;
+
     private GameObject scanObject; // Scannded Object
-    //private int dust_score = 0;
-
-    private void Start()
-    {
-        //SetDustScore();
-    }
-
-    // Add 1 at dustscore and invoke SetDustScore()
-    public void GetDustScore()
-    {
-        //dust_score += 1;
-        //SetDustScore();
-    }
-
-    /*
-    // Set dustscore1 text
-    private void SetDustScore()
-    {
-        Dustscore1.text = "남은 먼지 : " + dust_score.ToString();
-    }
-    */
 
     private void Update()
     {
+        if (isPaused)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
         Clear();
     }
 

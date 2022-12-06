@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneControl : MonoBehaviour
 {
-   
     //remember the scene number for save load
     /*
     public int SceneCounter;
@@ -15,30 +14,55 @@ public class SceneControl : MonoBehaviour
     SceneCounter = PlayerPrefs.GetInt("CurrentScene");
     */
 
+    public Canvas guess_canvas;
+    public Canvas vocabulary_canvas;
+    public CanvasGroup guess;
+    public CanvasGroup vocabulary;
+
     public void OnclickStageScene()
     {
         Debug.Log("Loading Stage Scene");
         SceneManager.LoadScene(1);
-    }
-    //pause - menu
-
-    public void OnclickSelectStage_Setsubun()
-    {
-        Debug.Log("Loading Setsubun Scene");
-        //SceneManager.LoadScene();
+        GameManager.isPaused = false;
+        Time.timeScale = 1f;
     }
 
-    public void OnclickSelectStage_Oshōgatsu()
+    //StartScene
+
+    public void OnclickSelectStage_Souji()
     {
-        Debug.Log("Loading Oshogatsu Scene");
+        Debug.Log("Loading Cleaning Minigame");
         SceneManager.LoadScene(2);
     }
 
-    public void OnclickSelectStage_SeijinnoHi()
+    public void OnclickSelectStage_Mamemaki()
     {
-        Debug.Log("Loading SeijinnoHi Scene");
+        Debug.Log("Loading Mamemaki Minigame");
+        //SceneManager.LoadScene(3);
+    }
+
+    /*
+
+    public void OnclickGameItemScene()
+    {
+        Debug.Log("Loading Game Item Scene");
         //SceneManager.LoadScene();
     }
+
+    public void OnclickGuessingScene()
+    {
+        Debug.Log("Loading Guessing Scene");
+        //SceneManager.LoadScene();
+    }
+
+    /*
+
+    public void OnclickEndingScene()
+    {
+        Debug.Log("Loading Ending Scene");
+        //SceneManager.LoadScene();
+    }
+    */
 
     public void OnclickQuitGame()
     {
@@ -46,4 +70,44 @@ public class SceneControl : MonoBehaviour
         Application.Quit();
     }
 
+   /* void Awake()
+    {
+        guess.alpha = 0;
+        guess_canvas.enabled = false;
+
+        vocabulary.alpha = 0;
+        vocabulary_canvas.enabled = false;
+    }
+   */
+    public void OnclickGuessActive()
+    {
+        Debug.Log("Loading Guess UI");
+        guess.alpha = 1;
+        guess.interactable = true;
+        guess_canvas.enabled = true;
+        vocabulary_canvas.enabled = false;
+    }
+
+    public void OnclickVocabularyActive()
+    {
+        Debug.Log("Loading Vocabulary UI");
+        vocabulary.alpha = 1;
+        vocabulary.interactable = true;
+        guess_canvas.enabled = false;
+        vocabulary_canvas.enabled = true;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            guess.alpha = 0;
+            guess.interactable = false;
+            guess_canvas.enabled = false;
+
+            vocabulary.alpha = 0;
+            vocabulary.interactable = false;
+            vocabulary_canvas.enabled = false;
+        }
+    }
 }
