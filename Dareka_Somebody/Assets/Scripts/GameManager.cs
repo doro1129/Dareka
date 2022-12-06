@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -12,18 +14,24 @@ public class GameManager : MonoBehaviour
     public Description description;
     public Text NameText; // Show object's name on dialog window
     public Text TalkText; // Show object's description on dialog window
-    public GameObject scanObject; // Scannded Object
     public GameObject TalkWindow; // Dialog window
-    
-    //The name of Object
-    public string ObjectName;
 
-    // Check if ray has reached to object which has Layer named "whatisObject"
-    public bool isScan=false;
-
+    public string ObjectName; //The name of Object
+    public bool isScan = false; // Check if ray has reached to object which has Layer named "Dust"
     public static bool isPaused = false;
-    
 
+    private GameObject scanObject; // Scannded Object
+
+    private void Update()
+    {
+        if (isPaused)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+    }
+
+    // Scan objects and Outputs UI on display
     public void Scan(GameObject scanOBJ)
     {
         if (isScan)
@@ -33,24 +41,16 @@ public class GameManager : MonoBehaviour
         else
         {
             isScan = true;
+            
             TalkWindow.SetActive(true);
+
             scanObject = scanOBJ;
             ObjectName = scanObject.name;
 
-            // Temporary speech
-            //TalkText.text = "This is " + ObjectName + ".";
             NameText.text = ObjectName;
             description.NameofObject = ObjectName;
             TalkText.text = description.describe(ObjectName);
         }
         TalkWindow.SetActive(isScan);
-    }
-
-    void Update()
-    {
-        if (isPaused)
-        { Cursor.lockState = CursorLockMode.None;
-          Cursor.visible = true;
-        }
     }
 }
