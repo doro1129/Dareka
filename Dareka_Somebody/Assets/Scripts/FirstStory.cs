@@ -5,21 +5,18 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-public class StoryManager : MonoBehaviour
+public class FirstStory : MonoBehaviour
 {
-    //public GameObject Dialogue_Window;
     public Text StartingDialogue_Text;
-    //public Text[] Dialog_Speaker;
 
     private string[] StartingDialogue_String;
-    private int dialogue_count = 0;
-    //SceneControl sceneControl;
+    private int Startingdialogue_count = 0;
 
     private void Start()
     {
         Set_Dialogue();
-        StartingDialogue_Text.text = StartingDialogue_String[dialogue_count];
-        dialogue_count++;
+        StartingDialogue_Text.text = StartingDialogue_String[Startingdialogue_count];
+        Startingdialogue_count++;
     }
 
     private void Update()
@@ -28,25 +25,26 @@ public class StoryManager : MonoBehaviour
         {
             Talking();
         }
-        if (dialogue_count == 6)
+
+        if (Startingdialogue_count == 6)
         {
             //sceneControl.OnclickStageScene();
             SceneManager.LoadScene(2);
-            dialogue_count = 0;
+            Startingdialogue_count = 0;
         }
     }
 
     public void Talking()
     {
-        if (dialogue_count <= 4)
+        if (Startingdialogue_count <= 4)
         {
-            StartingDialogue_Text.text = StartingDialogue_String[dialogue_count];
-            dialogue_count++;
+            StartingDialogue_Text.text = StartingDialogue_String[Startingdialogue_count];
+            Startingdialogue_count++;
         }
-        else if (dialogue_count == 5)
+        else if (Startingdialogue_count == 5)
         {
-            StartingDialogue_Text.text = StartingDialogue_String[dialogue_count-1];
-            dialogue_count++;
+            StartingDialogue_Text.text = StartingDialogue_String[Startingdialogue_count - 1];
+            Startingdialogue_count++;
         }
     }
 

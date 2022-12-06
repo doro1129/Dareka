@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
@@ -24,7 +25,14 @@ public class Grading : MonoBehaviour
             }
         }
         Debug.Log(score);
-        score = 0;
+        if(score == 100)
+        {
+            SceneManager.LoadScene(6);
+        }
+        else
+        {
+            score = 0;
+        }
     }
 
     private void SetAnswer()
