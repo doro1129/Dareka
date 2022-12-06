@@ -12,7 +12,7 @@ public class Grading : MonoBehaviour
     private int score = 0;
     private string[] Answers = new string[4] { "1", "2", "3", "4" };
 
-    private void Grade()
+    public void Grade()
     {
         SetAnswer();
 
