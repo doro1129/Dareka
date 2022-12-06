@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.UI;
 
 /// <summary>
 /// This class is a script that detects and controls the movement of the player.
@@ -58,12 +59,19 @@ public class FPSPlayer : MonoBehaviour
     Animator animator;
     AudioSource audioSrc;
 
+    public Slider playerHPBar;
+    public float hp = 30f;
+    private float maxHp = 30f;
+
     private void Start()
     {
         rigidbody1 = GetComponent<Rigidbody>();
         rigidbody1.freezeRotation = true;   // not to fall down
 
         animator = GetComponent<Animator>();
+
+        maxHp = hp;
+
         audioSrc = GetComponent<AudioSource>();
 
         PlayerCamera playerCameraLogic = playerCamera.GetComponent<PlayerCamera>();
@@ -90,14 +98,29 @@ public class FPSPlayer : MonoBehaviour
             rigidbody1.drag = 1;
         }
 
+        if (hp <= 0)
+        {
+            playerHPBar.value = 0f;
+
+            Debug.Log("GameOver");
+        }
+        else
+        {
+            if (playerHPBar != null)
+            {
+                HandleHPBar();
+            }
+
+        }
+
         if (Input.GetKey(KeyCode.LeftShift))
         {
             audioSrc.pitch = 2f;
         }
         else
         {
-            audioSrc.pitch = 1.5f;
-        }
+            audioSrc.pitch = 1.5f
+        	}
     }
 
     private void FixedUpdate()
@@ -186,4 +209,10 @@ public class FPSPlayer : MonoBehaviour
             rigidbody1.velocity = new Vector3(limitedVelocity.x, rigidbody1.velocity.y, limitedVelocity.z);
         }
     }
+
+    private void HandleHPBar()
+    {
+        playerHPBar.value = Mathf.Lerp(playerHPBar.value, hp / maxHp, Time.deltaTime * 10);
+    }
 }
+
