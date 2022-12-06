@@ -16,8 +16,10 @@ public class GameManager : MonoBehaviour
     public Text TalkText; // Show object's description on dialog window
     public GameObject TalkWindow; // Dialog window
 
+    //Pause Menu
     public string ObjectName; //The name of Object
     public bool isScan = false; // Check if ray has reached to object which has Layer named "Dust"
+
     public static bool isPaused = false;
 
     private GameObject scanObject; // Scannded Object
@@ -52,5 +54,13 @@ public class GameManager : MonoBehaviour
             TalkText.text = description.describe(ObjectName);
         }
         TalkWindow.SetActive(isScan);
+    }
+    //Pause Menu
+    void Update()
+    {
+        if (isPaused)
+        { Cursor.lockState = CursorLockMode.None;
+          Cursor.visible = true;
+        }
     }
 }
