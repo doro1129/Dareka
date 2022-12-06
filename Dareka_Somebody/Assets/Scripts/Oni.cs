@@ -15,6 +15,8 @@ public class Oni : MonoBehaviour
 
     public float speed;
 
+    float damage = 10f;
+
     private void Start()
     {
         OniPositionY = transform.position.y;
@@ -67,8 +69,7 @@ public class Oni : MonoBehaviour
 
         if (player != null)
         {
-            Debug.Log("Game Over");
-            //GameOver;
+            player.hp -= damage;
         }
     }
 }

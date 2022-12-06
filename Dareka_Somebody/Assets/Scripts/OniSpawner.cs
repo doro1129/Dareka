@@ -25,7 +25,7 @@ public class OniSpawner : MonoBehaviour
     {
         cam = Camera.main;
 
-        SpawnOni();
+        Invoke("SpawnOni", 1);
     }
 
     // Update is called once per frame
