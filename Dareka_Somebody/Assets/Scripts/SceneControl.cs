@@ -6,39 +6,51 @@ using UnityEngine.SceneManagement;
 public class SceneControl : MonoBehaviour
 {
    
-    //remember the scene number for save load
-    /*
-    public int SceneCounter;
-    public int CurrentScene;
-
-    PlayerPrefs.SetInt("CurrentScene", "SceneIndex");
-    SceneCounter = PlayerPrefs.GetInt("CurrentScene");
-    */
-
     public void OnclickStageScene()
     {
         Debug.Log("Loading Stage Scene");
         SceneManager.LoadScene(1);
+        GameManager.isPaused = false;
+        Time.timeScale = 1f;
     }
-    //pause - menu
 
-    public void OnclickSelectStage_Setsubun()
+    public void OnclickSelectStage_Souji()
     {
-        Debug.Log("Loading Setsubun Scene");
+        Debug.Log("Loading Cleaning Minigame");
         SceneManager.LoadScene(2);
     }
 
-    public void OnclickSelectStage_Oshōgatsu()
+    public void OnclickSelectStage_Mamemaki()
     {
-        Debug.Log("Loading Oshogatsu Scene");
-        SceneManager.LoadScene(3);
+        Debug.Log("Loading Mamemaki Minigame");
+        //SceneManager.LoadScene(3);
     }
 
-    public void OnclickSelectStage_SeijinnoHi()
+    public void OnclickSelectStage_FirstStory()
     {
-        Debug.Log("Loading SeijinnoHi Scene");
-        SceneManager.LoadScene(5);
+        Debug.Log("Loading First Story");
+        SceneManager.LoadScene(6);
     }
+
+    /*
+    public void OnclickGameItemScene()
+    {
+        Debug.Log("Loading Game Item Scene");
+        //SceneManager.LoadScene();
+    }
+
+    public void OnclickGuessingScene()
+    {
+        Debug.Log("Loading Guessing Scene");
+        //SceneManager.LoadScene();
+    }
+
+    public void OnclickEndingScene()
+    {
+        Debug.Log("Loading Ending Scene");
+        //SceneManager.LoadScene();
+    }
+    */
 
     public void OnclickQuitGame()
     {
