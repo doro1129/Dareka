@@ -121,6 +121,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7522053081727320911}
     m_Modifications:
+    - target: {fileID: 303854874516439801, guid: fa59730eb577b1b428d40e611ee86a7e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 28f930a20d84be34e85bec2ecba54e68, type: 3}
+    - target: {fileID: 5914620845102883626, guid: fa59730eb577b1b428d40e611ee86a7e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 5914620845102883626, guid: fa59730eb577b1b428d40e611ee86a7e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 9075248380704788329, guid: fa59730eb577b1b428d40e611ee86a7e, type: 3}
       propertyPath: m_Name
       value: Quiz

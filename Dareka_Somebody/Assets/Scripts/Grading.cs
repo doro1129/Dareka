@@ -10,7 +10,7 @@ public class Grading : MonoBehaviour
 
     private List<string> Answer_string = new List<string>(new string[4]);
     private int score = 0;
-    private string[] Answers = new string[4] { "1", "2", "3", "4" };
+    private string[] Answers = new string[4] { "코하루", "히츠키절", "췌장암", "1221" };
 
     private void Grade()
     {
