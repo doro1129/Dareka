@@ -109,9 +109,7 @@ public class CollectionManager : MonoBehaviour
                 + "하고이타는 오시에(押絵)라 불리는 전통적인 수예로 장식하기도 한다.");
 
             GameManager.instance.collectionsProps.Add("오세치");
-            GameManager.instance.collectionsDescriptions.Add("다양한 음식을 찬합에 담아, 새해 아침에 떡국인 오조니(お雑煮)와 가족, 손님들과 함께 먹는 음식이다."
-                + System.Environment.NewLine
-                + "보통 연말에 미리 만들어두고 1월 1일에 새해를 축하하며 먹는다."
+            GameManager.instance.collectionsDescriptions.Add("다양한 음식을 찬합에 담아, 새해 아침에 떡국인 오조니(お雑煮)와 가족, 손님들과 함께 먹는 음식이다. 보통 연말에 미리 만들어두고 1월 1일에 새해를 축하하며 먹는다."
                 + System.Environment.NewLine
                 + "재료로 사용되는 식재료에 각각의 의미가 부여되어 있는 것이 특징이다."
                 + System.Environment.NewLine
@@ -215,11 +213,11 @@ public class CollectionManager : MonoBehaviour
     {
         int collectionIndex = -1;
 
-        if (stage == "정월")
+        if (stage == "정월" && num < GameManager.instance.oshogatsuCollections.Count)
         {
             collectionIndex = GameManager.instance.oshogatsuCollections[num];
         }
-        else
+        else if (stage == "세쓰분" && num < GameManager.instance.setsubunCollections.Count)
         {
             collectionIndex = GameManager.instance.setsubunCollections[num];
         }
