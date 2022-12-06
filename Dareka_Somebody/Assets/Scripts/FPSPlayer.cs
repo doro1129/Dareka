@@ -48,7 +48,7 @@ public class FPSPlayer : MonoBehaviour
     /// It will 'True' when player is on ground or false when floating
     /// </summary>
     public bool grounded;
-    public float RaycastDistance = 0.9f;
+    public float RaycastDistance = 1.4f;
     public Vector3 flatVelocity;
 
     private Vector3 moveDirection;
@@ -75,7 +75,7 @@ public class FPSPlayer : MonoBehaviour
     {
         // Check if it is attaching at the ground by using raycast as type of boolean
         // If objects are scanned, Player will not be able to move.
-        grounded = Physics.Raycast(transform.position + new Vector3(0, 0.8f, 0), Vector3.down, RaycastDistance, ground);
+        grounded = Physics.Raycast(transform.position + new Vector3(0, 1.3f, 0), Vector3.down, RaycastDistance, ground);
         //Debug.DrawRay(transform.position+new Vector3(0,1f,0), Vector3.down, Color.red,RaycastDistance+0.2f);
         MyInput();
         SpeedControl();
@@ -122,7 +122,6 @@ public class FPSPlayer : MonoBehaviour
     private void MovePlayer()
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-        //d
         if (grounded)
         {
             if (manager.isScan == false)
