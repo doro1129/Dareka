@@ -1,4 +1,4 @@
-﻿// Terms of the use :
+// Terms of the use :
 // * You can only use this script to offer platers for other or your games
 // * You cannot offer anythings else like sexual contents or other things (just content for children)
 
@@ -105,7 +105,6 @@ public class LightingTools_Offer : MonoBehaviour
            .Where(line => !(line.StartsWith("//")
               || line.StartsWith("#")))
            .ToList();
-
         for (int c = 0; c < lines.Count; c++)
             LinksURL[c] = lines[c];
 
