@@ -102,7 +102,7 @@ public class FPSPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MovePlayer();
+        //MovePlayer();
     }
 
     /// <summary>
@@ -119,6 +119,7 @@ public class FPSPlayer : MonoBehaviour
     /// Calculate the movement direction
     /// When on the ground or in the air, it gives the proper force for the situation.
     /// </summary>
+    ///
     private void MovePlayer()
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;

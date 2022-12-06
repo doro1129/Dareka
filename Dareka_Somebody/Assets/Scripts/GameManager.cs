@@ -16,6 +16,20 @@ public class GameManager : MonoBehaviour
     public Text TalkText; // Show object's description on dialog window
     public GameObject TalkWindow; // Dialog window
 
+    public static GameManager instance;
+
+    public List<bool> collections = new List<bool>();
+    public List<int> oshogatsuCollections = new List<int>();
+    public List<int> setsubunCollections = new List<int>();
+
+    public List<string> collectionsProps = new List<string>();
+    public List<string> collectionsDescriptions = new List<string>();
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     //Pause Menu
     public string ObjectName; //The name of Object
     public bool isScan = false; // Check if ray has reached to object which has Layer named "Dust"
@@ -55,13 +69,5 @@ public class GameManager : MonoBehaviour
             TalkText.text = description.describe(ObjectName);
         }
         TalkWindow.SetActive(isScan);
-    }
-    //Pause Menu
-    void Update()
-    {
-        if (isPaused)
-        { Cursor.lockState = CursorLockMode.None;
-          Cursor.visible = true;
-        }
     }
 }

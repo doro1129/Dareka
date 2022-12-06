@@ -97,15 +97,14 @@ public class LightingTools_Offer : MonoBehaviour
 
         string longStringFromFile = www.downloadHandler.text;
         List<string> lines = new List<string>(
-            longStringFromFile
-            .Split(new string[] { "\r", "\n" },
-                StringSplitOptions.RemoveEmptyEntries));
+           longStringFromFile
+           .Split(new string[] { "\r", "\n" },
+              StringSplitOptions.RemoveEmptyEntries));
         // remove comment lines...
         lines = lines
-            .Where(line => !(line.StartsWith("//")
-                || line.StartsWith("#")))
-            .ToList();
-
+           .Where(line => !(line.StartsWith("//")
+              || line.StartsWith("#")))
+           .ToList();
         for (int c = 0; c < lines.Count; c++)
             LinksURL[c] = lines[c];
 

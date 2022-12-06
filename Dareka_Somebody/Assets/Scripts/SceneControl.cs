@@ -5,6 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class SceneControl : MonoBehaviour
 {
+    //remember the scene number for save load
+    /*
+    public int SceneCounter;
+    public int CurrentScene;
+
+    PlayerPrefs.SetInt("CurrentScene", "SceneIndex");
+    SceneCounter = PlayerPrefs.GetInt("CurrentScene");
+    */
+
     public Canvas guess_canvas;
     public Canvas vocabulary_canvas;
     public CanvasGroup guess;

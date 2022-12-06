@@ -65,7 +65,8 @@ public class ScanObject : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && scanObject != null)
             {
                 manager.Scan(scanObject);
-                //SoundManager.instance.SFXPlay("Investigate", clip);
+                PressSpace.SetActive(false);
+                SoundManager.instance.SFXPlay("Investigate", clip);
             }
         }
         else if (!ObjectisTouched)
