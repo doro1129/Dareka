@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Cleaning.unity
     guid: 94fe7c9418d23364e9487e50a8be8e15
   - enabled: 1
-    path: Assets/Scenes/Mamemaki.unity
+    path: Assets/Scenes/Mamemaki 2.unity
     guid: d7086b1c9130443639e244e5a758a2c6
   - enabled: 1
     path: Assets/Scenes/Shrine.unity
