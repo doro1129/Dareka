@@ -25,7 +25,7 @@ public class ScanObject : MonoBehaviour
     public FPSPlayer _Player;
     public LayerMask isObject;
     public LayerMask Dust;
-    //public AudioClip clip;
+    public AudioClip clip;
     public float RaycastDistance = 2f;
 
     private Dust dust;
