@@ -33,6 +33,21 @@ public class SceneControl : MonoBehaviour
     }
 
     /*
+
+    public void OnclickGameItemScene()
+    {
+        Debug.Log("Loading Game Item Scene");
+        //SceneManager.LoadScene();
+    }
+
+    public void OnclickGuessingScene()
+    {
+        Debug.Log("Loading Guessing Scene");
+        //SceneManager.LoadScene();
+    }
+
+    /*
+
     public void OnclickEndingScene()
     {
         Debug.Log("Loading Ending Scene");

@@ -2245,7 +2245,7 @@ PrefabInstance:
     - target: {fileID: 5990017096060422704, guid: 600812cf73659404b8981dfe988d94f8, type: 3}
       propertyPath: manager
       value: 
-      objectReference: {fileID: 199787069}
+      objectReference: {fileID: 0}
     - target: {fileID: 5990017096060422704, guid: 600812cf73659404b8981dfe988d94f8, type: 3}
       propertyPath: PressSpace
       value: 
@@ -2261,6 +2261,6 @@ PrefabInstance:
     - target: {fileID: 5990017096060422719, guid: 600812cf73659404b8981dfe988d94f8, type: 3}
       propertyPath: manager
       value: 
-      objectReference: {fileID: 199787069}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 600812cf73659404b8981dfe988d94f8, type: 3}
