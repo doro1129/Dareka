@@ -222,28 +222,31 @@ public class CollectionManager : MonoBehaviour
             collectionIndex = GameManager.instance.setsubunCollections[num];
         }
 
-        for (int i = 0; i < GameManager.instance.oshogatsuCollections.Count; i++)
-        {
-            if (GameManager.instance.oshogatsuCollections[i] == collectionIndex)
-            {
-                GameManager.instance.oshogatsuCollections.RemoveAt(i);
-            }
-        }
-
-        for (int i = 0; i < GameManager.instance.setsubunCollections.Count; i++)
-        {
-            if (GameManager.instance.setsubunCollections[i] == collectionIndex)
-            {
-                GameManager.instance.setsubunCollections.RemoveAt(i);
-            }
-        }
-
-        GameManager.instance.collections[collectionIndex] = true;
-        JsonSave();
-
         Debug.Log(collectionIndex);
 
-        vocabularyList.UpdateCollection();
+        if (collectionIndex != -1)
+        {
+            for (int i = 0; i < GameManager.instance.oshogatsuCollections.Count; i++)
+            {
+                if (GameManager.instance.oshogatsuCollections[i] == collectionIndex)
+                {
+                    GameManager.instance.oshogatsuCollections.RemoveAt(i);
+                }
+            }
+
+            for (int i = 0; i < GameManager.instance.setsubunCollections.Count; i++)
+            {
+                if (GameManager.instance.setsubunCollections[i] == collectionIndex)
+                {
+                    GameManager.instance.setsubunCollections.RemoveAt(i);
+                }
+            }
+
+            GameManager.instance.collections[collectionIndex] = true;
+            JsonSave();
+
+            vocabularyList.UpdateCollection();
+        }
     }
 
     public void RandomCollectionNum(string stage)
