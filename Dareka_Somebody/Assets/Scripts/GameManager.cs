@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public string ObjectName; //The name of Object
     public bool isScan = false; // Check if ray has reached to object which has Layer named "Dust"
 
+    //Pause Menu
     public static bool isPaused = false;
 
     private GameObject scanObject; // Scannded Object

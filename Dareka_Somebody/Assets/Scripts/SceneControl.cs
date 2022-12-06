@@ -32,13 +32,8 @@ public class SceneControl : MonoBehaviour
         //SceneManager.LoadScene(3);
     }
 
-    public void OnclickSelectStage_FirstStory()
-    {
-        Debug.Log("Loading First Story");
-        SceneManager.LoadScene(6);
-    }
-
     /*
+
     public void OnclickGameItemScene()
     {
         Debug.Log("Loading Game Item Scene");
@@ -52,6 +47,7 @@ public class SceneControl : MonoBehaviour
     }
 
     /*
+
     public void OnclickEndingScene()
     {
         Debug.Log("Loading Ending Scene");
