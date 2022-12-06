@@ -59,9 +59,8 @@ public class FPSPlayer : MonoBehaviour
     Animator animator;
     AudioSource audioSrc;
 
-    public Slider playerHPBar;
     public float hp = 30f;
-    private float maxHp = 30f;
+    public float maxHp = 30f;
 
     private void Start()
     {
@@ -96,21 +95,6 @@ public class FPSPlayer : MonoBehaviour
         else
         {
             rigidbody1.drag = 1;
-        }
-
-        if (hp <= 0)
-        {
-            playerHPBar.value = 0f;
-
-            Debug.Log("GameOver");
-        }
-        else
-        {
-            if (playerHPBar != null)
-            {
-                HandleHPBar();
-            }
-
         }
 
         if (Input.GetKey(KeyCode.LeftShift))
@@ -208,11 +192,6 @@ public class FPSPlayer : MonoBehaviour
             Vector3 limitedVelocity = flatVelocity.normalized * MoveSpeed;
             rigidbody1.velocity = new Vector3(limitedVelocity.x, rigidbody1.velocity.y, limitedVelocity.z);
         }
-    }
-
-    private void HandleHPBar()
-    {
-        playerHPBar.value = Mathf.Lerp(playerHPBar.value, hp / maxHp, Time.deltaTime * 10);
     }
 }
 
