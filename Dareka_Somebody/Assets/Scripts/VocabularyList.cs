@@ -8,6 +8,8 @@ public class VocabularyList : MonoBehaviour
     public GameObject collection;
     public GameObject[] hideImages;
 
+    public Text[] itemDescriptions;
+
     public void UpdateCollection()
     {
         for (int i = 0; i < GameManager.instance.collections.Count; i++)
@@ -20,6 +22,8 @@ public class VocabularyList : MonoBehaviour
             {
                 hideImages[i].SetActive(true);
             }
+
+            itemDescriptions[i].text = string.Format("{0}\n\n{1}", GameManager.instance.collectionsProps[i], GameManager.instance.collectionsDescriptions[i]);
         }
     }
 }

@@ -9,17 +9,17 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     // It will update Text
-    //public Description description;
-    //public Text NameText; // Show object's name on dialog window
-    //public Text TalkText; // Show object's description on dialog window
-    //public GameObject scanObject; // Scannded Object
-    //public GameObject TalkWindow; // Dialog window
+    public Description description;
+    public Text NameText; // Show object's name on dialog window
+    public Text TalkText; // Show object's description on dialog window
+    public GameObject scanObject; // Scannded Object
+    public GameObject TalkWindow; // Dialog window
     
     //The name of Object
-    //public string ObjectName;
+    public string ObjectName;
 
     // Check if ray has reached to object which has Layer named "whatisObject"
-    //public bool isScan=false;
+    public bool isScan=false;
 
     public static GameManager instance;
 
@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
-    /*
     public void Scan(GameObject scanOBJ)
     {
         if (isScan)
@@ -57,5 +56,4 @@ public class GameManager : MonoBehaviour
         }
         TalkWindow.SetActive(isScan);
     }
-    */
 }

@@ -120,7 +120,6 @@ public class FPSPlayer : MonoBehaviour
     /// When on the ground or in the air, it gives the proper force for the situation.
     /// </summary>
     ///
-    /*
     private void MovePlayer()
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
@@ -158,7 +157,6 @@ public class FPSPlayer : MonoBehaviour
             rigidbody1.AddForce(moveDirection.normalized * MoveSpeed * 10f * AirMultiplier, ForceMode.Force);
         }
     }
-    */
 
     private void PlayFootstepSound()
     {
