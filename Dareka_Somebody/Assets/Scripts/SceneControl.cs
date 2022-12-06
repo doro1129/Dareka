@@ -32,13 +32,18 @@ public class SceneControl : MonoBehaviour
     public void OnclickSelectStage_Souji()
     {
         Debug.Log("Loading Cleaning Minigame");
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 
     public void OnclickSelectStage_Mamemaki()
     {
         Debug.Log("Loading Mamemaki Minigame");
         //SceneManager.LoadScene(3);
+    }
+    public void OnclickSelectStage_FirstStory()
+    {
+        Debug.Log("Loading Mamemaki Minigame");
+        SceneManager.LoadScene(6);
     }
 
     /*
