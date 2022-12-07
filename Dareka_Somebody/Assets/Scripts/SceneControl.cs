@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class SceneControl : MonoBehaviour
 {
-    public Canvas guess_canvas;
-    public Canvas vocabulary_canvas;
-    public CanvasGroup guess;
-    public CanvasGroup vocabulary;
+    public GameObject Guess;
+    public GameObject Collection;
+    //public Canvas guess_canvas;
+   //public Canvas vocabulary_canvas;
 
     public void OnclickSelectStage_FirstStory()
     {
@@ -46,32 +46,23 @@ public class SceneControl : MonoBehaviour
     public void OnclickGuessActive()
     {
         Debug.Log("Loading Guess UI");
-        guess.alpha = 1;
-        guess.interactable = true;
-        guess_canvas.enabled = true;
-        vocabulary_canvas.enabled = false;
+        Guess.SetActive(true);
+        Collection.SetActive(false);
     }
 
     public void OnclickVocabularyActive()
     {
         Debug.Log("Loading Vocabulary UI");
-        vocabulary.alpha = 1;
-        vocabulary.interactable = true;
-        guess_canvas.enabled = false;
-        vocabulary_canvas.enabled = true;
+        Guess.SetActive(false);
+        Collection.SetActive(true);
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            guess.alpha = 0;
-            guess.interactable = false;
-            guess_canvas.enabled = false;
-
-            vocabulary.alpha = 0;
-            vocabulary.interactable = false;
-            vocabulary_canvas.enabled = false;
+            Guess.SetActive(false);
+            Collection.SetActive(false);
         }
     }
 }

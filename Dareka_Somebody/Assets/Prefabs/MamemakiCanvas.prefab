@@ -769,6 +769,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   deathOni: 0
+  mamemakiManager: {fileID: 0}
 --- !u!1 &4346862731197309099
 GameObject:
   m_ObjectHideFlags: 0
@@ -2145,6 +2146,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2429418374522932120, guid: 560321c14860f46658df331f899bea53, type: 3}
+      propertyPath: Guess
+      value: 
+      objectReference: {fileID: 7522053081727320910, guid: 9ba48644aa4140540a0a1974194a790b, type: 3}
+    - target: {fileID: 2429418374522932120, guid: 560321c14860f46658df331f899bea53, type: 3}
+      propertyPath: Collection
+      value: 
+      objectReference: {fileID: 1018489047744826057, guid: e6faa2e71f9b143f8bef9670c14e4952, type: 3}
     - target: {fileID: 2449928948692234928, guid: 560321c14860f46658df331f899bea53, type: 3}
       propertyPath: m_Name
       value: Pause
