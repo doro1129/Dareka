@@ -20,6 +20,7 @@ public class MamemakiManager : MonoBehaviour
 
     public GameObject player;
     public GameObject canvas;
+
     FPSPlayer playerLogic;
     OniSpawner oniSpawner;
 
@@ -51,12 +52,14 @@ public class MamemakiManager : MonoBehaviour
         {
             isClear = true;
             Invoke("Clear", 2.0f);
-            //Time.timeScale = 0f;
         }
         else
         {
-            GameClearText.SetActive(false);
-            gameclear.CloseGameClearMenu();
+            if (!GameManager.isPaused)
+            {
+                GameClearText.SetActive(false);
+                gameclear.CloseGameClearMenu();
+            }
         }
     }
 

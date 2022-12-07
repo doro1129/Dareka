@@ -32,8 +32,11 @@ public class Timer : MonoBehaviour
             }
             else
             {
-                GameOverText.SetActive(false);
-                gameover.CloseGameOverMenu();
+                if (!GameManager.isPaused)
+                {
+                    GameOverText.SetActive(false);
+                    gameover.CloseGameOverMenu();
+                }
             }
         }
     }

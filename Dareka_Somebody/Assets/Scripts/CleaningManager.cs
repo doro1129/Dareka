@@ -47,8 +47,11 @@ public class CleaningManager : MonoBehaviour
         }
         else
         {
-            GameClearText.SetActive(false);
-            gameclear.CloseGameClearMenu();
+            if (!GameManager.isPaused)
+            {
+                GameClearText.SetActive(false);
+                gameclear.CloseGameClearMenu();
+            }
         }
     }
 

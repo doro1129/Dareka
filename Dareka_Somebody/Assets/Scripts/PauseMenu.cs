@@ -14,7 +14,6 @@ public class PauseMenu : MonoBehaviour
             {
                 CallMenu();
                 Debug.Log("Paused");
-
             }
             else
             {
