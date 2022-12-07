@@ -3585,6 +3585,7 @@ MonoBehaviour:
   target: {fileID: 0}
   hp: 100
   speed: 0.01
+  audioSource: {fileID: 0}
 --- !u!82 &8721239554963120032
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3595,7 +3596,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -7392784899126665681, guid: 2b23dc0046a9b45498e15a31353d8731, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 7bd304b20d0a54b709c80ea75b4b512a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: daa91c26651d9e14da893ef0b639bb90, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
