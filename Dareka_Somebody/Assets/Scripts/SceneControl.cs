@@ -7,7 +7,18 @@ public class SceneControl : MonoBehaviour
 {
     public GameObject Guess;
     public GameObject Collection;
-    
+
+    public GameObject vocabulary;
+    VocabularyList vocabularyList;
+
+    private void Start()
+    {
+        if (vocabulary != null)
+        {
+            vocabularyList = vocabulary.GetComponent<VocabularyList>();
+        }
+    }
+
     public void OnclickSelectStage_FirstStory()
     {
         Debug.Log("Loading FirstStory");
@@ -53,6 +64,7 @@ public class SceneControl : MonoBehaviour
         Debug.Log("Loading Vocabulary UI");
         Guess.SetActive(false);
         Collection.SetActive(true);
+        vocabularyList.UpdateCollection();
     }
 
     void Update()

@@ -3486,7 +3486,7 @@ GameObject:
   - component: {fileID: 1146196710106521870}
   - component: {fileID: 4283818856123584627}
   - component: {fileID: 1858857717103256801}
-  - component: {fileID: 8721239554963120032}
+  - component: {fileID: 3245145565526975594}
   m_Layer: 0
   m_Name: OniFather
   m_TagString: Untagged
@@ -3586,7 +3586,7 @@ MonoBehaviour:
   hp: 100
   speed: 0.01
   audioSource: {fileID: 0}
---- !u!82 &8721239554963120032
+--- !u!82 &3245145565526975594
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3604,7 +3604,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 127
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

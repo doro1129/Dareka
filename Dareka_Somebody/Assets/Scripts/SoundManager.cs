@@ -29,14 +29,7 @@ public class SoundManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
-        for (int i = 0; i < bglist.Length; i++)
-        {
-            if(arg0.name == bglist[i].name)
-            {
-                BgSoundPlay(bglist[i]);
-                break;
-            }
-        }
+        BgSoundPlay(bglist[arg0.buildIndex]);
     }
 
     public void BGSoundVolume(float val)

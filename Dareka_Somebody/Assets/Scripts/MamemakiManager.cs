@@ -96,7 +96,6 @@ public class MamemakiManager : MonoBehaviour
         if (!oni.audioSource.isPlaying)
         {
             oni.audioSource.Play();
-            Debug.Log("Play");
             isHitOni = false;
         }
     }

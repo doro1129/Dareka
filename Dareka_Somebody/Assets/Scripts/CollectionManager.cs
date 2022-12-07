@@ -21,9 +21,7 @@ public class CollectionManager : MonoBehaviour
     int diff;
 
     int tempStageIndex = 0;
-    public GameObject vocabulary;
-    VocabularyList vocabularyList;
-
+    
     string path;
     int randomNum;
 
@@ -32,7 +30,6 @@ public class CollectionManager : MonoBehaviour
         diff = (collectionNum - commonNum) / 2;
         path = Path.Combine(Application.dataPath, "database.json");
 
-        vocabularyList = vocabulary.GetComponent<VocabularyList>();
         JsonLoad();
     }
 
@@ -171,8 +168,6 @@ public class CollectionManager : MonoBehaviour
                     GameManager.instance.collectionsProps.Add(saveData.collectionsProps[i]);
                     GameManager.instance.collectionsDescriptions.Add(saveData.collectionsDescriptions[i]);
                 }
-
-                vocabularyList.UpdateCollection();
             }
         }
     }
@@ -244,8 +239,6 @@ public class CollectionManager : MonoBehaviour
 
             GameManager.instance.collections[collectionIndex] = true;
             JsonSave();
-
-            vocabularyList.UpdateCollection();
         }
     }
 
