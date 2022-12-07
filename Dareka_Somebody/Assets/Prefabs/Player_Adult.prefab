@@ -399,7 +399,7 @@ GameObject:
   - component: {fileID: 5990017096060422705}
   - component: {fileID: 5990017096060422718}
   - component: {fileID: 5990017096060422719}
-  - component: {fileID: 5990017096060422704}
+  - component: {fileID: 2554814488795969581}
   m_Layer: 0
   m_Name: Player_Adult
   m_TagString: Untagged
@@ -504,7 +504,9 @@ MonoBehaviour:
   grounded: 0
   RaycastDistance: 0.9
   flatVelocity: {x: 0, y: 0, z: 0}
---- !u!114 &5990017096060422704
+  hp: 30
+  maxHp: 30
+--- !u!114 &2554814488795969581
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -513,17 +515,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2225413781169742147}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9783343d2c79d8f4c852965792cfa5dc, type: 3}
+  m_Script: {fileID: 11500000, guid: cc209353a53bc3148aa8bc184799a100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 0}
   PressSpace: {fileID: 0}
   TalkWindow: {fileID: 0}
-  RaycastDistance: 2
-  whatisObject:
-    serializedVersion: 2
-    m_Bits: 192
+  manager: {fileID: 0}
   _Player: {fileID: 5990017096060422719}
+  GraveStone:
+    serializedVersion: 2
+    m_Bits: 256
+  RaycastDistance: 2
 --- !u!1 &2444998314703197695
 GameObject:
   m_ObjectHideFlags: 0
