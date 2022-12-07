@@ -99,7 +99,10 @@ public class ScanObject : MonoBehaviour
         else if (!DustisTouched)
         {
             PressF.SetActive(false);
-            dust_HP.SetActive(false);
+            if (dust_HP != null)
+            {
+                dust_HP.SetActive(false);
+            }
         }
     }
     /*private void Blooming()

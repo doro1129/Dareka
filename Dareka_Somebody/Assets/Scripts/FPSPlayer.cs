@@ -137,17 +137,20 @@ public class FPSPlayer : MonoBehaviour
                 var currentSpeed = Input.GetKey(KeyCode.LeftShift) ? RunSpeed : MoveSpeed;
                 rigidbody1.AddForce(moveDirection.normalized * currentSpeed * 10f, ForceMode.Force);
 
-                if (Input.GetKey(KeyCode.LeftShift))
+                if (animator != null)
                 {
-                    animator.SetFloat("Horizontal", horizontalInput);
-                    animator.SetFloat("Vertical", verticalInput);
+                    if (Input.GetKey(KeyCode.LeftShift))
+                    {
+                        animator.SetFloat("Horizontal", horizontalInput);
+                        animator.SetFloat("Vertical", verticalInput);
+                    }
+                    else
+                    {
+                        animator.SetFloat("Horizontal", horizontalInput * 0.1f);
+                        animator.SetFloat("Vertical", verticalInput * 0.1f);
+                    }
                 }
-                else
-                {
-                    animator.SetFloat("Horizontal", horizontalInput * 0.1f);
-                    animator.SetFloat("Vertical", verticalInput * 0.1f);
-                }
-
+                
                 PlayFootstepSound();
             }
             else if (manager.isScan == true)

@@ -11,15 +11,19 @@ using UnityEngine.UI;
 public class MamemakiManager : MonoBehaviour
 {
     public Slider playerHPBar;
+
     public Timer timer;
     public GameObject GameClearText;
     public GameClear gameclear;
     public GameOver gameover;
     public static bool isClear = false;
+
     public GameObject player;
-    FPSPlayer playerLogic;
     public GameObject canvas;
+    FPSPlayer playerLogic;
     OniSpawner oniSpawner;
+
+    public int oniNum = 5;
 
     private void Start()
     {
@@ -43,7 +47,7 @@ public class MamemakiManager : MonoBehaviour
             }
         }
 
-        if (oniSpawner.deathOni >= oniSpawner.enemies.Count)
+        if (oniSpawner.deathOni >= oniNum)
         {
             isClear = true;
             Invoke("Clear", 2.0f);
