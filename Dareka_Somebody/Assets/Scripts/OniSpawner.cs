@@ -10,6 +10,8 @@ public class OniSpawner : MonoBehaviour
     public GameObject player;
     public List<GameObject> enemies = new List<GameObject>();
 
+    public int deathOni = 0;
+
     float scale;
     int curIndex;
     Oni oni;
@@ -47,6 +49,9 @@ public class OniSpawner : MonoBehaviour
         Destroy(tempBar);
 
         enemies.RemoveAt(curIndex);
+        deathOni++;
+
+        Debug.Log(deathOni);
         if (!IsMamemakiOver())
         {
             SpawnOni();

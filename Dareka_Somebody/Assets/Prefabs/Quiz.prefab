@@ -1065,6 +1065,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9075248380704788330}
+  - component: {fileID: 3597072301007691375}
   m_Layer: 5
   m_Name: Quiz
   m_TagString: Untagged
@@ -1093,6 +1094,23 @@ RectTransform:
   m_AnchoredPosition: {x: -234, y: -102}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3597072301007691375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9075248380704788329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 637db99bc8a020f48a709462a32262ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Answer:
+  - {fileID: 9075248379605265159}
+  - {fileID: 9075248380318508735}
+  - {fileID: 9075248381356674245}
+  - {fileID: 9075248379574249742}
 --- !u!1 &9075248380955677607
 GameObject:
   m_ObjectHideFlags: 0
