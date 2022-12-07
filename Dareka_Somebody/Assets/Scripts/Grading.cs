@@ -27,7 +27,7 @@ public class Grading : MonoBehaviour
         Debug.Log(score);
         if(score == 100)
         {
-            SceneManager.LoadScene(6);
+            SceneManager.LoadScene(5);
         }
         else
         {
