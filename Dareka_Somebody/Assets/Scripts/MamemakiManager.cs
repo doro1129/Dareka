@@ -23,8 +23,10 @@ public class MamemakiManager : MonoBehaviour
 
     FPSPlayer playerLogic;
     OniSpawner oniSpawner;
+    public Oni oni;
 
     public int oniNum = 5;
+    public static bool isHitOni = false;
 
     private void Start()
     {
@@ -61,6 +63,18 @@ public class MamemakiManager : MonoBehaviour
                 gameclear.CloseGameClearMenu();
             }
         }
+
+        if (oni != null)
+        {
+            if (isHitOni)
+            {
+                PlayOniSound();
+            }
+            else
+            {
+                //StopOniSound();
+            }
+        }
     }
 
     public void Clear() // Game Clear
@@ -78,5 +92,21 @@ public class MamemakiManager : MonoBehaviour
     private void HandleHPBar()
     {
         playerHPBar.value = Mathf.Lerp(playerHPBar.value, playerLogic.hp / playerLogic.maxHp, Time.deltaTime * 10);
+    }
+
+    private void PlayOniSound()
+    {
+        if (!oni.audioSource.isPlaying)
+        {
+            oni.audioSource.Play();
+            Debug.Log("Play");
+            isHitOni = false;
+        }
+    }
+
+    private void StopOniSound()
+    {
+        oni.audioSource.Stop();
+        Debug.Log("Stop");
     }
 }
