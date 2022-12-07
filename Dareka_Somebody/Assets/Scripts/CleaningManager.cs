@@ -14,13 +14,14 @@ public class CleaningManager : MonoBehaviour
     public Timer timer;
     public GameObject GameClearText;
     public GameClear gameclear;
-    public static bool isClear = false;
+    public static bool isClear;
 
     private int dust_score = 0;
 
     private void Start()
     {
         SetDustScore();
+        isClear = false;
     }
 
     // Add 1 at dustscore and invoke SetDustScore()
