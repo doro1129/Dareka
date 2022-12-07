@@ -27,7 +27,10 @@ public class ThrowBeans : MonoBehaviour
     {
         if(Input.GetButtonDown("Fire1"))
         {
-            PreFire();
+            if (!GameManager.isPaused)
+            {
+                PreFire();
+            }
         }
     }
 
