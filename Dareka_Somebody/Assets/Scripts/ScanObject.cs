@@ -25,7 +25,8 @@ public class ScanObject : MonoBehaviour
     public FPSPlayer _Player;
     public LayerMask isObject;
     public LayerMask Dust;
-    public AudioClip clip;
+    public AudioClip investigationClip;
+    public AudioClip broomClip;
     public float RaycastDistance = 2f;
 
     private Dust dust;
@@ -66,7 +67,7 @@ public class ScanObject : MonoBehaviour
             {
                 manager.Scan(scanObject);
                 PressSpace.SetActive(false);
-                SoundManager.instance.SFXPlay("Investigate", clip);
+                SoundManager.instance.SFXPlay("Investigate", investigationClip);
             }
         }
         else if (!ObjectisTouched)
@@ -93,7 +94,7 @@ public class ScanObject : MonoBehaviour
                     Destroy(scanDust);
                     c_manager.GetDustScore();
                 }
-                //SoundManager.instance.SFXPlay("Investigate", clip); // TODO: Need to chage "Investigate" to "Cleaning" sound like broom.
+                SoundManager.instance.SFXPlay("Broom", broomClip); // TODO: Need to chage "Investigate" to "Cleaning" sound like broom.
             }
         }
         else if (!DustisTouched)
@@ -105,16 +106,4 @@ public class ScanObject : MonoBehaviour
             }
         }
     }
-    /*private void Blooming()
-    {
-
-        if (!audioSRC.isPlaying)
-        {
-            audioSRC.Play();
-        }
-        else
-        {
-            audioSRC.Stop();
-        }
-    }*/
 }

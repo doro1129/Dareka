@@ -7,9 +7,7 @@ public class SceneControl : MonoBehaviour
 {
     public GameObject Guess;
     public GameObject Collection;
-    //public Canvas guess_canvas;
-   //public Canvas vocabulary_canvas;
-
+    
     public void OnclickSelectStage_FirstStory()
     {
         Debug.Log("Loading FirstStory");
@@ -59,10 +57,13 @@ public class SceneControl : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Guess != null && Collection != null)
         {
-            Guess.SetActive(false);
-            Collection.SetActive(false);
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Guess.SetActive(false);
+                Collection.SetActive(false);
+            }
         }
     }
 }

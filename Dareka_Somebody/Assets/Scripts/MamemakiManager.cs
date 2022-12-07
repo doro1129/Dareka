@@ -27,6 +27,7 @@ public class MamemakiManager : MonoBehaviour
 
     public int oniNum = 5;
     public static bool isHitOni = false;
+    //public AudioClip groanClip;
 
     private void Start()
     {
@@ -70,6 +71,7 @@ public class MamemakiManager : MonoBehaviour
             if (isHitOni)
             {
                 PlayOniSound();
+                //SoundManager.instance.SFXPlay("Groan", groanClip);
             }
         }
     }
@@ -78,8 +80,6 @@ public class MamemakiManager : MonoBehaviour
     {
         if (isClear && timer.LimitTime >= 0)
         {
-            // TODO: Add UI or something. This needs more debate
-            //SceneManager.LoadScene(1);
             gameclear.CallGameClearMenu();
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
