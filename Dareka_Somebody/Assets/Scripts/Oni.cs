@@ -14,12 +14,14 @@ public class Oni : MonoBehaviour
     public float hp = 100f;
 
     public float speed;
-
     float damage = 10f;
+
+    public AudioSource audioSource;
 
     private void Start()
     {
         OniPositionY = transform.position.y;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
