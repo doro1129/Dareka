@@ -21,6 +21,9 @@ public class CollectionManager : MonoBehaviour
     public int collectionNum = 13;
     public List<Sprite> collectionsProps = new List<Sprite>();
 
+    public GameObject vocabulary;
+    VocabularyList vocabularyList;
+
     string path;
     int diff;
 
@@ -30,6 +33,12 @@ public class CollectionManager : MonoBehaviour
         diff = (collectionNum - commonNum) / 2;
 
         JsonLoad();
+
+        if (vocabulary != null)
+        {
+            vocabularyList = vocabulary.GetComponent<VocabularyList>();
+            vocabularyList.UpdateCollection();
+        }
     }
 
     private void JsonLoad()
