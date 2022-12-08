@@ -3586,6 +3586,7 @@ MonoBehaviour:
   hp: 100
   speed: 0.01
   audioSource: {fileID: 0}
+  playerHitClip: {fileID: 8300000, guid: 5ae22e03ba7cf1c4ba96450b662e9514, type: 3}
 --- !u!82 &3245145565526975594
 AudioSource:
   m_ObjectHideFlags: 0

@@ -11,6 +11,8 @@ public class SceneControl : MonoBehaviour
     public GameObject vocabulary;
     VocabularyList vocabularyList;
 
+    public AudioClip clickClip;
+
     private void Start()
     {
         if (vocabulary != null)
@@ -22,12 +24,17 @@ public class SceneControl : MonoBehaviour
     public void OnclickSelectStage_FirstStory()
     {
         Debug.Log("Loading FirstStory");
+        SoundManager.instance.SFXPlay("Click", clickClip);
         SceneManager.LoadScene(1);
     }
 
     public void OnclickStageScene()
     {
         Debug.Log("Loading Stage Scene");
+        if (SceneManager.GetActiveScene().buildIndex != 1)
+        {
+            SoundManager.instance.SFXPlay("Click", clickClip);
+        }
         SceneManager.LoadScene(2);
         GameManager.isPaused = false;
         Time.timeScale = 1f;
@@ -37,18 +44,23 @@ public class SceneControl : MonoBehaviour
     public void OnclickSelectStage_Souji()
     {
         Debug.Log("Loading Cleaning Minigame");
+        SoundManager.instance.SFXPlay("Click", clickClip);
         SceneManager.LoadScene(3);
+        Time.timeScale = 1f;
     }
 
     public void OnclickSelectStage_Mamemaki()
     {
         Debug.Log("Loading Mamemaki Minigame");
+        SoundManager.instance.SFXPlay("Click", clickClip);
         SceneManager.LoadScene(4);
+        Time.timeScale = 1f;
     }
 
     public void OnclickQuitGame()
     {
         Debug.Log("Quit");
+        SoundManager.instance.SFXPlay("Click", clickClip);
         Application.Quit();
     }
 
@@ -57,6 +69,7 @@ public class SceneControl : MonoBehaviour
         Debug.Log("Loading Guess UI");
         Guess.SetActive(true);
         Collection.SetActive(false);
+        SoundManager.instance.SFXPlay("Click", clickClip);
     }
 
     public void OnclickVocabularyActive()
@@ -65,6 +78,7 @@ public class SceneControl : MonoBehaviour
         Guess.SetActive(false);
         Collection.SetActive(true);
         vocabularyList.UpdateCollection();
+        SoundManager.instance.SFXPlay("Click", clickClip);
     }
 
     void Update()

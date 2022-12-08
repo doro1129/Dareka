@@ -5,9 +5,11 @@ using UnityEngine;
 public class GameClear : MonoBehaviour
 {
     [SerializeField] private GameObject GameClearCanvas;
+    public AudioClip gameclearClip;
 
     public void CallGameClearMenu()
     {
+        SoundManager.instance.SFXPlay("GameClear", gameclearClip);
         GameManager.isPaused = true;
         GameClearCanvas.SetActive(true);
         Time.timeScale = 0f;

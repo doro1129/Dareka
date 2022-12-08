@@ -5,9 +5,11 @@ using UnityEngine;
 public class GameOver : MonoBehaviour
 {
     [SerializeField] private GameObject GameOverCanvas;
+    public AudioClip gameoverClip;
 
     public void CallGameOverMenu()
     {
+        SoundManager.instance.SFXPlay("GameOver", gameoverClip);
         GameManager.isPaused = true;
         GameOverCanvas.SetActive(true);
         Time.timeScale = 0f;

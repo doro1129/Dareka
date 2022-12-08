@@ -10,6 +10,8 @@ public class Password : MonoBehaviour
     private string Answer_string;
     //private bool isCorrect;
     private string Answer = "724106";
+    public AudioClip correctAnswerClip;
+    public AudioClip wrongAnswerClip;
 
     public void CheckPassword()
     {
@@ -17,10 +19,12 @@ public class Password : MonoBehaviour
 
         if (Answer_string== Answer)
         {
+            SoundManager.instance.SFXPlay("CorrectAnswer", correctAnswerClip);
             Debug.Log("맞췄다");
         }
         else
         {
+            SoundManager.instance.SFXPlay("WrongAnswer", wrongAnswerClip);
             Debug.Log("틀렸다");
         }
     }
