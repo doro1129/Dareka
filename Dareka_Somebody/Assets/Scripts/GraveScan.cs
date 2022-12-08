@@ -113,9 +113,9 @@ public class GraveScan : MonoBehaviour
     {
         EndingDialogue_String = new string[3]
         {
-        "엄마... ",
-        "오랜만이야.",
-        "보고싶었어..."
+        "엄마, 오랜만이야.",
+        "엄마를 만나기까지 너무 오랜 시간이 걸렸네.",
+        "우리 이제 자주 볼 수 있겠다. 또 올게."
         };
     }
 
