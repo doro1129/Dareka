@@ -34,11 +34,28 @@ public class LightingTools_Offer : MonoBehaviour
     // Activated when player is online    (Ad border    )
     [HideInInspector] public bool isLoading;
 
-    //public static LightingTools_Offer instance;
+    public static LightingTools_Offer instance;
 
     private void Awake()
     {
-        //DontDestroyOnLoad(instance);
+        if (instance == null)
+        {
+            instance = this;
+
+            LightingTools_Offer[] offers = FindObjectsOfType<LightingTools_Offer>();
+            if (offers.Length == 1)
+            {
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Start()
