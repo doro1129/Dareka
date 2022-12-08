@@ -13,6 +13,8 @@ public class Password : MonoBehaviour
     public AudioClip correctAnswerClip;
     public AudioClip wrongAnswerClip;
 
+    public GameObject diary;
+
     public void CheckPassword()
     {
         SetAnswer();
@@ -20,6 +22,7 @@ public class Password : MonoBehaviour
         if (Answer_string== Answer)
         {
             SoundManager.instance.SFXPlay("CorrectAnswer", correctAnswerClip);
+            diary.SetActive(true);
             Debug.Log("맞췄다");
         }
         else
