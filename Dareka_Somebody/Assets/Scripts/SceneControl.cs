@@ -21,6 +21,13 @@ public class SceneControl : MonoBehaviour
         }
     }
 
+    public void OnclickSelectStage_Title()
+    {
+        Debug.Log("Loading Title");
+        SoundManager.instance.SFXPlay("Click", clickClip);
+        SceneManager.LoadScene(0);
+    }
+
     public void OnclickSelectStage_FirstStory()
     {
         Debug.Log("Loading FirstStory");

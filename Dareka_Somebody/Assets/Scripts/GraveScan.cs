@@ -22,6 +22,8 @@ public class GraveScan : MonoBehaviour
     //public AudioClip clip;
     public float RaycastDistance = 2f;
 
+    public Image Fadeimage;
+
     public Text EndingDialogue_Text;
     private string[] EndingDialogue_String;
     private int Endingdialogue_count = 0;
@@ -29,6 +31,7 @@ public class GraveScan : MonoBehaviour
     private Camera PlayerCam;
     private GameObject scanObject;
     private bool GraveTouched;
+    private bool isEnd = false;
     //private bool isScanned = false;
 
     //AudioSource audioSRC;
@@ -78,12 +81,15 @@ public class GraveScan : MonoBehaviour
         if (Endingdialogue_count == 4)
         {
             //sceneControl.OnclickStageScene();
-            SceneManager.LoadScene(0);
             //GameManager.isPaused = false;
+            //SceneManager.LoadScene(0);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             Time.timeScale = 1f;
             Endingdialogue_count = 0;
+            Debug.Log(isEnd);
+            FadeOut();
+            //SceneManager.LoadScene(7);
         }
 
     }
@@ -113,4 +119,28 @@ public class GraveScan : MonoBehaviour
         };
     }
 
+    public void FadeOut()
+    {
+        EndingCanvas.SetActive(false);
+        StartCoroutine(FadeCoroutine());
+        StartCoroutine(loadending());
+    }
+
+    IEnumerator FadeCoroutine()
+    {
+        float fadeCount = 0;
+        while (fadeCount < 1.0f)
+        {
+            fadeCount += 0.02f;
+            yield return new WaitForSeconds(0.01f);
+            Fadeimage.color = new Color(0, 0, 0, fadeCount);
+        }
+    }
+
+
+    IEnumerator loadending()
+    {
+        yield return StartCoroutine(FadeCoroutine());
+        SceneManager.LoadScene(7);
+    }
 }
