@@ -17,6 +17,7 @@ public class Timer : MonoBehaviour
     private void Awake()
     {
         isOver = false;
+        game_Timer = GetComponent<Text>();
     }
 
     private void Update()
