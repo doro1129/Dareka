@@ -39,7 +39,7 @@ public class CleaningManager : MonoBehaviour
 
     private void Update()
     {
-        if(dust_score >= 10)
+        if(dust_score >= 10 && !isClear)
         {
             isClear = true;
             //GameClearText.SetActive(true);
