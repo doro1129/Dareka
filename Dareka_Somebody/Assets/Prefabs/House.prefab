@@ -8594,6 +8594,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 2616690936121346399, guid: abc00000000014370834856023896238, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4503694999472915788, guid: abc00000000014370834856023896238, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.591
@@ -8622,6 +8626,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300002, guid: abc00000000013541778526136443751, type: 3}
+    - target: {fileID: 5427644165642364334, guid: abc00000000014370834856023896238, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5527145256081000193, guid: abc00000000014370834856023896238, type: 3}
       propertyPath: m_IsActive
       value: 0
