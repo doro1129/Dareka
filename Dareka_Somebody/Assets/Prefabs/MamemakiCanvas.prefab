@@ -163,11 +163,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 0527820cd6a2b4b439e42453619cba0e, type: 3}
-    m_FontSize: 50
+    m_Font: {fileID: 12800000, guid: 222ede95ef248c54e8bc180e3adb99d4, type: 3}
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 2
     m_MaxSize: 50
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -1348,6 +1348,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameClearCanvas: {fileID: 6027342573610345975}
+  gameclearClip: {fileID: 0}
+  collections: {fileID: 0}
+  reward: {fileID: 0}
+  rewardDescription: {fileID: 0}
+  finishSprite: {fileID: 0}
 --- !u!1 &7095504920642823918
 GameObject:
   m_ObjectHideFlags: 0
@@ -2095,6 +2100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameOverCanvas: {fileID: 8382907240134225249}
+  gameoverClip: {fileID: 0}
 --- !u!1001 &8239387523407477152
 PrefabInstance:
   m_ObjectHideFlags: 0
