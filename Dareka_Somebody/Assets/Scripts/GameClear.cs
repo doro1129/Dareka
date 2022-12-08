@@ -23,6 +23,7 @@ public class GameClear : MonoBehaviour
         if (rewardNum != -1)
         {
             rewardImage.sprite = collectionManager.collectionsProps[rewardNum];
+            //rewardImage.SetNativeSize();
             rewardText.text = string.Format("{0}\n\n{1}",
                 GameManager.instance.collectionsProps[rewardNum],
                 GameManager.instance.collectionsDescriptions[rewardNum]);
