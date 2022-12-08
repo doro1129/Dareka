@@ -61,7 +61,7 @@ public class MamemakiManager : MonoBehaviour
             }
         }
 
-        if (oniSpawner.deathOni >= oniNum)
+        if (oniSpawner.deathOni >= oniNum && !isClear)
         {
             isClear = true;
             Invoke("Clear", 0.5f);
