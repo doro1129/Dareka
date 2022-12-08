@@ -58,9 +58,7 @@ public class CollectionManager : MonoBehaviour
             }
 
             GameManager.instance.collectionsProps.Add("다이어리");
-            GameManager.instance.collectionsDescriptions.Add("잠겨있다. 열려면 비밀번호가 필요할 것 같다."
-                + System.Environment.NewLine
-                + "아래에 뭐하고 있어(なにしてる)?라 적혀있다."
+            GameManager.instance.collectionsDescriptions.Add("잠겨있다. 열려면 비밀번호가 필요할 것 같다. 아래에 뭐하고 있어(なにしてる)?라 적혀있다."
                 + System.Environment.NewLine
                 + "이게 비밀번호일까?");
 

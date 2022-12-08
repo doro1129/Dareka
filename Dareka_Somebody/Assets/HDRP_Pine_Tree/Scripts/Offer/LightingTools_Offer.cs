@@ -12,7 +12,6 @@ using System.Linq;
 [ExecuteInEditMode]
 public class LightingTools_Offer : MonoBehaviour
 {
-
     //WWW www;
     UnityWebRequest www;
 
@@ -34,16 +33,8 @@ public class LightingTools_Offer : MonoBehaviour
     // Activated when player is online    (Ad border    )
     [HideInInspector] public bool isLoading;
 
-    //public static LightingTools_Offer instance;
-
-    private void Awake()
-    {
-        //DontDestroyOnLoad(instance);
-    }
-
     void Start()
     {
-
         textures = new Texture2D[targetTextures.Length];
 
         LinksURL = new string[targetTextures.Length];
