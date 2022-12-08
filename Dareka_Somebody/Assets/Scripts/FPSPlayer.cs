@@ -59,9 +59,8 @@ public class FPSPlayer : MonoBehaviour
     Animator animator;
     AudioSource audioSrc;
 
-    public Slider playerHPBar;
     public float hp = 30f;
-    private float maxHp = 30f;
+    public float maxHp = 30f;
 
     private void Start()
     {
@@ -98,34 +97,19 @@ public class FPSPlayer : MonoBehaviour
             rigidbody1.drag = 1;
         }
 
-        if (hp <= 0)
-        {
-            playerHPBar.value = 0f;
-
-            Debug.Log("GameOver");
-        }
-        else
-        {
-            if (playerHPBar != null)
-            {
-                HandleHPBar();
-            }
-
-        }
-
         if (Input.GetKey(KeyCode.LeftShift))
         {
             audioSrc.pitch = 2f;
         }
         else
         {
-            audioSrc.pitch = 1.5f
-        	}
+            audioSrc.pitch = 1.5f;
+        }
     }
 
     private void FixedUpdate()
     {
-        //MovePlayer();
+        MovePlayer();
     }
 
     /// <summary>
@@ -153,17 +137,20 @@ public class FPSPlayer : MonoBehaviour
                 var currentSpeed = Input.GetKey(KeyCode.LeftShift) ? RunSpeed : MoveSpeed;
                 rigidbody1.AddForce(moveDirection.normalized * currentSpeed * 10f, ForceMode.Force);
 
-                if (Input.GetKey(KeyCode.LeftShift))
+                if (animator != null)
                 {
-                    animator.SetFloat("Horizontal", horizontalInput);
-                    animator.SetFloat("Vertical", verticalInput);
+                    if (Input.GetKey(KeyCode.LeftShift))
+                    {
+                        animator.SetFloat("Horizontal", horizontalInput);
+                        animator.SetFloat("Vertical", verticalInput);
+                    }
+                    else
+                    {
+                        animator.SetFloat("Horizontal", horizontalInput * 0.1f);
+                        animator.SetFloat("Vertical", verticalInput * 0.1f);
+                    }
                 }
-                else
-                {
-                    animator.SetFloat("Horizontal", horizontalInput * 0.1f);
-                    animator.SetFloat("Vertical", verticalInput * 0.1f);
-                }
-
+                
                 PlayFootstepSound();
             }
             else if (manager.isScan == true)
@@ -208,11 +195,6 @@ public class FPSPlayer : MonoBehaviour
             Vector3 limitedVelocity = flatVelocity.normalized * MoveSpeed;
             rigidbody1.velocity = new Vector3(limitedVelocity.x, rigidbody1.velocity.y, limitedVelocity.z);
         }
-    }
-
-    private void HandleHPBar()
-    {
-        playerHPBar.value = Mathf.Lerp(playerHPBar.value, hp / maxHp, Time.deltaTime * 10);
     }
 }
 

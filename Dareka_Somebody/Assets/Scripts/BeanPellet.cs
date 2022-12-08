@@ -12,6 +12,7 @@ public class BeanPellet : MonoBehaviour
         if (oni != null)
         {
             oni.hp -= damage;
+            MamemakiManager.isHitOni = true;
         }
     }
 }

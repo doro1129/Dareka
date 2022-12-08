@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class SaveData
@@ -18,25 +19,20 @@ public class CollectionManager : MonoBehaviour
 {
     public int commonNum = 7;
     public int collectionNum = 13;
-    int diff;
-
-    int tempStageIndex = 0;
-    public GameObject vocabulary;
-    VocabularyList vocabularyList;
+    public List<Sprite> collectionsProps = new List<Sprite>();
 
     string path;
-    int randomNum;
+    int diff;
 
     void Start()
     {
-        diff = (collectionNum - commonNum) / 2;
         path = Path.Combine(Application.dataPath, "database.json");
+        diff = (collectionNum - commonNum) / 2;
 
-        vocabularyList = vocabulary.GetComponent<VocabularyList>();
         JsonLoad();
     }
 
-    public void JsonLoad()
+    private void JsonLoad()
     {
         Debug.Log("로드");
         SaveData saveData = new SaveData();
@@ -61,9 +57,7 @@ public class CollectionManager : MonoBehaviour
             }
 
             GameManager.instance.collectionsProps.Add("다이어리");
-            GameManager.instance.collectionsDescriptions.Add("잠겨있다. 열려면 비밀번호가 필요할 것 같다."
-                + System.Environment.NewLine
-                + "아래에 뭐하고 있어(なにしてる)?라 적혀있다."
+            GameManager.instance.collectionsDescriptions.Add("잠겨있다. 열려면 비밀번호가 필요할 것 같다. 아래에 뭐하고 있어(なにしてる)?라 적혀있다."
                 + System.Environment.NewLine
                 + "이게 비밀번호일까?");
 
@@ -75,9 +69,9 @@ public class CollectionManager : MonoBehaviour
             GameManager.instance.collectionsProps.Add("지도");
             GameManager.instance.collectionsDescriptions.Add("좌표 번호가 있다."
                 + System.Environment.NewLine
-                + "(35, 89): 후지병원 (58, 93): 시카공원"
+                + "[35, 89]: 후지병원 [58, 93]: 시카공원"
                 + System.Environment.NewLine
-                + "(93, 85): 히츠키절  (39, 85): 사토시청");
+                + "[93, 85]: 히츠키절 [39, 85]: 사토시청");
 
             GameManager.instance.collectionsProps.Add("풍경(風鈴)");
             GameManager.instance.collectionsDescriptions.Add("바람이 불 때마다 청량한 소리가 들린다."
@@ -171,13 +165,11 @@ public class CollectionManager : MonoBehaviour
                     GameManager.instance.collectionsProps.Add(saveData.collectionsProps[i]);
                     GameManager.instance.collectionsDescriptions.Add(saveData.collectionsDescriptions[i]);
                 }
-
-                vocabularyList.UpdateCollection();
             }
         }
     }
 
-    public void JsonSave()
+    private void JsonSave()
     {
         Debug.Log("세이브");
         SaveData saveData = new SaveData();
@@ -209,77 +201,72 @@ public class CollectionManager : MonoBehaviour
         File.WriteAllText(path, json);
     }
 
-    public void AcquireCollection(string stage, int num)
+    private int AcquireCollection(int num)
     {
-        int collectionIndex = -1;
+        int collectionIndex;
 
-        if (stage == "정월" && num < GameManager.instance.oshogatsuCollections.Count)
+        if (SceneManager.GetActiveScene().buildIndex == 3 && GameManager.instance.oshogatsuCollections.Count > 0 && num >= 0)
         {
             collectionIndex = GameManager.instance.oshogatsuCollections[num];
         }
-        else if (stage == "세쓰분" && num < GameManager.instance.setsubunCollections.Count)
+        else if (SceneManager.GetActiveScene().buildIndex == 4 && GameManager.instance.setsubunCollections.Count > 0 && num >= 0)
         {
             collectionIndex = GameManager.instance.setsubunCollections[num];
+        }
+        else
+        {
+            Debug.Log("Finished Collection");
+            return -1;
         }
 
         Debug.Log(collectionIndex);
 
-        if (collectionIndex != -1)
+        for (int i = 0; i < GameManager.instance.oshogatsuCollections.Count; i++)
         {
-            for (int i = 0; i < GameManager.instance.oshogatsuCollections.Count; i++)
+            if (GameManager.instance.oshogatsuCollections[i] == collectionIndex)
             {
-                if (GameManager.instance.oshogatsuCollections[i] == collectionIndex)
-                {
-                    GameManager.instance.oshogatsuCollections.RemoveAt(i);
-                }
+                GameManager.instance.oshogatsuCollections.RemoveAt(i);
             }
-
-            for (int i = 0; i < GameManager.instance.setsubunCollections.Count; i++)
-            {
-                if (GameManager.instance.setsubunCollections[i] == collectionIndex)
-                {
-                    GameManager.instance.setsubunCollections.RemoveAt(i);
-                }
-            }
-
-            GameManager.instance.collections[collectionIndex] = true;
-            JsonSave();
-
-            vocabularyList.UpdateCollection();
         }
+
+        for (int i = 0; i < GameManager.instance.setsubunCollections.Count; i++)
+        {
+            if (GameManager.instance.setsubunCollections[i] == collectionIndex)
+            {
+                GameManager.instance.setsubunCollections.RemoveAt(i);
+            }
+        }
+
+        GameManager.instance.collections[collectionIndex] = true;
+
+        JsonSave();
+
+        return collectionIndex;
     }
 
-    public void RandomCollectionNum(string stage)
+    private int RandomCollectionNum()
     {
-        if (stage == "정월")
+        int randomNum = -1;
+        if (SceneManager.GetActiveScene().buildIndex == 3)
         {
             if (GameManager.instance.oshogatsuCollections.Count != 0)
             {
-                randomNum = Random.Range(0, GameManager.instance.oshogatsuCollections.Count - 1);
+                randomNum = Random.Range(0, GameManager.instance.oshogatsuCollections.Count);
             }
         }
-        else
+        else if (SceneManager.GetActiveScene().buildIndex == 4)
         {
             if (GameManager.instance.setsubunCollections.Count != 0)
             {
-                randomNum = Random.Range(0, GameManager.instance.setsubunCollections.Count - 1);
+                randomNum = Random.Range(0, GameManager.instance.setsubunCollections.Count);
             }
         }
+
+        return randomNum;
     }
 
-    public void TempPlusCollectionIndex()
+    public int Collect()
     {
-        if (tempStageIndex == 0)
-        {
-            tempStageIndex = 1;
-            RandomCollectionNum("정월");
-            AcquireCollection("정월", randomNum);
-        }
-        else
-        {
-            tempStageIndex = 0;
-            RandomCollectionNum("세쓰분");
-            AcquireCollection("세쓰분", randomNum);
-        }
+        return AcquireCollection(RandomCollectionNum());
     }
 }

@@ -530,7 +530,7 @@ namespace Sketchfab
 				return;
 			}
 
-			// Load thumbnail image
+			// Load thumbnail Fadeimage
 			byte[] data = request.downloadHandler.data;
 			Texture2D thumb = new Texture2D(2, 2);
 			thumb.LoadImage(data);

@@ -13,6 +13,7 @@ public class ThrowBeans : MonoBehaviour
     public GameObject armRoot;
 
     List<Quaternion> pellets;
+    public AudioClip throwBeansClip;
 
     private void Awake()
     {
@@ -27,7 +28,10 @@ public class ThrowBeans : MonoBehaviour
     {
         if(Input.GetButtonDown("Fire1"))
         {
-            PreFire();
+            if (!GameManager.isPaused)
+            {
+                PreFire();
+            }
         }
     }
 
@@ -40,6 +44,8 @@ public class ThrowBeans : MonoBehaviour
 
     void Fire()
     {
+        SoundManager.instance.SFXPlay("Throw Beans", throwBeansClip);
+
         for (int i = 0; i < pelletCount; i++)
         {
             pellets[i] = Random.rotation;

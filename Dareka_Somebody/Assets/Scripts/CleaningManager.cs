@@ -12,15 +12,16 @@ public class CleaningManager : MonoBehaviour
 {
     public Text Dustscore; // Dust : 
     public Timer timer;
-    public GameObject GameClearText;
+    //public GameObject GameClearText;
     public GameClear gameclear;
-    public static bool isClear = false;
+    public static bool isClear;
 
     private int dust_score = 0;
 
     private void Start()
     {
         SetDustScore();
+        isClear = false;
     }
 
     // Add 1 at dustscore and invoke SetDustScore()
@@ -41,14 +42,17 @@ public class CleaningManager : MonoBehaviour
         if(dust_score >= 10)
         {
             isClear = true;
-            GameClearText.SetActive(true);
+            //GameClearText.SetActive(true);
             Invoke("Clear", 2.0f);
             //Time.timeScale = 0f;
         }
         else
         {
-            GameClearText.SetActive(false);
-            gameclear.CloseGameClearMenu();
+            if (!GameManager.isPaused)
+            {
+                //GameClearText.SetActive(false);
+                gameclear.CloseGameClearMenu();
+            }
         }
     }
 

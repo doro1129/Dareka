@@ -14,12 +14,15 @@ public class Oni : MonoBehaviour
     public float hp = 100f;
 
     public float speed;
-
     float damage = 10f;
+
+    public AudioSource audioSource;
+    public AudioClip playerHitClip;
 
     private void Start()
     {
         OniPositionY = transform.position.y;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -70,6 +73,7 @@ public class Oni : MonoBehaviour
         if (player != null)
         {
             player.hp -= damage;
+            SoundManager.instance.SFXPlay("PlayerHit", playerHitClip);
         }
     }
 }

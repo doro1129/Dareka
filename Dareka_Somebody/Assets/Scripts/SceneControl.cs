@@ -5,109 +5,107 @@ using UnityEngine.SceneManagement;
 
 public class SceneControl : MonoBehaviour
 {
-    //remember the scene number for save load
-    /*
-    public int SceneCounter;
-    public int CurrentScene;
+    public GameObject Guess;
+    public GameObject Collection;
 
-    PlayerPrefs.SetInt("CurrentScene", "SceneIndex");
-    SceneCounter = PlayerPrefs.GetInt("CurrentScene");
-    */
+    public GameObject vocabulary;
+    VocabularyList vocabularyList;
 
-    public Canvas guess_canvas;
-    public Canvas vocabulary_canvas;
-    public CanvasGroup guess;
-    public CanvasGroup vocabulary;
+    public AudioClip clickClip;
+    public GameOver gameOver;
+    public GameObject diary;
+
+    private void Start()
+    {
+        if (vocabulary != null)
+        {
+            vocabularyList = vocabulary.GetComponent<VocabularyList>();
+        }
+    }
+
+    public void OnclickSelectStage_Title()
+    {
+        Debug.Log("Loading Title");
+        SoundManager.instance.SFXPlay("Click", clickClip);
+        SceneManager.LoadScene(0);
+    }
+
+    public void OnclickSelectStage_FirstStory()
+    {
+        Debug.Log("Loading FirstStory");
+        SoundManager.instance.SFXPlay("Click", clickClip);
+        SceneManager.LoadScene(1);
+    }
 
     public void OnclickStageScene()
     {
         Debug.Log("Loading Stage Scene");
-        SceneManager.LoadScene(1);
+        if (SceneManager.GetActiveScene().buildIndex != 1)
+        {
+            SoundManager.instance.SFXPlay("Click", clickClip);
+        }
+        SceneManager.LoadScene(2);
         GameManager.isPaused = false;
         Time.timeScale = 1f;
     }
 
     //StartScene
-
     public void OnclickSelectStage_Souji()
     {
         Debug.Log("Loading Cleaning Minigame");
-        SceneManager.LoadScene(2);
+        SoundManager.instance.SFXPlay("Click", clickClip);
+        if (SceneManager.GetActiveScene().buildIndex != 2)
+        {
+            gameOver.CloseGameOverMenu();
+        }
+        SceneManager.LoadScene(3);
     }
 
     public void OnclickSelectStage_Mamemaki()
     {
         Debug.Log("Loading Mamemaki Minigame");
-        //SceneManager.LoadScene(3);
+        SoundManager.instance.SFXPlay("Click", clickClip);
+        if (SceneManager.GetActiveScene().buildIndex != 2)
+        {
+            gameOver.CloseGameOverMenu();
+        }
+        SceneManager.LoadScene(4);
     }
-
-    /*
-
-    public void OnclickGameItemScene()
-    {
-        Debug.Log("Loading Game Item Scene");
-        //SceneManager.LoadScene();
-    }
-
-    public void OnclickGuessingScene()
-    {
-        Debug.Log("Loading Guessing Scene");
-        //SceneManager.LoadScene();
-    }
-
-    /*
-
-    public void OnclickEndingScene()
-    {
-        Debug.Log("Loading Ending Scene");
-        //SceneManager.LoadScene();
-    }
-    */
 
     public void OnclickQuitGame()
     {
         Debug.Log("Quit");
+        SoundManager.instance.SFXPlay("Click", clickClip);
         Application.Quit();
     }
 
-   /* void Awake()
-    {
-        guess.alpha = 0;
-        guess_canvas.enabled = false;
-
-        vocabulary.alpha = 0;
-        vocabulary_canvas.enabled = false;
-    }
-   */
     public void OnclickGuessActive()
     {
         Debug.Log("Loading Guess UI");
-        guess.alpha = 1;
-        guess.interactable = true;
-        guess_canvas.enabled = true;
-        vocabulary_canvas.enabled = false;
+        Guess.SetActive(true);
+        Collection.SetActive(false);
+        SoundManager.instance.SFXPlay("Click", clickClip);
     }
 
     public void OnclickVocabularyActive()
     {
         Debug.Log("Loading Vocabulary UI");
-        vocabulary.alpha = 1;
-        vocabulary.interactable = true;
-        guess_canvas.enabled = false;
-        vocabulary_canvas.enabled = true;
+        Guess.SetActive(false);
+        Collection.SetActive(true);
+        vocabularyList.UpdateCollection();
+        SoundManager.instance.SFXPlay("Click", clickClip);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Guess != null && Collection != null && diary != null)
         {
-            guess.alpha = 0;
-            guess.interactable = false;
-            guess_canvas.enabled = false;
-
-            vocabulary.alpha = 0;
-            vocabulary.interactable = false;
-            vocabulary_canvas.enabled = false;
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Guess.SetActive(false);
+                Collection.SetActive(false);
+                diary.SetActive(false);
+            }
         }
     }
 }

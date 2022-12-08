@@ -10,6 +10,9 @@ public class OniSpawner : MonoBehaviour
     public GameObject player;
     public List<GameObject> enemies = new List<GameObject>();
 
+    public int deathOni = 0;
+    public MamemakiManager mamemakiManager;
+
     float scale;
     int curIndex;
     Oni oni;
@@ -47,6 +50,8 @@ public class OniSpawner : MonoBehaviour
         Destroy(tempBar);
 
         enemies.RemoveAt(curIndex);
+        deathOni++;
+
         if (!IsMamemakiOver())
         {
             SpawnOni();
@@ -55,9 +60,10 @@ public class OniSpawner : MonoBehaviour
 
     private void SpawnOni()
     {
-        int index = Random.Range(0, enemies.Count - 1);
+        int index = Random.Range(0, enemies.Count);
         Oni = Instantiate(oniPrefab, enemies[index].transform.position, Quaternion.identity);
         oni = Oni.GetComponent<Oni>();
+        mamemakiManager.oni = oni;
         enemyTransform = enemies[index].transform;
 
         curIndex = index;
