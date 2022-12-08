@@ -46,6 +46,4 @@ public class GameClear : MonoBehaviour
         GameClearCanvas.SetActive(false);
         Time.timeScale = 1f;
     }
-
-
 }

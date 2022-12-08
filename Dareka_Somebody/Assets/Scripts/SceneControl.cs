@@ -13,6 +13,7 @@ public class SceneControl : MonoBehaviour
 
     public AudioClip clickClip;
     public GameOver gameOver;
+    public GameObject diary;
 
     private void Start()
     {
@@ -97,12 +98,13 @@ public class SceneControl : MonoBehaviour
 
     void Update()
     {
-        if (Guess != null && Collection != null)
+        if (Guess != null && Collection != null && diary != null)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 Guess.SetActive(false);
                 Collection.SetActive(false);
+                diary.SetActive(false);
             }
         }
     }
