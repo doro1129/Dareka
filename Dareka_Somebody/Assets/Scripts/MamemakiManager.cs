@@ -61,7 +61,7 @@ public class MamemakiManager : MonoBehaviour
         {
             if (!GameManager.isPaused)
             {
-                GameClearText.SetActive(false);
+                //GameClearText.SetActive(false);
                 gameclear.CloseGameClearMenu();
             }
         }

@@ -12,6 +12,7 @@ public class SceneControl : MonoBehaviour
     VocabularyList vocabularyList;
 
     public AudioClip clickClip;
+    public GameOver gameOver;
 
     private void Start()
     {
@@ -45,16 +46,22 @@ public class SceneControl : MonoBehaviour
     {
         Debug.Log("Loading Cleaning Minigame");
         SoundManager.instance.SFXPlay("Click", clickClip);
+        if (SceneManager.GetActiveScene().buildIndex != 2)
+        {
+            gameOver.CloseGameOverMenu();
+        }
         SceneManager.LoadScene(3);
-        Time.timeScale = 1f;
     }
 
     public void OnclickSelectStage_Mamemaki()
     {
         Debug.Log("Loading Mamemaki Minigame");
         SoundManager.instance.SFXPlay("Click", clickClip);
+        if (SceneManager.GetActiveScene().buildIndex != 2)
+        {
+            gameOver.CloseGameOverMenu();
+        }
         SceneManager.LoadScene(4);
-        Time.timeScale = 1f;
     }
 
     public void OnclickQuitGame()
