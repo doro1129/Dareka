@@ -69,9 +69,9 @@ public class CollectionManager : MonoBehaviour
             GameManager.instance.collectionsProps.Add("지도");
             GameManager.instance.collectionsDescriptions.Add("좌표 번호가 있다."
                 + System.Environment.NewLine
-                + "(35, 89): 후지병원 (58, 93): 시카공원"
+                + "[35, 89]: 후지병원 [58, 93]: 시카공원"
                 + System.Environment.NewLine
-                + "(93, 85): 히츠키절  (39, 85): 사토시청");
+                + "[93, 85]: 히츠키절 [39, 85]: 사토시청");
 
             GameManager.instance.collectionsProps.Add("풍경(風鈴)");
             GameManager.instance.collectionsDescriptions.Add("바람이 불 때마다 청량한 소리가 들린다."
@@ -205,18 +205,18 @@ public class CollectionManager : MonoBehaviour
     {
         int collectionIndex;
 
-        if (SceneManager.GetActiveScene().buildIndex == 3 && num < GameManager.instance.oshogatsuCollections.Count && num >= 0)
+        if (SceneManager.GetActiveScene().buildIndex == 3 && GameManager.instance.oshogatsuCollections.Count > 0 && num >= 0)
         {
             collectionIndex = GameManager.instance.oshogatsuCollections[num];
         }
-        else if (SceneManager.GetActiveScene().buildIndex == 4 && num < GameManager.instance.setsubunCollections.Count && num >= 0)
+        else if (SceneManager.GetActiveScene().buildIndex == 4 && GameManager.instance.setsubunCollections.Count > 0 && num >= 0)
         {
             collectionIndex = GameManager.instance.setsubunCollections[num];
         }
         else
         {
             Debug.Log("Finished Collection");
-            return 0;
+            return -1;
         }
 
         Debug.Log(collectionIndex);
@@ -251,14 +251,14 @@ public class CollectionManager : MonoBehaviour
         {
             if (GameManager.instance.oshogatsuCollections.Count != 0)
             {
-                randomNum = Random.Range(0, GameManager.instance.oshogatsuCollections.Count - 1);
+                randomNum = Random.Range(0, GameManager.instance.oshogatsuCollections.Count);
             }
         }
         else if (SceneManager.GetActiveScene().buildIndex == 4)
         {
             if (GameManager.instance.setsubunCollections.Count != 0)
             {
-                randomNum = Random.Range(0, GameManager.instance.setsubunCollections.Count - 1);
+                randomNum = Random.Range(0, GameManager.instance.setsubunCollections.Count);
             }
         }
 

@@ -20,7 +20,7 @@ public class GameClear : MonoBehaviour
         Text rewardText = rewardDescription.GetComponent<Text>();
 
         int rewardNum = collectionManager.Collect();
-        if (rewardNum != 0)
+        if (rewardNum != -1)
         {
             rewardImage.sprite = collectionManager.collectionsProps[rewardNum];
             rewardText.text = string.Format("{0}\n\n{1}",

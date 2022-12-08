@@ -60,7 +60,7 @@ public class OniSpawner : MonoBehaviour
 
     private void SpawnOni()
     {
-        int index = Random.Range(0, enemies.Count - 1);
+        int index = Random.Range(0, enemies.Count);
         Oni = Instantiate(oniPrefab, enemies[index].transform.position, Quaternion.identity);
         oni = Oni.GetComponent<Oni>();
         mamemakiManager.oni = oni;
