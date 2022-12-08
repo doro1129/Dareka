@@ -62,11 +62,9 @@ public class CollectionManager : MonoBehaviour
                 + "이게 비밀번호일까?");
 
             GameManager.instance.collectionsProps.Add("달력");
-            GameManager.instance.collectionsDescriptions.Add("12월 21일에 동그라미가 쳐져있고, '코하루(小春)와 [조립, 상자(くみ, はこ)]'라고 적혀있다."
+            GameManager.instance.collectionsDescriptions.Add("12월 21일에 동그라미가 쳐져있고, '코하루(小春)'라고 적혀있다."
                 + System.Environment.NewLine
-                + "‘무슨 날짜지? 우리 엄마 이름이 코하루인데…’"
-                + System.Environment.NewLine
-                + "'그리고 옆에 []표시는 뭐지?'");
+                + "‘무슨 날짜지? 우리 엄마 이름이 코하루인데…’");
 
             GameManager.instance.collectionsProps.Add("지도");
             GameManager.instance.collectionsDescriptions.Add("좌표 번호가 있다."
