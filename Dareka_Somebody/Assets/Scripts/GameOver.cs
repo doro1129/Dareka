@@ -9,10 +9,7 @@ public class GameOver : MonoBehaviour
 
     public void CallGameOverMenu()
     {
-        SoundManager.instance.SFXPlay("GameOver", gameoverClip);
-        GameManager.isPaused = true;
-        GameOverCanvas.SetActive(true);
-        Time.timeScale = 0f;
+        Invoke("GameOverMenu", 0.5f);
     }
 
     public void CloseGameOverMenu()
@@ -20,5 +17,13 @@ public class GameOver : MonoBehaviour
         GameManager.isPaused = false;
         GameOverCanvas.SetActive(false);
         Time.timeScale = 1f;
+    }
+
+    private void GameOverMenu()
+    {
+        SoundManager.instance.SFXPlay("GameOver", gameoverClip);
+        GameManager.isPaused = true;
+        GameOverCanvas.SetActive(true);
+        Time.timeScale = 0f;
     }
 }

@@ -16,7 +16,7 @@ public class MamemakiManager : MonoBehaviour
     public GameObject GameClearText;
     public GameClear gameclear;
     public GameOver gameover;
-    public static bool isClear;
+    public static bool isClear = false;
 
     public GameObject player;
     public GameObject canvas;
@@ -29,9 +29,13 @@ public class MamemakiManager : MonoBehaviour
     public static bool isHitOni = false;
     //public AudioClip groanClip;
 
+    bool isOver = false;
+
+
     private void Start()
     {
         isClear = false;
+        isOver = false;
         playerLogic = player.GetComponent<FPSPlayer>();
         oniSpawner = canvas.GetComponent<OniSpawner>();
     }
@@ -40,9 +44,14 @@ public class MamemakiManager : MonoBehaviour
     {
         if (playerLogic.hp <= 0)
         {
-            playerHPBar.value = 0f;
+            if (!isOver)
+            {
+                playerHPBar.value = 0f;
 
-            gameover.CallGameOverMenu();
+                isOver = true;
+                gameover.CallGameOverMenu();
+                Debug.Log("Game Over");
+            }
         }
         else
         {
@@ -55,7 +64,7 @@ public class MamemakiManager : MonoBehaviour
         if (oniSpawner.deathOni >= oniNum)
         {
             isClear = true;
-            Invoke("Clear", 2.0f);
+            Invoke("Clear", 0.5f);
         }
         else
         {

@@ -62,16 +62,18 @@ public class CollectionManager : MonoBehaviour
                 + "이게 비밀번호일까?");
 
             GameManager.instance.collectionsProps.Add("달력");
-            GameManager.instance.collectionsDescriptions.Add("12월 21일에 동그라미가 쳐져있고, '코하루(小春)'라고 적혀있다."
+            GameManager.instance.collectionsDescriptions.Add("12월 21일에 동그라미가 쳐져있고, '코하루(小春)와 [조립, 상자(くみ, はこ)]'라고 적혀있다."
                 + System.Environment.NewLine
-                + "‘무슨 날짜지? 우리 엄마 이름이 코하루인데…’");
+                + "‘무슨 날짜지? 우리 엄마 이름이 코하루인데…’"
+                + System.Environment.NewLine
+                + "'그리고 옆에 []표시는 뭐지?'");
 
             GameManager.instance.collectionsProps.Add("지도");
             GameManager.instance.collectionsDescriptions.Add("좌표 번호가 있다."
                 + System.Environment.NewLine
-                + "(35, 89): 후지병원 (58, 93): 시카공원"
+                + "[35, 89]: 후지병원 [58, 93]: 시카공원"
                 + System.Environment.NewLine
-                + "(93, 85): 히츠키절  (39, 85): 사토시청");
+                + "[93, 85]: 히츠키절 [39, 85]: 사토시청");
 
             GameManager.instance.collectionsProps.Add("풍경(風鈴)");
             GameManager.instance.collectionsDescriptions.Add("바람이 불 때마다 청량한 소리가 들린다."
@@ -205,18 +207,18 @@ public class CollectionManager : MonoBehaviour
     {
         int collectionIndex;
 
-        if (SceneManager.GetActiveScene().buildIndex == 3 && num < GameManager.instance.oshogatsuCollections.Count && num >= 0)
+        if (SceneManager.GetActiveScene().buildIndex == 3 && GameManager.instance.oshogatsuCollections.Count > 0 && num >= 0)
         {
             collectionIndex = GameManager.instance.oshogatsuCollections[num];
         }
-        else if (SceneManager.GetActiveScene().buildIndex == 4 && num < GameManager.instance.setsubunCollections.Count && num >= 0)
+        else if (SceneManager.GetActiveScene().buildIndex == 4 && GameManager.instance.setsubunCollections.Count > 0 && num >= 0)
         {
             collectionIndex = GameManager.instance.setsubunCollections[num];
         }
         else
         {
             Debug.Log("Finished Collection");
-            return 0;
+            return -1;
         }
 
         Debug.Log(collectionIndex);
