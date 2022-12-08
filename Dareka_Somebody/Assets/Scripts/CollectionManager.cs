@@ -251,14 +251,14 @@ public class CollectionManager : MonoBehaviour
         {
             if (GameManager.instance.oshogatsuCollections.Count != 0)
             {
-                randomNum = Random.Range(0, GameManager.instance.oshogatsuCollections.Count - 1);
+                randomNum = Random.Range(0, GameManager.instance.oshogatsuCollections.Count);
             }
         }
         else if (SceneManager.GetActiveScene().buildIndex == 4)
         {
             if (GameManager.instance.setsubunCollections.Count != 0)
             {
-                randomNum = Random.Range(0, GameManager.instance.setsubunCollections.Count - 1);
+                randomNum = Random.Range(0, GameManager.instance.setsubunCollections.Count);
             }
         }
 
