@@ -22,29 +22,38 @@ public class Timer : MonoBehaviour
 
     private void Update()
     {
-        if (!CleaningManager.isClear)
+        if (!CleaningManager.isClear && SceneManager.GetActiveScene().buildIndex == 3)
         {
-            LimitTime -= Time.deltaTime;
-            game_Timer.text = "남은 시간 : " + Mathf.Round(LimitTime);
+            GoTimer();
+        }
+        else if (!MamemakiManager.isClear && SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            GoTimer();
+        }
+    }
 
-            if (LimitTime <= 0.1f)
+    private void GoTimer()
+    {
+        LimitTime -= Time.deltaTime;
+        game_Timer.text = "남은 시간 : " + Mathf.Round(LimitTime);
+
+        if (LimitTime <= 0.1f)
+        {
+            //GameOverText.SetActive(true);
+            game_Timer.text = "Game Over";
+            if (!isOver)
             {
-                //GameOverText.SetActive(true);
-                game_Timer.text = "Game Over";
-                if (!isOver)
-                {
-                    isOver = true;
-                    gameover.CallGameOverMenu();
-                    Debug.Log("Game Over");
-                }
+                isOver = true;
+                gameover.CallGameOverMenu();
+                Debug.Log("Game Over");
             }
-            else
+        }
+        else
+        {
+            if (!GameManager.isPaused)
             {
-                if (!GameManager.isPaused)
-                {
-                    //GameOverText.SetActive(false);
-                    gameover.CloseGameOverMenu();
-                }
+                //GameOverText.SetActive(false);
+                gameover.CloseGameOverMenu();
             }
         }
     }
