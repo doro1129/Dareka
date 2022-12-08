@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
     public Text TalkText; // Show object's description on dialog window
     public GameObject TalkWindow; // Dialog window
 
+    // Check if ray has reached to object which has Layer named "Dust"
+    public Timer timer;
+    public GameObject canvas;
+
     public static GameManager instance;
 
     public List<bool> collections = new List<bool>();
@@ -46,6 +50,7 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
+        Clear();
     }
 
     // Scan objects and Outputs UI on display
@@ -58,7 +63,7 @@ public class GameManager : MonoBehaviour
         else
         {
             isScan = true;
-            
+
             TalkWindow.SetActive(true);
 
             scanObject = scanOBJ;
@@ -69,5 +74,25 @@ public class GameManager : MonoBehaviour
             TalkText.text = description.describe(ObjectName);
         }
         TalkWindow.SetActive(isScan);
+    }
+
+    // If dust_score were 10, this function will end 'Cleaning' scene.
+    // If dust_score is 10 and time left is more than 0, SceneManager will load stage select scene.
+    public void Clear()
+    {
+        /*
+        if (dust_score == 10 && timer.LimitTime >= 0)
+        {
+            // TODO: Add UI or something. This needs more debate
+            SceneManager.LoadScene(1);
+        }
+        */
+
+        OniSpawner oniSpawner = canvas.GetComponent<OniSpawner>();
+        if (oniSpawner.IsMamemakiOver() && timer.LimitTime >= 0)
+        {
+            // TODO: Add UI or something. This needs more debate
+            SceneManager.LoadScene(1);
+        }
     }
 }
