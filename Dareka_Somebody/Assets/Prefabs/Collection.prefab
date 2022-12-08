@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1018489047744826054
 Transform:
   m_ObjectHideFlags: 0
@@ -46,4 +46,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   commonNum: 7
   collectionNum: 13
-  vocabulary: {fileID: 0}
+  collectionsProps:
+  - {fileID: 21300000, guid: 5cebb1fea30584bd4825bed959ad89ea, type: 3}
+  - {fileID: 21300000, guid: d7cfdabf05729244f977ac76f5681a8e, type: 3}
+  - {fileID: 21300000, guid: d7b83e23d4b23fb4a81dad82ed09b638, type: 3}
+  - {fileID: 21300000, guid: 22e35f842b337434897d40964eed4624, type: 3}
+  - {fileID: 21300000, guid: a738d87e894dd5241b279fcdd9d418ef, type: 3}
+  - {fileID: 21300000, guid: c03155a41ac652b40a2912f16a5cf9af, type: 3}
+  - {fileID: 21300000, guid: 1defce3bef002744dbabe01a50542395, type: 3}
+  - {fileID: 21300000, guid: e4dca40bb63a555408fe93c4360cf970, type: 3}
+  - {fileID: 21300000, guid: 5f5705b80c7c7ea42a291efabdcb645c, type: 3}
+  - {fileID: 21300000, guid: 40ddc5cb1a91ecf42a46c8ceea7bcc72, type: 3}
+  - {fileID: 21300000, guid: 6bc8d14d70349ae4596275be6397e56b, type: 3}
+  - {fileID: 21300000, guid: 91c4d808be0bf774797d7ee11d3eeb9d, type: 3}
+  - {fileID: 21300000, guid: 2c5f42e582338fa489e162420c68361f, type: 3}

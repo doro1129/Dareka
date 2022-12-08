@@ -12,6 +12,12 @@ public class Timer : MonoBehaviour
     public GameOver gameover;
     //public GameObject GameOver_UI;
 
+    bool isOver = false;
+
+    private void Awake()
+    {
+        isOver = false;
+    }
 
     private void Update()
     {
@@ -26,8 +32,12 @@ public class Timer : MonoBehaviour
                 game_Timer.text = "Game Over";
                 if (LimitTime <= -2)
                 {
-                    gameover.CallGameOverMenu();
-                    Debug.Log("Game Over");
+                    if (!isOver)
+                    {
+                        isOver = true;
+                        gameover.CallGameOverMenu();
+                        Debug.Log("Game Over");
+                    }
                 }
             }
             else
