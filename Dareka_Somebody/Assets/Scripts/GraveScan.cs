@@ -63,7 +63,7 @@ public class GraveScan : MonoBehaviour
             scanObject = hit.collider.gameObject;
             PressSpace.SetActive(true);
 
-            if (Input.GetKeyDown(KeyCode.Space) && scanObject != null)
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) && scanObject != null)
             {
                 Talking();
                 manager.isScan = true;
