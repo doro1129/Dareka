@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneControl : MonoBehaviour
 {
+    public GameObject Setting;
     public GameObject Guess;
     public GameObject Collection;
 
@@ -14,6 +15,8 @@ public class SceneControl : MonoBehaviour
     public AudioClip clickClip;
     public GameOver gameOver;
     public GameObject diary;
+
+    private bool isSetting_open = false;
 
     private void Start()
     {
@@ -77,6 +80,22 @@ public class SceneControl : MonoBehaviour
         Debug.Log("Quit");
         SoundManager.instance.SFXPlay("Click", clickClip);
         Application.Quit();
+    }
+
+    public void OnclickSettingActive()
+    {
+        Debug.Log("Loading Setting UI");
+        if (isSetting_open == false)
+        {
+            isSetting_open = true;
+            Setting.SetActive(true);
+        }
+        else
+        {
+            isSetting_open = false;
+            Setting.SetActive(false);
+        }
+        SoundManager.instance.SFXPlay("Click", clickClip);
     }
 
     public void OnclickGuessActive()
