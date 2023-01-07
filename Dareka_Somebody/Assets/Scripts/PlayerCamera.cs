@@ -13,8 +13,8 @@ public class PlayerCamera : MonoBehaviour
     /// Sensor X will sense the horizontal rotation of player and camera
     /// Sensor Y will sense the vertical rotation of camera
     /// </summary>
-    public float sensitivityX = 800;
-    public float sensitivityY = 800;
+    public float sensitivityX;
+    public float sensitivityY;
     
     /// <summary>
     /// orientation will store the direction where the player facing
@@ -63,5 +63,11 @@ public class PlayerCamera : MonoBehaviour
 
             player.transform.rotation = Quaternion.Euler(0, yRotation, 0);
         }
+    }
+
+    public void ChangeMouseSensitivity(float X, float Y)
+    {
+        sensitivityX = X;
+        sensitivityY = Y;
     }
 }
