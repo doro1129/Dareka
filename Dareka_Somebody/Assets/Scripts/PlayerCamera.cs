@@ -29,7 +29,7 @@ public class PlayerCamera : MonoBehaviour
     private float yRotation;
     private float mouseX;
     private float mouseY;
-
+    
     // manager is defined To invoke the function 'isScan'
     public GameManager manager;
 
@@ -63,11 +63,5 @@ public class PlayerCamera : MonoBehaviour
 
             player.transform.rotation = Quaternion.Euler(0, yRotation, 0);
         }
-    }
-
-    public void ChangeMouseSensitivity(float X, float Y)
-    {
-        sensitivityX = X;
-        sensitivityY = Y;
     }
 }

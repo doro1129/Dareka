@@ -7,28 +7,21 @@ using UnityEngine.UI;
 public class SettingMenu : MonoBehaviour
 {
     public AudioMixer mainMixer;
-    public Slider sensitivitySlider;
-
-    private float mainVolume;
 
     public void SetVolume(float volume)
     {
         mainMixer.SetFloat("master", volume);
-        mainVolume = volume;
+        mainMixer.GetFloat("master", out volume);
     }
 
-    public void SetMouseSensitivity()
+    public void SetFullScreen(bool isFullscreen)
     {
-        GetComponent<PlayerCamera>().ChangeMouseSensitivity(sensitivitySlider.value, sensitivitySlider.value);
+        Screen.fullScreen = isFullscreen;
+
     }
 
-    /*public void Awake()
+    public void Awake()
     {
-        DontDestroyOnLoad(mainVolume);
-    }*/
-
-    public void Update()
-    {
-        Debug.Log(mainVolume);
+        DontDestroyOnLoad(mainMixer);
     }
 }
