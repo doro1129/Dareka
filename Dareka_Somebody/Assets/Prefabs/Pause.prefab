@@ -46,9 +46,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab49b38b6735ec4aa9a9df4d1ca5578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Setting: {fileID: 0}
   Guess: {fileID: 0}
   Collection: {fileID: 0}
   vocabulary: {fileID: 0}
+  clickClip: {fileID: 0}
+  gameOver: {fileID: 0}
+  diary: {fileID: 0}
+  gotoTitle: {fileID: 0}
+  endGame: {fileID: 0}
 --- !u!114 &1091749149698079196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,6 +79,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 1304162782698471668, guid: 2525a686ba880cb4f9db0509c921edbc, type: 3}
+      propertyPath: mouseSensitivity
+      value: 
+      objectReference: {fileID: 4608919154783035286}
     - target: {fileID: 3138530845151169512, guid: 2525a686ba880cb4f9db0509c921edbc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -176,6 +186,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 268158597888581160, guid: 2525a686ba880cb4f9db0509c921edbc, type: 3}
   m_PrefabInstance: {fileID: 1599608457727812145}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4608919154783035286 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3009768940152143271, guid: 2525a686ba880cb4f9db0509c921edbc, type: 3}
+  m_PrefabInstance: {fileID: 1599608457727812145}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8113601462099007712 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7398216682353982161, guid: 2525a686ba880cb4f9db0509c921edbc, type: 3}

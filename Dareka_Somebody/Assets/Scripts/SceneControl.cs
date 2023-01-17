@@ -5,15 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class SceneControl : MonoBehaviour
 {
+    public GameObject Setting;
     public GameObject Guess;
     public GameObject Collection;
-
     public GameObject vocabulary;
     VocabularyList vocabularyList;
 
     public AudioClip clickClip;
     public GameOver gameOver;
     public GameObject diary;
+    public GameObject gotoTitle;
+    public GameObject endGame;
+
+    private bool isSetting_open = false;
 
     private void Start()
     {
@@ -25,21 +29,21 @@ public class SceneControl : MonoBehaviour
 
     public void OnclickSelectStage_Title()
     {
-        Debug.Log("Loading Title");
+        //Debug.Log("Loading Title");
         SoundManager.instance.SFXPlay("Click", clickClip);
         SceneManager.LoadScene(0);
     }
 
     public void OnclickSelectStage_FirstStory()
     {
-        Debug.Log("Loading FirstStory");
+        //Debug.Log("Loading FirstStory");
         SoundManager.instance.SFXPlay("Click", clickClip);
         SceneManager.LoadScene(1);
     }
 
     public void OnclickStageScene()
     {
-        Debug.Log("Loading Stage Scene");
+        //Debug.Log("Loading Stage Scene");
         if (SceneManager.GetActiveScene().buildIndex != 1)
         {
             SoundManager.instance.SFXPlay("Click", clickClip);
@@ -52,7 +56,7 @@ public class SceneControl : MonoBehaviour
     //StartScene
     public void OnclickSelectStage_Souji()
     {
-        Debug.Log("Loading Cleaning Minigame");
+        //Debug.Log("Loading Cleaning Minigame");
         SoundManager.instance.SFXPlay("Click", clickClip);
         if (SceneManager.GetActiveScene().buildIndex != 2)
         {
@@ -63,7 +67,7 @@ public class SceneControl : MonoBehaviour
 
     public void OnclickSelectStage_Mamemaki()
     {
-        Debug.Log("Loading Mamemaki Minigame");
+        //Debug.Log("Loading Mamemaki Minigame");
         SoundManager.instance.SFXPlay("Click", clickClip);
         if (SceneManager.GetActiveScene().buildIndex != 2)
         {
@@ -74,14 +78,32 @@ public class SceneControl : MonoBehaviour
 
     public void OnclickQuitGame()
     {
-        Debug.Log("Quit");
+        //Debug.Log("Quit");
         SoundManager.instance.SFXPlay("Click", clickClip);
         Application.Quit();
     }
 
+    public void OnclickSettingActive()
+    {
+        //Debug.Log("Loading Setting UI");
+        if (isSetting_open == false)
+        {
+            isSetting_open = true;
+            Setting.SetActive(true);
+        }
+        else
+        {
+            isSetting_open = false;
+            Setting.SetActive(false);
+        }
+        SoundManager.instance.SFXPlay("Click", clickClip);
+    }
+
     public void OnclickGuessActive()
     {
-        Debug.Log("Loading Guess UI");
+        //Debug.Log("Loading Guess UI");
+        gotoTitle.SetActive(false);
+        endGame.SetActive(false);
         Guess.SetActive(true);
         Collection.SetActive(false);
         SoundManager.instance.SFXPlay("Click", clickClip);
@@ -89,7 +111,9 @@ public class SceneControl : MonoBehaviour
 
     public void OnclickVocabularyActive()
     {
-        Debug.Log("Loading Vocabulary UI");
+        //Debug.Log("Loading Vocabulary UI");
+        gotoTitle.SetActive(false);
+        endGame.SetActive(false);
         Guess.SetActive(false);
         Collection.SetActive(true);
         vocabularyList.UpdateCollection();
@@ -105,6 +129,8 @@ public class SceneControl : MonoBehaviour
                 Guess.SetActive(false);
                 Collection.SetActive(false);
                 diary.SetActive(false);
+                gotoTitle.SetActive(true);
+                endGame.SetActive(true);
             }
         }
     }
